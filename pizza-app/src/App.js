@@ -1,14 +1,33 @@
 
+
+import Catalog from './pages/Catalog';
+import Contacts from './pages/Contacts'
+import HomePage from './pages/HomePage';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+
+
 import './App.css';
-import Navigation from './components/Navigation';
-import Product from './components/Product';
+
 
 function App() {
   return (
-    <div className="App">
-      <Navigation/>
-      <Product/>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<HomePage/>} />
+        <Route path="/catalog" element={<Catalog />}>
+        
+        </Route>
+        <Route path="contacts" element={<Contacts />}>
+        
+        </Route>
+      </Route>
+    </Routes>
+  </BrowserRouter>
   );
 }
 
