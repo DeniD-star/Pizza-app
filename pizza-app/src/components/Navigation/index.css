@@ -15,11 +15,11 @@ body{
     margin-bottom: 0px;
 }
 
-.title span{
+.title .italy{
     background-image: url('../../images/last.png');
     /* background-repeat: no-repeat;
     object-fit: cover; */
-    color:rgb(30, 28, 28)
+    color:rgb(30, 28, 28);
 }
 
 header{
@@ -28,6 +28,7 @@ header{
     background-color: rgb(30, 28, 28);
     display: flex;
     justify-content: space-between;
+    height: 100%
 }
 
 .nav-list{
@@ -42,7 +43,7 @@ header{
     text-decoration: none;
     cursor: pointer;
     color: goldenrod;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .user-navigation{
@@ -55,6 +56,7 @@ header{
     padding-right: 30px;
     color:rgb(230, 96, 96);
     font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
   
 }
 
@@ -76,7 +78,7 @@ img{
 
 /* main part  */
 
-.main-img-bg{
+/* .main-img-bg{
     width: 100vw;
     height: 100vh;
-}
+} */

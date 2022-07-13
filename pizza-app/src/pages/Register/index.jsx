@@ -1,28 +1,83 @@
-import React from 'react'
-import './index.css';
+import React from "react";
+import "./index.css";
+import { useState } from "react";
+
 const Register = () => {
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [rePass, setRepass] = useState('');
+
+  const handleRegister = (e) => {
+    console.log(email);
+    console.log(username);
+    console.log(password);
+    console.log(rePass);
+    e.preventDefault();
+  };
   return (
     <section id="register">
-    <article className="register-form">
+      <article className="register-form">
         <h2>Create your account:</h2>
-        <form id="view-register" action="" method="POST">
-            <label htmlFor="email"><i className="fa-solid fa-envelope"></i>Email:</label>
-            <input type="text" id="email" name="email" placeholder="Email" value=""/>
-            <label htmlFor="username"><i className="fa-solid fa-user"></i>Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter your Username" value=""/>
-            <label htmlFor="password"><i className="fa-solid fa-lock"></i>Password:</label>
-            <input type="password" id="password" name="password" placeholder="Password"/>
-            <label htmlFor="rePassword"><i className="fa-solid fa-repeat"></i>Repeat Password:</label>
-            <input type="password" id="rePass" name="rePass" placeholder="Repeat Password"/>
-            <input type="submit" className="register-btn" value="Register"/>
-            <article className="register-links">
-                <a href="/login">Already have an account?</a>
-            </article>
+        <form id="view-register">
+          <label htmlFor="email">
+            <i className="fa-solid fa-envelope"></i>Email:
+          </label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+          <label htmlFor="username">
+            <i className="fa-solid fa-user"></i>Username:
+          </label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your Username"
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+          />
+          <label htmlFor="password">
+            <i className="fa-solid fa-lock"></i>Password:
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+          <label htmlFor="rePassword">
+            <i className="fa-solid fa-repeat"></i>Repeat Password:
+          </label>
+          <input
+            type="password"
+            id="rePass"
+            name="rePass"
+            placeholder="Repeat Password"
+            onChange={(e) => setRepass(e.target.value)}
+            value={rePass}
+          />
+          <button
+            type="submit"
+            className="register-btn"
+            onClick={handleRegister}
+          >
+            Register
+          </button>
+          <article className="register-links">
+            <a href="/login">Already have an account?</a>
+          </article>
         </form>
-    </article>
- 
-</section>
-  )
-}
+      </article>
+    </section>
+  );
+};
 
 export default Register;

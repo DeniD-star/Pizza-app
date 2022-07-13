@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 const Navigation = () => {
   return (
     <header className="header">
-    <h1 className="title">Pizza is <span>Italy</span></h1>
+    <h1 className="title">Pizza is <span class="italy">Italy</span></h1>
   <nav className="navigation">
     <ul className="nav-list">
       <section className="welcome">

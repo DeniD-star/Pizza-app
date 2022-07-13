@@ -1,20 +1,31 @@
 import React from 'react'
 import './index.css';
+ import { useState } from 'react';
 
 const Login = () => {
+  const[email, setEmail] = useState('');
+  const[password, setPassword] = useState('');
+ 
+
+  const handleLogin = (e)=>{
+ console.log(email);
+ console.log(password);
+ e.preventDefault()
+  }
   return (
     <section id="login">
       <article className="login-form">
         <h2>Login:</h2>
-        <form id="view-login" action="" method="POST">
+        <form id="view-login">
          <label htmlFor="email"> <i className="fa-solid fa-user"></i>Email:</label>
           
           <input
             type="text"
-            id="username"
-            name="username"
-            placeholder="Enter your Username"
-            value=""
+            id="email"
+            name="email"
+            placeholder="Enter your Email"
+            onChange={(e)=> setEmail(e.target.value)}
+            value={email}
           />
           <label htmlFor="password"><i className="fa-solid fa-lock"></i>Password:</label>
           <input
@@ -22,8 +33,10 @@ const Login = () => {
             id="password"
             name="password"
             placeholder="Enter your Password"
+            onChange={(e)=> setPassword(e.target.value)}
+            value={password}
           />
-          <input type="submit" className="login-btn" value="Login" />
+          <button type="submit" className="login-btn" onClick={handleLogin} >LOGIN</button>
         </form>
         <article className="login-links">
           <a href="##" className="link-forgotten">Forgotten username/password</a>
@@ -33,5 +46,6 @@ const Login = () => {
     </section>
   )
 }
+
 
 export default Login;

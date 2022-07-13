@@ -1,0 +1,49 @@
+.home-page {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../images/good-for-welcome02.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: relative;
+  top: -60px;
+}
+
+.home-page .title {
+  width: 100%;
+  height: 100%;
+  font-family: cursive;
+  color:rgb(30, 28, 28);
+}
+/* 
+.home-page-img {
+  background-image: url("../../images/black-bg-with-pizza-left-side.jpg");
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+} 
+
+.img-home-main{
+    background-image: url("../../images/pizza-with-bandiera-italiana.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 100vw;
+    height: 100vh; 
+
+} */
+
+.main-title{
+ text-align: right;
+}
+ .lovers-pizza{
+ color:rgb(223, 201, 139);
+}
+
+.subtitle{
+ 
+  width: 500px;
+  text-align: right;
+}
+
+.just-at{
+  color:rgb(223, 201, 139);
+}
