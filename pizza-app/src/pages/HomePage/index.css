@@ -1,11 +1,12 @@
 .home-page {
   width: 100vw;
   height: 100vh;
-  background-image: url("../../images/good-for-welcome02.jpg");
+  /* background-image: url("../../images/pizza\ and\ cremavo\ bqlo.webp"); */
   background-repeat: no-repeat;
   background-size: 100%;
   position: relative;
   top: -60px;
+  background-color: bisque;
 }
 
 .home-page .title {
@@ -13,37 +14,168 @@
   height: 100%;
   font-family: cursive;
   color:rgb(30, 28, 28);
-}
-/* 
-.home-page-img {
-  background-image: url("../../images/black-bg-with-pizza-left-side.jpg");
+ 
+  background-image: url('./images/margherita-pizza.jpg');
   background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-} 
+  background-size: 700px;
+  border-image: radius;
+  border-radius: 50%;
 
-.img-home-main{
-    background-image: url("../../images/pizza-with-bandiera-italiana.jpg");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    width: 100vw;
-    height: 100vh; 
 
-} */
+  
+  background-attachment: fixed;
+  background-position: right;
+}
+.home-prenota{
+  position: absolute;
+  top:90%;
+  left:40%;
+  transform: translate(-50%, -50%);
+  padding: 20px 30px;
+  border-radius: 8px;
+  background-color: rgb(230, 96, 96);
+  border-color: transparent;
+  color: black;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
 
 .main-title{
- text-align: right;
+
+ position: absolute;
+ text-align: left;
+  left: 20px;
+ 
 }
  .lovers-pizza{
- color:rgb(223, 201, 139);
+ color:goldenrod;
+
+ 
 }
 
 .subtitle{
  
   width: 500px;
-  text-align: right;
+  position: relative;
+  text-align: left;
+  top: 250px;
+  left:300px;
+  font-size: 32px;
 }
 
 .just-at{
-  color:rgb(223, 201, 139);
+  color:goldenrod;
+}
+
+.welcome-btn-paragraph{
+  position: absolute;
+  top:75%;
+  left:30%;
+  color:rgb(65, 62, 62);
+  font-weight: 500;
+}
+
+/* our products-aur blog */
+
+.our-products{
+  background-color: bisque;
+  width: 100%;
+  padding: 20px;
+  position: relative;
+  top: -50px;
+  
+}
+
+.title-ingredienti{
+  text-align: center;
+  font-family: cursive;
+  font-size: 34px;
+  color:rgb(81, 70, 70)
+}
+
+.articles-ingredienti{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+ border: 3px solid transparent;
+ border-radius: 12px;
+ padding: 5px;
+ width: 90%;
+  margin-left: 60px;
+}
+
+.ingredients-description.info{
+  width: 33%;
+  border: 1px solid transparent;
+}
+.ingredients-description.img{
+  width:33%;
+  border: 1px solid transparent;
+}
+.ingredients-description.info h3{
+  text-align: center;
+  font-family: cursive;
+}
+.ingredients-description.info p{
+  text-align: center;
+  font-size: 22px;
+  padding: 10px;
+  font-family: cursive;
+
+}
+
+.ingredients-description.img img{
+  width: 100%;
+}
+
+/* section about-us */
+
+ .presentation{
+  background-color: rgb(230, 96, 96);
+  position: relative;
+  top: -40px;
+  padding: 20px;
+}
+
+.presentation .title-info-about{
+  text-align: center;
+}
+.presentation .about-us{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-family: cursive;
+  
+  font-size: 18px;
+}
+
+
+
+.ifo-about-us{
+  width: 30%;
+  padding-right: 70px;
+}
+
+.title-info-about span{
+  color:goldenrod;
+
+  font-size: 30px;
+}
+
+.pizza-n-f{
+  float:left;
+  width: 300px;
+}
+.pizza-n-m{
+  float:right;
+  width: 300px;
+}
+.about-us{
+  width: 90%;
+}
+
+.about-francesco-description{
+padding-right: 20px;
 }
