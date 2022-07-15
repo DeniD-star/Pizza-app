@@ -38,7 +38,7 @@ function App() {
       <Route path="/register" element={<NavigationHoc><Register /></NavigationHoc>}>
       </Route>
     </Routes>
-    <Footer/>
+    {/* <Footer/> */}
   </>
   );
 }

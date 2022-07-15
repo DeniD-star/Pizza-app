@@ -1,8 +1,12 @@
 import React from 'react'
 import './index.css';
  import { useState } from 'react';
+ import {auth} from '../../firebase';
+ import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
   const[email, setEmail] = useState('');
   const[password, setPassword] = useState('');
  
@@ -10,7 +14,22 @@ const Login = () => {
   const handleLogin = (e)=>{
  console.log(email);
  console.log(password);
- e.preventDefault()
+ e.preventDefault();
+
+ signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+
+    const user = userCredential.user;
+    // ...
+
+    console.log(user);
+    navigate('/')
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
   }
   return (
     <section id="login">

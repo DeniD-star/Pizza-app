@@ -1,19 +1,44 @@
 import React from "react";
 import "./index.css";
 import { useState } from "react";
+import {createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from '../../firebase';
 
-const Register = () => {
+
+
+import {useNavigate} from 'react-router-dom';
+
+ const Register = () => {
+   
+  const navigate = useNavigate();
+
+
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [rePass, setRepass] = useState('');
 
-  const handleRegister = (e) => {
+    const handleRegister = async(e) => {
     console.log(email);
     console.log(username);
     console.log(password);
     console.log(rePass);
     e.preventDefault();
+
+  
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        navigate('/');
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+   
   };
   return (
     <section id="register">
