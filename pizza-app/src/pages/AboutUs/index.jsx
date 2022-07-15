@@ -1,21 +1,70 @@
 import React from 'react'
+import "./index.css";
+
 
 const AboutUs = () => {
   return (
-    <div><section className="presentation">
-    <article className="about-us">
-      <p className="about-us-paragraph">
-        Pizzeria Pizza is Italy is the combination of good and healthy.
-        Creating an original and recognizable pizza for the quality of our
-        products and the strong bond that unites us to the Neapolitan
-        tradition, allows us to tell a territory through the flavors of our
-        pizza. Continuous innovation, careful selection of raw materials is
-        the vision that guides our work, to bring to your tables a quality
-        product, highly digestible and with an authentic flavor.
-      </p>
-      <img src="../../images/pizza-people.png" alt="img-neap" className="pizza-n" />
-    </article>
-  </section></div>
+    <section className="presentation">
+        <h3 className="title-info-about">
+          The emerging young people of the Pizzeria <span>Pizza is Italy</span>
+        </h3>
+        <article className="about-us">
+          
+            <article className="about-francesco-description">
+              <h4> Francesco Di Rosa</h4>
+              <p className="about-us-paragraph">
+              <img
+                src={require("./images/francesco.webp")}
+                alt="img-neap"
+                className="pizza-n-f"
+              />
+                A Neapolitan pizza with a pronounced and faithful to the cornice
+                tradition: it is Francesco Di Rosa's pizza. The curiosity for the
+                baking has always been in the blood of Francesco, who has
+                abandoned his previous job to devote himself to
+                training as a pizza chef. After various experiences around
+                Italy, six years ago Francesco decided to open his own
+                activity in Sicignano degli Alburni, where he brought and made
+                know the Neapolitan pizza. That's where the
+                31 years old Francesco takes the ingredients for his pizza:
+                local and quality ingredients. With type 0 flour and
+                indirect doughs, simple ingredients and a lot of passion,
+                Francesco tries to bring all the flavors of his to customers
+                mountain village, reinventing itself every day. A pizza yes
+                faithful to tradition, but without neglecting innovation.
+              </p>
+            </article>
+          
+            <article className="about-milena-description">
+              <h4>Milena Natale</h4>
+              <p className="about-us-paragraph">
+              <img
+                src={require("./images/milena.webp")}
+                alt="img-neap"
+                className="pizza-n-m"
+              />
+               Verdevasinicola was born from a dream and from the determination of
+                Milena Natale, pizza chef from Caserta who wants to tell the story
+                tradition of "pizza a libretto" around Italy with a
+                Traveling ape car. Over the years the concept has evolved and has
+                led to the opening of stable premises. Today Verdevasinicola yes
+                is established at the gates of Cilento. The heart of Verdevasinicola
+                the pizza of excellence remains: it is impossible not to try the dough
+                special of Milena Natale and savor the scent of
+                tradition that meets modernity, all rigorously
+                accompanied by the smell of fresh basil. Milena offers a
+                refined but traditional cuisine and a pizza closer and closer
+                to the flavors of the territory. From the ingredients to the style of
+                local, every detail is sought in quality and cared for
+                the smallest details. It is amazing to see the energy that Milena,
+                mother of two girls, female pizza maker, "female" - like her yes
+                describes on his website online - he takes in carrying every day
+                passion in the dishes and in the dining room.
+              </p>
+            </article>
+          </article>
+      
+      </section>
   )
 }
 

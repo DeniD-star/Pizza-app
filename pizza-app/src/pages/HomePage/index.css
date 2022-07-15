@@ -1,3 +1,5 @@
+@import url("https://use.fontawesome.com/releases/v6.1.1/css/all.css");
+
 .home-page {
   width: 100vw;
   height: 100vh;
@@ -16,6 +18,7 @@
   color:rgb(30, 28, 28);
  
   background-image: url('./images/margherita-pizza.jpg');
+
   background-repeat: no-repeat;
   background-size: 700px;
   border-image: radius;
@@ -25,6 +28,7 @@
   
   background-attachment: fixed;
   background-position: right;
+
 }
 .home-prenota{
   position: absolute;
@@ -178,4 +182,93 @@
 
 .about-francesco-description{
 padding-right: 20px;
+}
+
+
+/* work time */
+
+.day-of-week{
+  list-style: none;
+ 
+}
+.day-of-week li{
+ margin-bottom: 15px;
+ 
+}
+.open-hours h2{
+  margin-bottom: 35px;
+  color:goldenrod;
+}
+
+.open-hours{
+  text-align: center;
+ margin-bottom: 40px;
+
+}
+
+.contacts{
+  background-color: gray;
+  padding-top: 20px ;
+  padding-bottom: 20px ;
+  position: relative;
+  top:-30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.our-contacts{
+  text-align: center;
+}
+.our-contacts h2{
+  color: goldenrod;
+  padding-bottom: 15px;
+}
+
+.nav-seguici{
+  list-style: none;
+  display: flex;
+  
+}
+.seguici h2{
+  color: goldenrod;
+  
+}
+.nav-seguici li{
+padding-right: 15px;
+  
+}
+.nav-seguici a{
+text-decoration: none;
+color:rgb(65, 62, 62);
+
+}
+/* footer */
+
+.nav-language{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+.nav-language a{
+ text-decoration: none;
+ border: 1px solid goldenrod;
+ color: goldenrod;
+ padding: 10px;
+}
+.nav-language li{
+  padding-right: 15px;
+}
+
+.footer{
+  background-color: rgb(30, 28, 28);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  position: relative;
+  top: -30px;
+}
+.footer p{
+ color: goldenrod;
+ padding-bottom: 15px;
 }

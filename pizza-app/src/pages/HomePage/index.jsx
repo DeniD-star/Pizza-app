@@ -130,7 +130,47 @@ const HomePage = () => {
       
       </section>
       <section className="contacts">
+        <article className="open-hours">
+          <h2>WHEN YOU FIND US</h2>
+          <ul className="day-of-week">
+            <li className="day-li"><strong>MONDAY:</strong>   CLOSE</li>
+            <li className="day-li"><strong>TUESDAY:</strong>   15:00 - 22:00</li>
+            <li className="day-li"><strong>WEDNESDAY:</strong>   15:00 - 22:00</li>
+            <li className="day-li"><strong>THURSDAY:</strong>   15:00 - 22:00</li>
+            <li className="day-li"><strong>FRIDAY:</strong>   15:00 - 22:00</li>
+            <li className="day-li"><strong>SATURDAY:</strong>   15:00 - 22:00</li>
+            <li className="day-li"><strong>SUNDAY:</strong>   15:00 - 22:00</li>
+          </ul>
+        </article>
+        <article className="our-contacts">
+        <h2>TO CONTACT US</h2>
+        <h4>Pizza is Italy</h4>
+        <ul className="day-of-week">
+            <li className="day-li">Piazza A. Greppi, 2D</li>
+            <li className="day-li">20060 - Cassina de' Pecchi (MI)</li>
+            <li className="day-li"> <i class="fa-solid fa-phone"></i>3489555202 - <i class="fa-solid fa-envelope"></i>yourpizzaservice@gmail.com</li> 
+          </ul>
+        </article>
+        <article className="seguici">
+        <h2>FOLLOW US</h2>
+        
+        <ul className="nav-seguici">
+           <li className="segici-item"><a href="##"><i class="fa-brands fa-facebook-f"></i></a></li>
+           <li className="segici-item"><a href="##"><i class="fa-brands fa-twitter"></i></a></li>
+           <li className="segici-item"><a href="##"><i class="fa-brands fa-instagram"></i></a></li>
+           <li className="segici-item"><a href="##"><i class="fa-brands fa-youtube"></i></a></li>
+          </ul>
+        </article>
       </section>
+      {/* <section className="footer">
+        <p className="footer-p">&copy;Pizza is Italy. All Rights Reserved</p>
+       <ul className="nav-language">
+         <li className="items-language"><a href="##">IT</a></li>
+         <li className="items-language"><a href="##">EN</a></li>
+         <li className="items-language"><a href="##">RU</a></li>
+       </ul>
+       
+      </section> */}
     </>
   );
 };

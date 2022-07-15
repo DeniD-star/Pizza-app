@@ -57,8 +57,8 @@
 
 }
 
-.fa-solid.fa-user, .fa-solid.fa-lock,
-.fa-solid.fa-envelope, .fa-solid.fa-repeat{
+.register-form .fa-solid.fa-user, .register-form .fa-solid.fa-lock,
+.register-form .fa-solid.fa-envelope, .register-form .fa-solid.fa-repeat{
     padding-right: 5px;
     color:rgb(230, 96, 96);
 }
