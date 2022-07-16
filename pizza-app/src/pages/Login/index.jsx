@@ -19,12 +19,12 @@ const Login = () => {
  signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
-
+    navigate('/');
     const user = userCredential.user;
     // ...
-
+    localStorage.setItem("isLogged", true)
     console.log(user);
-    navigate('/')
+   
   })
   .catch((error) => {
     const errorCode = error.code;

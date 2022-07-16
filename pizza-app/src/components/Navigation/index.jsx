@@ -3,10 +3,14 @@ import "./index.css";
 import { Link } from "react-router-dom";
 
 const Navigation = () => {
+  const isLogged = localStorage.getItem("isLogged");
+const handleLogout= ()=>{
+  localStorage.setItem("isLogged", false)
+}
   return (
     <header className="header">
       <h1 className="title">
-        Pizza is <span class="italy">Italy</span>
+        Pizza is <span className="italy">Italy</span>
       </h1>
       <nav className="navigation">
         <ul className="nav-list">
@@ -20,7 +24,6 @@ const Navigation = () => {
           </section>
           <section className="user-navigation">
             <li className="list-item">
-             
               <i className="fa-solid fa-caret-down"></i>
               <Link to="/catalog" className="nav-link drop-down">
                 Our Menu
@@ -38,18 +41,30 @@ const Navigation = () => {
                 Contacts
               </Link>
             </li>
-            <li className="list-item">
-              <i className="fa-solid fa-right-to-bracket"></i>
-              <Link to="/register" className="nav-link">
-                Register
-              </Link>
-            </li>
-            <li className="list-item">
-              <i className="fa-solid fa-right-to-bracket"></i>
-              <Link to="/login" className="nav-link">
-                Login
-              </Link>
-            </li>
+            {isLogged === "false" && (
+              <li className="list-item">
+                <i className="fa-solid fa-right-to-bracket"></i>
+                <Link to="/register" className="nav-link">
+                  Register
+                </Link>
+              </li>
+            )}
+            {isLogged === "false" ? (
+              <li className="list-item">
+                <i className="fa-solid fa-right-to-bracket"></i>
+                <Link to="/login" className="nav-link">
+                  Login
+                </Link>
+              </li>
+            ) : (
+              <li className="list-item">
+                <i className="fa-solid fa-right-to-bracket"></i>
+                <Link to="/login" className="nav-link" onClick={handleLogout}>
+                  Logout
+                </Link>
+              </li>
+            )}
+
             <li className="list-item">
               <i className="fa-solid fa-user"></i>
               <Link to="/profile" className="nav-link">

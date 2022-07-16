@@ -10,11 +10,11 @@ const HomePage = () => {
     <>
       <section className="home-page">
         <article className="title">
-          <h1 class="main-title">
-            Welcome lovers of <span class="lovers-pizza">pizza</span>
+          <h1 className="main-title">
+            Welcome lovers of <span className="lovers-pizza">pizza</span>
           </h1>
-          <h3 class="subtitle">
-            <span class="just-at">...with the first bite </span> ... you'll find
+          <h3 className="subtitle">
+            <span className="just-at">...with the first bite </span> ... you'll find
             yourself in Italy
           </h3>
         </article>

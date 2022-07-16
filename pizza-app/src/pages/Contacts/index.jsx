@@ -23,17 +23,17 @@ const Contacts = () => {
     <ul className="day-of-week">
         <li className="day-li">Piazza A. Greppi, 2D</li>
         <li className="day-li">20060 - Cassina de' Pecchi (MI)</li>
-        <li className="day-li"> <i class="fa-solid fa-phone"></i>3489555202 - <i class="fa-solid fa-envelope"></i>yourpizzaservice@gmail.com</li> 
+        <li className="day-li"> <i className="fa-solid fa-phone"></i>3489555202 - <i className="fa-solid fa-envelope"></i>yourpizzaservice@gmail.com</li> 
       </ul>
     </article>
     <article className="seguici">
     <h2>FOLLOW US</h2>
     
     <ul className="nav-seguici">
-       <li className="segici-item"><Link to="##"><i class="fa-brands fa-facebook-f"></i></Link></li>
-       <li className="segici-item"><Link to="##"><i class="fa-brands fa-twitter"></i></Link></li>
-       <li className="segici-item"><Link to="##"><i class="fa-brands fa-instagram"></i></Link></li>
-       <li className="segici-item"><Link to="##"><i class="fa-brands fa-youtube"></i></Link></li>
+       <li className="segici-item"><Link to="##"><i className="fa-brands fa-facebook-f"></i></Link></li>
+       <li className="segici-item"><Link to="##"><i className="fa-brands fa-twitter"></i></Link></li>
+       <li className="segici-item"><Link to="##"><i className="fa-brands fa-instagram"></i></Link></li>
+       <li className="segici-item"><Link to="##"><i className="fa-brands fa-youtube"></i></Link></li>
       </ul>
     </article>
   </section>

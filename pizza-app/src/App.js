@@ -1,4 +1,4 @@
-import NavigationHoc from './components/hocs/NavigationHoc';
+import AuthenticationHoc from './components/hocs/AuthenticationHoc';
 
 import {
   Routes,
@@ -15,6 +15,8 @@ import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Footer from './components/Footer';
+import TraditionalPizzas from './pages/Catalog/TraditionalPizzas';
+import Navigation from './components/Navigation';
 
 
 
@@ -22,20 +24,23 @@ import Footer from './components/Footer';
 function App() {
   return (
     <>
+    <Navigation/>
     <Routes>
       <Route path="/" element={<App />}></Route>
-      <Route index element={<NavigationHoc><HomePage /></NavigationHoc>} />
-      <Route path="/catalog" element={<NavigationHoc><Catalog /></NavigationHoc>}>
+      <Route index element={<AuthenticationHoc><HomePage /></AuthenticationHoc>} />
+      <Route path="/catalog" element={<AuthenticationHoc><Catalog /></AuthenticationHoc>}>
       </Route>
-      <Route path="/about" element={<NavigationHoc><AboutUs/></NavigationHoc>}>
+      <Route path="/about" element={<AuthenticationHoc><AboutUs/></AuthenticationHoc>}>
       </Route>
-      <Route path="/contacts" element={<NavigationHoc><Contacts /></NavigationHoc>}>
+      <Route path="/contacts" element={<AuthenticationHoc><Contacts /></AuthenticationHoc>}>
       </Route>
-      <Route path="/profile" element={<NavigationHoc><Profile /></NavigationHoc>}>
+      <Route path="/profile" element={<AuthenticationHoc><Profile /></AuthenticationHoc>}>
       </Route>
-      <Route path="/login" element={<NavigationHoc><Login /></NavigationHoc>}>
+      <Route path="/login" element={<AuthenticationHoc><Login /></AuthenticationHoc>}>
       </Route>
-      <Route path="/register" element={<NavigationHoc><Register /></NavigationHoc>}>
+      <Route path="/register" element={<AuthenticationHoc><Register /></AuthenticationHoc>}>
+      </Route>
+      <Route path="/traditionalPizzas" element={<AuthenticationHoc><TraditionalPizzas/></AuthenticationHoc>}>
       </Route>
     </Routes>
     {/* <Footer/> */}
