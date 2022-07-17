@@ -4,23 +4,32 @@ import './index.css';
  import {auth} from '../../firebase';
  import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import {login} from '../../features/userManagement/userManagement';
 
 const Login = () => {
+  
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const[email, setEmail] = useState('');
   const[password, setPassword] = useState('');
  
 
   const handleLogin = (e)=>{
+
  console.log(email);
  console.log(password);
  e.preventDefault();
+ 
 
  signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
+   
+   
+    const user = userCredential.user;//
+    dispatch(login(user))
     navigate('/');
-    const user = userCredential.user;
     // ...
     localStorage.setItem("isLogged", true)
     console.log(user);

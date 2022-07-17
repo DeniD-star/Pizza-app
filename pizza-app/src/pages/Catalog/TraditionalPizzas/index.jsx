@@ -9,7 +9,7 @@ const TraditionalPizzas = () => {
       <article className="pizze-tradizionali margherita">
         <article className="img">
           <img
-            src={require("../../../pizze tradizionali/Margherita.jpg")}
+            src={require("../../../pizze tradizionali images/Margherita.jpg")}
             alt="img-margherita"
           />
         </article>
@@ -24,7 +24,7 @@ const TraditionalPizzas = () => {
         {" "}
         <article className="img">
           <img
-            src={require("../../../pizze tradizionali/Americana.jpg")}
+            src={require("../../../pizze tradizionali images/Americana.jpg")}
             alt="img-americana"
           />
         </article>
@@ -39,7 +39,7 @@ const TraditionalPizzas = () => {
         {" "}
         <article className="img">
           <img
-            src={require("../../../pizze tradizionali/montanara.jpg")}
+            src={require("../../../pizze tradizionali images/montanara.jpg")}
             alt="img-montanara"
           />
         </article>
@@ -55,7 +55,7 @@ const TraditionalPizzas = () => {
         {" "}
         <article className="img">
           <img
-            src={require("../../../pizze tradizionali/Buffala.jpg")}
+            src={require("../../../pizze tradizionali images/Buffala.jpg")}
             alt="img-buffala"
           />
         </article>
@@ -71,7 +71,7 @@ const TraditionalPizzas = () => {
         {" "}
         <article className="img">
           <img
-            src={require("../../../pizze tradizionali/Chef.jpg")}
+            src={require("../../../pizze tradizionali images/Chef.jpg")}
             alt="img-chef"
           />
         </article>
@@ -87,7 +87,7 @@ const TraditionalPizzas = () => {
         {" "}
         <article className="img">
           <img
-            src={require("../../../pizze tradizionali/4stagioni,jpg.jpg")}
+            src={require("../../../pizze tradizionali images/4stagioni,jpg.jpg")}
             alt="img-4stagioni"
           />
         </article>
@@ -103,7 +103,7 @@ const TraditionalPizzas = () => {
         {" "}
         <article className="img">
           <img
-            src={require("../../../pizze tradizionali/oasi.jpg")}
+            src={require("../../../pizze tradizionali images/oasi.jpg")}
             alt="img-oasi"
           />
         </article>
@@ -119,7 +119,7 @@ const TraditionalPizzas = () => {
         {" "}
         <article className="img">
           <img
-            src={require("../../../pizze tradizionali/4formaggi.jpg")}
+            src={require("../../../pizze tradizionali images/4formaggi.jpg")}
             alt="img-4formaggi"
           />
         </article>
@@ -135,7 +135,7 @@ const TraditionalPizzas = () => {
         {" "}
         <article className="img">
           <img
-            src={require("../../../pizze tradizionali/Cpricciosa.jpg")}
+            src={require("../../../pizze tradizionali images/Cpricciosa.jpg")}
             alt="img-capricciosa"
           />
         </article>
@@ -151,7 +151,7 @@ const TraditionalPizzas = () => {
         {" "}
         <article className="img">
           <img
-            src={require("../../../pizze tradizionali/siciliana.jpg")}
+            src={require("../../../pizze tradizionali images/siciliana.jpg")}
             alt="img-margherita"
           />
         </article>

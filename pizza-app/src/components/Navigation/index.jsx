@@ -1,11 +1,17 @@
 import React from "react";
 import "./index.css";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import {login, logout } from '../../features/userManagement/userManagement';
 
 const Navigation = () => {
+  const user = useSelector(state => state.user);
+  console.log('user', user);
+  const dispatch = useDispatch()
   const isLogged = localStorage.getItem("isLogged");
 const handleLogout= ()=>{
-  localStorage.setItem("isLogged", false)
+  localStorage.setItem("isLogged", false);
+  dispatch(logout());
 }
   return (
     <header className="header">
@@ -49,17 +55,19 @@ const handleLogout= ()=>{
                 </Link>
               </li>
             )}
-            {isLogged === "false" ? (
+            {isLogged === "false" ? 
+            (
               <li className="list-item">
                 <i className="fa-solid fa-right-to-bracket"></i>
                 <Link to="/login" className="nav-link">
                   Login
                 </Link>
               </li>
-            ) : (
+            ) : 
+            (
               <li className="list-item">
                 <i className="fa-solid fa-right-to-bracket"></i>
-                <Link to="/login" className="nav-link" onClick={handleLogout}>
+                <Link to="/logout" className="nav-link" onClick={handleLogout} >
                   Logout
                 </Link>
               </li>

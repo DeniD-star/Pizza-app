@@ -8,7 +8,7 @@ const WhitePizzas = () => {
       <article className="pizze-bianche delicata">
         <article className="img">
           <img
-            src={require("../../../pizze bianche/delicata.jpg")}
+            src={require("../../../pizze bianche images/delicata.jpg")}
             alt="img-delicata"
           />
         </article>
@@ -23,7 +23,7 @@ const WhitePizzas = () => {
         {" "}
         <article className="img">
           <img
-            src={require("../../../pizze bianche/partenopea.jpg")}
+            src={require("../../../pizze bianche images/partenopea.jpg")}
             alt="img-partenopea"
           />
         </article>
@@ -38,7 +38,7 @@ const WhitePizzas = () => {
         {" "}
         <article className="img">
           <img
-            src={require("../../../pizze bianche/primavera.jpg")}
+            src={require("../../../pizze bianche images/primavera.jpg")}
             alt="img-primavera"
           />
         </article>
@@ -54,7 +54,7 @@ const WhitePizzas = () => {
         {" "}
         <article className="img">
           <img
-            src={require("../../../pizze bianche/regina.jpg")}
+            src={require("../../../pizze bianche images/regina.jpg")}
             alt="img-regina"
           />
         </article>
@@ -70,7 +70,7 @@ const WhitePizzas = () => {
         {" "}
         <article className="img">
           <img
-            src={require("../../../pizze bianche/saporita.jpg")}
+            src={require("../../../pizze bianche images/saporita.jpg")}
             alt="img-saporita"
           />
         </article>
@@ -86,7 +86,7 @@ const WhitePizzas = () => {
         {" "}
         <article className="img">
           <img
-            src={require("../../../pizze bianche/spaccanapoli.jpg")}
+            src={require("../../../pizze bianche images/spaccanapoli.jpg")}
             alt="img-4stagioni"
           />
         </article>
@@ -102,7 +102,7 @@ const WhitePizzas = () => {
         {" "}
         <article className="img">
           <img
-            src={require("../../../pizze bianche/Tokyo.jpg")}
+            src={require("../../../pizze bianche images/Tokyo.jpg")}
             alt="img-tokyo"
           />
         </article>
@@ -118,7 +118,7 @@ const WhitePizzas = () => {
         {" "}
         <article className="img">
           <img
-            src={require("../../../pizze bianche/Vagdo.jpg")}
+            src={require("../../../pizze bianche images/Vagdo.jpg")}
             alt="img-vagdo"
           />
         </article>
