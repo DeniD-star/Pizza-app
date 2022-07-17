@@ -17,6 +17,9 @@ import Register from './pages/Register';
 import Footer from './components/Footer';
 import TraditionalPizzas from './pages/Catalog/TraditionalPizzas';
 import Navigation from './components/Navigation';
+import WhitePizzas from './pages/Catalog/WhitePizzas';
+import Drinks from './pages/Catalog/Drinks';
+import Desserts from './pages/Catalog/Desserts';
 
 
 
@@ -42,8 +45,14 @@ function App() {
       </Route>
       <Route path="/traditionalPizzas" element={<AuthenticationHoc><TraditionalPizzas/></AuthenticationHoc>}>
       </Route>
+      <Route path="/whitePizzas" element={<AuthenticationHoc><WhitePizzas/></AuthenticationHoc>}>
+      </Route>
+      <Route path="/drinks" element={<AuthenticationHoc><Drinks/></AuthenticationHoc>}>
+      </Route>
+      <Route path="/desserts" element={<AuthenticationHoc><Desserts/></AuthenticationHoc>}>
+      </Route>
     </Routes>
-    {/* <Footer/> */}
+    <Footer/>
   </>
   );
 }
