@@ -5,6 +5,7 @@ import './index.css';
 const WhitePizzas = () => {
   return (
     <section className="white-pizzas">
+      
       <article className="pizze-bianche delicata">
         <article className="img">
           <img

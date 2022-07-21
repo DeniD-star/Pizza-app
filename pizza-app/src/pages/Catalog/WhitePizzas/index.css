@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     width: 100vw;
-    height: 200vh;
+    height: 300vh;
     justify-content: space-evenly;
     background-color: bisque;
 }
@@ -11,8 +11,8 @@
     max-width: 370px;
     max-height: 415px;
     border: 3px solid rgb(180, 176, 176);
-    margin: 30px;
-   
+     margin: 20px;
+  
     border-radius: 24px;
 
     position: relative;
@@ -43,7 +43,7 @@
     top: -40px;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
-    height:245px;
+    height:220px;
     font-family: cursive;
 }
 .pizze-bianche .description{
@@ -58,7 +58,6 @@
    width: 80px;
    position: absolute;
  bottom: 10px;
- padding: 5px;
    left: 130px;
    color: white;
    font-size: 20px;
@@ -71,4 +70,8 @@
 
 .pizza-name{
     color:crimson;
+}
+
+.trad-pizzas{
+    text-align: center;
 }

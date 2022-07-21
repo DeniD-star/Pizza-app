@@ -16,10 +16,9 @@ const Login = () => {
  
 
   const handleLogin = (e)=>{
-
- console.log(email);
- console.log(password);
- e.preventDefault();
+    console.log(email);
+    console.log(password);
+    e.preventDefault();
  
 
  signInWithEmailAndPassword(auth, email, password)
@@ -28,11 +27,12 @@ const Login = () => {
    
    
     const user = userCredential.user;//
-    dispatch(login(user))
+    console.log('user', user);
+    dispatch(login(user.email));
     navigate('/');
     // ...
-    localStorage.setItem("isLogged", true)
-    console.log(user);
+    // localStorage.setItem("isLogged", true)
+    // console.log(user);
    
   })
   .catch((error) => {

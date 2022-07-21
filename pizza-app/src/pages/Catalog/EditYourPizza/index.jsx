@@ -1,13 +1,12 @@
 import React from 'react'
 import './index.css';
 
-
-const CreateYourPizza = () => {
+const EditYourPizza = () => {
   return (
-    <section id="create-pizza" className="auth">
-    <form id="create">
+    <section id="edit-pizza" className="auth">
+    <form id="edit">
       <div className="container">
-        <h1>Create Your Pizza</h1>
+        <h1>Edit Your Pizza</h1>
         <label htmlFor="title-pizza">Pizza name:</label>
         <input
           type="text"
@@ -66,7 +65,7 @@ const CreateYourPizza = () => {
           placeholder={4}
         />
         <span>$</span>
-        <input className="btn submit" type="submit" value="CREATE" />
+        <input className="btn submit" type="submit" value="EDIT" />
       </div>
     </form>
   </section>
@@ -74,4 +73,4 @@ const CreateYourPizza = () => {
   )
 }
 
-export default CreateYourPizza;
+export default EditYourPizza;

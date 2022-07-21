@@ -2,6 +2,7 @@ import React from "react";
 import "./index.css";
 import { Link } from "react-router-dom";
 import TraditionalPizzas from "./TraditionalPizzas";
+import CreateYourPizza from "./CreateYourPizza";
 
 const Catalog = (props) => {
   return (
@@ -36,7 +37,8 @@ const Catalog = (props) => {
           <i className="fa-solid fa-arrow-right-long"></i>
         </li>
         <li className="list-item-menu">
-          <Link to="/createYourPizza" className="link-menu">
+          <Link to={"/createYourPizza"} className="link-menu"
+          createYourPizza={<CreateYourPizza/>}>
             CREATE YOUR PIZZA
           </Link>
           <i className="fa-solid fa-arrow-right-long"></i>

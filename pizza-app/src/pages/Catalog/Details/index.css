@@ -1,0 +1,103 @@
+.details-page {
+    width: 700px;
+    border: 3px solid gray;
+    padding: 15px;
+    height: 600px;
+    position: relative;
+    top:15px;
+    left: 25%;
+    border-radius: 24px;
+    font-size: 20px;
+    font-family: "Courier New", Courier, monospace;
+    background-color: bisque;
+    color: rgb(230, 96, 96);
+  }
+  .details-img {
+    width: 355px;
+    border-radius: 25%;
+  }
+  .details-price-order {
+    margin: 0px;
+  }
+  .details-quantity-header {
+    margin: 0px;
+  }
+  .details-quantity article {
+    margin: 0px;
+  }
+  .details-quantity article h2 {
+    margin: 0px;
+  }
+  
+  .details-page-article-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .details-ingredients {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .details-quantity {
+    display: flex;
+    justify-content: space-between;
+  }
+  .details-quantity article {
+    display: flex;
+    justify-content: space-between;
+  }
+  .details-notes {
+    display: flex;
+    justify-content: space-between;
+  }
+  .details-order {
+    display: flex;
+    justify-content: space-between;
+  }
+  .details-btns-admin {
+    display: flex;
+    justify-content: center;
+  }
+  .details-btn-edit, .details-btn-delete {
+    width: 200px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 28px;
+    cursor: pointer;
+    border-color: transparent;
+    background-color: rgb(230, 96, 96);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .details-btns-admin .details-btn-edit {
+    margin-right: 20px;
+  }
+  
+  section article {
+    margin-bottom: 25px;
+  }
+  
+  .ingredients-description, .details-quantity-header article h2,
+  .notes-description{
+      color:black;
+  }
+  
+  .details-btn-order{
+      border-radius: 5px;
+      background-color: gray;
+      color: white;
+      font-size: 20px;
+      border-color: transparent;
+  }
+  
+  .decrease, .increase{
+      width:40px;
+      border-radius:8px;
+      background-color: gray;
+      border-color: transparent;
+      color: white;
+      font-size: 32px;
+  }

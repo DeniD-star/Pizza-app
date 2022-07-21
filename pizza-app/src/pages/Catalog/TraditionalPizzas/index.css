@@ -41,10 +41,10 @@
     top: -40px;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
-    height:245px;
+    height:220px;
     font-family: cursive;
 }
-.pizze-tradizionali .info .description{
+.pizze-tradizionali  .description{
    margin-bottom: 40px;
    font-size: 15px;
 }
@@ -56,7 +56,7 @@
    width: 80px;
    position: absolute;
  bottom: 10px;
- padding: 5px;
+ 
    left: 130px;
    color: white;
    font-size: 20px;

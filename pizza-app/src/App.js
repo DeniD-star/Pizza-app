@@ -20,6 +20,9 @@ import Navigation from './components/Navigation';
 import WhitePizzas from './pages/Catalog/WhitePizzas';
 import Drinks from './pages/Catalog/Drinks';
 import Desserts from './pages/Catalog/Desserts';
+import CreateYourPizza from './pages/Catalog/CreateYourPizza';
+import EditYourPizza from './pages/Catalog/EditYourPizza';
+import Details from './pages/Catalog/Details';
 
 
 
@@ -50,6 +53,12 @@ function App() {
       <Route path="/drinks" element={<AuthenticationHoc><Drinks/></AuthenticationHoc>}>
       </Route>
       <Route path="/desserts" element={<AuthenticationHoc><Desserts/></AuthenticationHoc>}>
+      </Route>
+      <Route path="/createYourPizza" element={<AuthenticationHoc><CreateYourPizza/></AuthenticationHoc>}>
+      </Route>
+      <Route path="/edit/:pizzaId" element={<AuthenticationHoc><EditYourPizza/></AuthenticationHoc>}>
+      </Route>
+      <Route path="/details/:pizzaId" element={<AuthenticationHoc><Details/></AuthenticationHoc>}>
       </Route>
     </Routes>
     <Footer/>

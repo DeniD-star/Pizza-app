@@ -5,9 +5,10 @@ const userManagementSlice = createSlice({
   initialState: {user : null},
   reducers: {
    login(state, action) {
-      state.user=action.payload.email;
+    console.log('action', action);
+      state.user={...state.user, email:action.payload};
        //actiona 6te sudurja na6iq user
-       console.log(action);
+       
      
     },
     logout(state) {

@@ -2,15 +2,16 @@ import React from "react";
 import "./index.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import {login, logout } from '../../features/userManagement/userManagement';
+import { logout } from '../../features/userManagement/userManagement';
 
 const Navigation = () => {
-  const user = useSelector(state => state.user);
+  const user = useSelector((state) => state.userManagement.user);
   console.log('user', user);
   const dispatch = useDispatch()
-  const isLogged = localStorage.getItem("isLogged");
+  // const isLogged = localStorage.getItem("isLogged");
+
 const handleLogout= ()=>{
-  localStorage.setItem("isLogged", false);
+  // localStorage.setItem("isLogged", false);
   dispatch(logout());
 }
   return (
@@ -47,7 +48,7 @@ const handleLogout= ()=>{
                 Contacts
               </Link>
             </li>
-            {isLogged === "false" && (
+            {!user && (
               <li className="list-item">
                 <i className="fa-solid fa-right-to-bracket"></i>
                 <Link to="/register" className="nav-link">
@@ -55,8 +56,7 @@ const handleLogout= ()=>{
                 </Link>
               </li>
             )}
-            {isLogged === "false" ? 
-            (
+            {!user ? (
               <li className="list-item">
                 <i className="fa-solid fa-right-to-bracket"></i>
                 <Link to="/login" className="nav-link">
