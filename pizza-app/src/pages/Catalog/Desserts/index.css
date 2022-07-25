@@ -1,10 +1,11 @@
-/* .desserts{
+.desserts-list{
     width: 100%;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     background-color: bisque;
+    list-style: none;
 }
 
 .dessert-article{
@@ -14,12 +15,25 @@
   border-radius: 24px;
 }
 
+
+
+.desserts-list li{
+    width: 600px;
+   
+}
 .img{
     width: 250px;
     padding: 30px;
 }
+.img-dessert{
+    width: 535px;
+   height: 280px;
+}
 .img-dessert img{
     width: 100%;
+    height: 100%;
+    border-top-left-radius: 22px;
+    border-top-right-radius: 34px;
 }
 
 .info-dessert{
@@ -39,15 +53,23 @@
     cursor: pointer;
 }
 
+.desserts-title{
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color:crimson;
+    font-size: 40px;
+    letter-spacing: 10px;
+}
 
-.desserts-list{
+/* from here */
+ /* .desserts-list{
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-} */
+} 
 
 
-.desserts{
+.desserts-list{
     display: flex;
     flex-wrap: wrap;
     width: 100vw;
@@ -56,9 +78,9 @@
     background-color: bisque;
 }
 
-.pizze-tradizionali{
+.drink-dessert-article{
     max-width: 370px;
-    max-height: 415px;
+    max-height: 490px;
     border: 3px solid rgb(180, 176, 176);
     margin: 30px;
    
@@ -68,22 +90,27 @@
    
 }
 
-.pizze-tradizionali .img{
-    width: 370px;
+.img-drink-dessert{
+    width: 315px;
     border-radius: 24px;
     height: 185px;
    
     
+   
+    
 }
 
-.pizze-tradizionali .img img{
+.image-drink-dessert img{
     width:100%;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
    height: 100%;
-    
-}
-.pizze-tradizionali .info {
+   width: 300px;
+   height: 150px;
+   margin: 10px auto;
+     */
+/* }
+.info-drink-dessert {
     text-align: center;
     padding: 10px;
     position: relative;
@@ -94,11 +121,11 @@
     height:220px;
     font-family: cursive;
 }
-.pizze-tradizionali  .description{
+.info-drink-dessert .description{
    margin-bottom: 40px;
    font-size: 15px;
 }
-.pizze-tradizionali a{
+.add-drink-dessert{
    display: block;
    text-decoration: none;
    border: 1px solid red;
@@ -113,16 +140,16 @@
    background-color: crimson;
 }
 
-.price{
+.drink-dessert-price{
     font-size: 20px;
     margin: 0px;
 }
 
-.pizza-name{
+.drink-dessert-name{
     color:crimson;
 }
 
-.traditional-pizzas-title{
+.desserts-title{
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     color:crimson;
@@ -133,4 +160,4 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-}
+} */

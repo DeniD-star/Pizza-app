@@ -7,27 +7,29 @@
     background-color: bisque;
 }
 
-.drink-article{
+.drink-dessert-article{
   border: 3px solid rgb(103, 100, 100);
   margin: 35px;
   background-color: beige;
   border-radius: 24px;
+  height: 576px;
 }
 
-.img-drink{
+.img-drink-dessert{
     width: 250px;
     padding: 30px;
 }
-.img-drink img{
-    width: 100%;
+.img-drink-dessert img{
+    width: 265px;
+    height: 250px;
 }
 
-.info-drink{
+.info-drink-dessert{
     text-align: center;
     font-size: 19px;
     font-family: cursive;
 }
-.info-drink button{
+.info-drink-dessert button{
     border: 1px solid red;
    border-radius: 8px;
    width: 80px;
@@ -37,4 +39,19 @@
     margin-bottom: 10px;
     padding: 10px;
     cursor: pointer;
+}
+
+.drinks-list{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.drinks-title{
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color:crimson;
+    font-size: 40px;
+    letter-spacing: 10px;
 }

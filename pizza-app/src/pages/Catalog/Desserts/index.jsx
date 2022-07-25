@@ -1,24 +1,47 @@
-import React, { useState } from 'react'
-import PizzaCard from '../../PizzaCard';
-import './index.css';
+import React, { useState } from "react";
+import DessertItem from "../../../components/DessertItem";
+import PizzaCard from "../../PizzaCard";
+import "./index.css";
 
 const Desserts = () => {
-  const[desserts, setDesserts] = useState([
-    {id: 0, name: 'Crostata alla nutella', imageUrl: 'https://www.kuokko.com/it/webservice/restaurant/get_image/11/xUK3QkDENTMNW8LdXxDK', price: '3.00', ingredients: 'Homemade soft and creamy Nutella tart for you.'},
-    {id: 1, name: 'New York Cheesecake', imageUrl: 'https://www.giallozafferano.it/images/175-17503/New-York-Cheesecake_650x433_wm.jpg', price: '5.00', ingredients: 'Garnished with the typical berry sauce. Homemade for you.'}
-  ])
+  const [desserts, setDesserts] = useState([
+    {
+      id: 0,
+      name: "Crostata alla nutella",
+      imageUrl:
+        "https://www.kuokko.com/it/webservice/restaurant/get_image/11/xUK3QkDENTMNW8LdXxDK",
+      price: "3.00",
+      notes: "Homemade soft and creamy Nutella tart for you.",
+    },
+    {
+      id: 1,
+      name: "New York Cheesecake",
+      imageUrl:
+        "https://www.giallozafferano.it/images/175-17503/New-York-Cheesecake_650x433_wm.jpg",
+      price: "5.00",
+      notes: "Garnished with the typical berry sauce. Homemade for you.",
+    },
+  ]);
   return (
     <section className="desserts">
-        <article className="dessert-article">
-        <ul className="desserts-list">
-          {desserts.map(dessert=> <li key={dessert.id}><PizzaCard
-           imageUrl={dessert.imageUrl}
-           name={dessert.name}
-          ingredients={dessert.ingredients}
-           price={dessert.price}
-           /></li>)}
-        </ul>
-          {/* <article className="img-dessert">
+      <h1 className="desserts-title">DESSERTS</h1>
+     
+      <ul className="desserts-list">
+        {desserts.map((dessert) => (
+          <li key={dessert.id}>
+            <DessertItem
+              imageUrl={dessert.imageUrl}
+              name={dessert.name}
+              notes={dessert.notes}
+              price={dessert.price}
+            />
+          </li>
+        ))}
+      </ul>
+
+      {/* 
+            <article className="dessert-article">
+          <article className="img-dessert">
               <img src={require("../../../DessertsImages/crostata alla Nutella.jpg")} alt="dessert-img" className="dessert-img"/>
           </article>
           <article className="info-dessert">
@@ -38,10 +61,9 @@ const Desserts = () => {
              
               <button className="add-dessert">ADD</button>
           </article> */}
-        </article>
-       
-      </section>
-  )
-}
+      {/* </article> */}
+    </section>
+  );
+};
 
 export default Desserts;

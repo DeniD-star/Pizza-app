@@ -22,7 +22,7 @@
 .pizze-tradizionali .img{
     width: 370px;
     border-radius: 24px;
-   
+    padding:0px;
     
 }
 
@@ -30,6 +30,7 @@
     width:100%;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
+    
    
     
 }
