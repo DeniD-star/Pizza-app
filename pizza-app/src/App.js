@@ -23,6 +23,10 @@ import Desserts from './pages/Catalog/Desserts';
 import CreateYourPizza from './pages/Catalog/CreateYourPizza';
 import EditYourPizza from './pages/Catalog/EditYourPizza';
 import Details from './pages/Catalog/Details';
+import ClientCatalog from './pages/ClientCatalog';
+import Cart from './pages/Cart';
+import MyPizzas from './pages/Profile/MyPizzas';
+import MyOrders from './pages/Profile/MyOrders';
 
 
 
@@ -42,7 +46,7 @@ function App() {
       </Route>
       <Route path="/profile" element={<AuthenticationHoc><Profile /></AuthenticationHoc>}>
       </Route>
-      <Route path="/login" element={<AuthenticationHoc><Login /></AuthenticationHoc>}>
+      <Route path="/login" element={<AuthenticationHoc shouldBeLogged={true}><Login /></AuthenticationHoc>}>
       </Route>
       <Route path="/register" element={<AuthenticationHoc><Register /></AuthenticationHoc>}>
       </Route>
@@ -59,6 +63,14 @@ function App() {
       <Route path="/edit/:pizzaId" element={<AuthenticationHoc><EditYourPizza/></AuthenticationHoc>}>
       </Route>
       <Route path="/details/:pizzaId" element={<AuthenticationHoc><Details/></AuthenticationHoc>}>
+      </Route>
+      <Route path="/clients-catalog" element={<AuthenticationHoc><ClientCatalog/></AuthenticationHoc>}>
+      </Route>
+      <Route path="/cart" element={<AuthenticationHoc><Cart/></AuthenticationHoc>}>
+      </Route>
+      <Route path="/my-pizzas-profile" element={<AuthenticationHoc><MyPizzas/></AuthenticationHoc>}>
+      </Route>
+      <Route path="/my-orders" element={<AuthenticationHoc><MyOrders/></AuthenticationHoc>}>
       </Route>
     </Routes>
     <Footer/>

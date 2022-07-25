@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../features/userManagement/userManagement';
 
 const Navigation = () => {
-  const user = useSelector((state) => state.userManagement.user);
+  const user = useSelector((store) => store.userManagement.user);
   console.log('user', user);
   const dispatch = useDispatch()
   // const isLogged = localStorage.getItem("isLogged");
@@ -25,7 +25,7 @@ const handleLogout= ()=>{
             <li className="list-item">
               <i className="fa-solid fa-house"></i>
               <Link to="/" className="nav-link">
-                Welcome{" "}
+                Welcome
               </Link>
             </li>
           </section>
@@ -36,7 +36,7 @@ const handleLogout= ()=>{
                 Our Menu
               </Link>
             </li>
-            <li className="list-item">
+            {/* <li className="list-item">
               <i className="fa-solid fa-chalkboard-user"></i>
               <Link to="/about" className="nav-link">
                 About Us
@@ -47,7 +47,13 @@ const handleLogout= ()=>{
               <Link to="/contacts" className="nav-link">
                 Contacts
               </Link>
-            </li>
+            </li> */}
+            <li className="list-item">
+            <i className="fa-solid fa-comments"></i>
+              <Link to="/clients-catalog" className="nav-link">
+               Clients catalog
+              </Link>
+            </li> 
             {!user && (
               <li className="list-item">
                 <i className="fa-solid fa-right-to-bracket"></i>
@@ -73,6 +79,12 @@ const handleLogout= ()=>{
               </li>
             )}
 
+            <li className="list-item">
+            <i className="fa-solid fa-cart-arrow-down"></i>
+              <Link to="/cart" className="nav-link">
+                Cart
+              </Link>
+            </li>
             <li className="list-item">
               <i className="fa-solid fa-user"></i>
               <Link to="/profile" className="nav-link">

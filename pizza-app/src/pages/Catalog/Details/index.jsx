@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './index.css';
 
+
 const Details = () => {
+  const [quantity, setQuantity] = useState(1);
+
+  const increaseQuantity = () => {
+    setQuantity(quantity => quantity + 1);
+  }
+
+
+  const decreaseQuantity = () => {
+    setQuantity(quantity => quantity - 1);
+    
+}
   return (
     <section className="details-page">
   <article className="details-page-article-header">
@@ -17,13 +29,13 @@ const Details = () => {
     <article className="details-quantity">
       <h2 className="details-quantity-header">QUANTITY</h2>
       <article>
-        <button className="decrease" onclick="{decreaseQuantity}">
+        <button className="decrease" onClick={decreaseQuantity}>
           -
         </button>
-        <h2>
-          {"{"}quantity{"}"}
+        <h2 className="quantity-heading">
+          {quantity}
         </h2>
-        <button className="increase" onclick="{increaseQuantity}">
+        <button className="increase" onClick={increaseQuantity}>
           +
         </button>
       </article>
@@ -40,8 +52,7 @@ const Details = () => {
   <article className="details-btns-admin">
       <Link to="/edit/:pizzaId" className="details-btn-edit">EDIT</Link>
       <Link to="/delete/:pizzaId" className="details-btn-delete">DELETE</Link>
-    {/* <button className="details-btn-edit">EDIT</button>
-    <button className="details-btn-delete">DELETE</button> */}
+   
   </article>
 </section>
 

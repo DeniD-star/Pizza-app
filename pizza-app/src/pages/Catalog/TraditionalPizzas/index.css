@@ -1,4 +1,4 @@
-.traditional-pizzas{
+.traditional-pizzas-section{
     display: flex;
     flex-wrap: wrap;
     width: 100vw;
@@ -64,9 +64,23 @@
 }
 
 .price{
-    font-size: 20px;;
+    font-size: 20px;
+    margin: 0px;
 }
 
 .pizza-name{
     color:crimson;
+}
+
+.traditional-pizzas-title{
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color:crimson;
+    font-size: 40px;
+}
+
+.traditional-pizzas-list{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
 }

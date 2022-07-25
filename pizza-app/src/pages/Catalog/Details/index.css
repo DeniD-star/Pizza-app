@@ -91,6 +91,7 @@
       color: white;
       font-size: 20px;
       border-color: transparent;
+      cursor: pointer;
   }
   
   .decrease, .increase{
@@ -100,4 +101,9 @@
       border-color: transparent;
       color: white;
       font-size: 32px;
+      cursor: pointer;
+  }
+
+  .quantity-heading{
+    padding: 5px;
   }

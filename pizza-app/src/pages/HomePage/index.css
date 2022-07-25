@@ -54,8 +54,10 @@
 }
  .lovers-pizza{
  color:goldenrod;
-
- 
+  position: relative;
+  top: 0px;
+  left: 0px;
+  font-size: 70px;
 }
 
 .subtitle{

@@ -7,11 +7,15 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useDispatch } from 'react-redux';
+import {login} from '../../features/userManagement/userManagement';
 
 
 
 const Register = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -28,7 +32,25 @@ const Register = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        navigate("/");
+        signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+   
+   
+    const user = userCredential.user;//
+    console.log('user', user);
+    dispatch(login(user.email));
+    navigate('/');
+    // ...
+    // localStorage.setItem("isLogged", true)
+    // console.log(user);
+   
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+    
         const user = userCredential.user;
         // ...
       })
