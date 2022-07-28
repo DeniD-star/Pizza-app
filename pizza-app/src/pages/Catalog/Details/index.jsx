@@ -62,6 +62,7 @@ const Details = () => {
           <Link to="/like/:pizzaId" className="details-btn-edit">
             Like
           </Link>
+          <p>0 likes</p>
           <Link to="/delete/:pizzaId" className="details-btn-delete">
             DELETE
           </Link>

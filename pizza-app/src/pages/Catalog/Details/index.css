@@ -1,5 +1,5 @@
 .details-page-section{
-  height: 200vh;
+  height: 150vh;
 }
 
 .details-page {
@@ -66,12 +66,16 @@
   .details-btns-admin {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+  .details-btns-admin p{
+    font-weight: bold;
   }
   .details-btn-edit, .details-btn-delete {
-    width: 100px;
-    padding: 12px 20px;
+    width: 80px;
+    padding: 8px 15px;
     border-radius: 8px;
-    font-size: 28px;
+    font-size: 24px;
     cursor: pointer;
     border-color: transparent;
     background-color: rgb(230, 96, 96);
