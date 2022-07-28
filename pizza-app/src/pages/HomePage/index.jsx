@@ -4,6 +4,7 @@ import "./index.css";
 import Contacts from '../Contacts';
 import AboutUs from '../AboutUs';
 import OurProducts from '../OurProducts';
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
@@ -21,7 +22,7 @@ const HomePage = () => {
         <p className="welcome-btn-paragraph">
           Consult our menu and place your order
         </p>
-        <button className="home-prenota">Make Your Order</button>
+        <Link to='/catalog' className="home-prenota">Make Your Order</Link>
       </section>
      <OurProducts/>
       <AboutUs/>

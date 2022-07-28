@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PizzaCard from "../PizzaCard";
 import "./index.css";
+import useIsLoggedIn from "../../customHook/useIsLoggedIn";
 
 
 const ClientCatalog = (props) => {
+  const isLoggedIn = useIsLoggedIn();
 
     const clientsPizzas = [
         { id: 0, name: "Name", imageUrl:'https://www.kuokko.com/it/webservice/restaurant/get_image/11/61rAHinjJq4Op5bDaQ9I', ingredients:'Salsa di pomodoro , Mozzarella fior di latte , Olio extra vergine di oliva , Basilico', price: '4.50'}
@@ -38,9 +40,9 @@ const ClientCatalog = (props) => {
            /></li>)}
         </ul>
 
-        <div className="add-btn-container">
+        { isLoggedIn && <div className="add-btn-container">
         <Link to='/createYourPizza' className="btn-add">+ Add Your Pizza</Link>
-      </div>
+      </div>}
 
     </section>
   );

@@ -1,21 +1,19 @@
 // import React from "react";
 import "./index.css";
 // import { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useDispatch } from 'react-redux';
-import {login} from '../../features/userManagement/userManagement';
-
-
+import { useDispatch } from "react-redux";
+import { login } from "../../features/userManagement/userManagement";
 
 const Register = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -33,24 +31,32 @@ const Register = () => {
       .then((userCredential) => {
         // Signed in
         signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-   
-   
-    const user = userCredential.user;//
-    console.log('user', user);
-    dispatch(login(user.email));
-    navigate('/');
-    // ...
-    // localStorage.setItem("isLogged", true)
-    // console.log(user);
-   
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
-    
+          .then((userCredential) => {
+            // Signed in
+            if (
+              userCredential &&
+              userCredential.user &&
+              userCredential.user.accessToken
+            ) {
+              const accessToken = userCredential.user.accessToken;
+              localStorage.setItem("userId", accessToken);
+              dispatch(login(accessToken)); //non sono sicura se devo cambiare con register
+              navigate("/");
+            }
+            
+            // const user = userCredential.user;//
+            // console.log('user', user);
+            // dispatch(login(user.email));
+            // navigate('/');
+            // // ...
+            // // localStorage.setItem("isLogged", true)
+            // // console.log(user);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+          });
+
         const user = userCredential.user;
         // ...
       })
@@ -117,7 +123,7 @@ const Register = () => {
             Register
           </button>
           <article className="register-links">
-            <a href="/login">Already have an account?</a>
+            <Link to="/login">Already have an account?</Link>
           </article>
         </form>
       </article>
@@ -126,6 +132,7 @@ const Register = () => {
 };
 
 export default Register;
+
 
 
 //without any help library
@@ -260,4 +267,3 @@ export default Register;
 //       </section>
 //     );
 //   };
-

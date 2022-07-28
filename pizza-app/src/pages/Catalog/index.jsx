@@ -3,8 +3,10 @@ import "./index.css";
 import { Link } from "react-router-dom";
 import TraditionalPizzas from "./TraditionalPizzas";
 import CreateYourPizza from "./CreateYourPizza";
+import useIsLoggedIn from "../../customHook/useIsLoggedIn";
 
 const Catalog = (props) => {
+  const isLoggedIn = useIsLoggedIn();
   return (
     <section className="menu">
       <ul className="nav-menu">
@@ -36,13 +38,14 @@ const Catalog = (props) => {
           </Link>
           <i className="fa-solid fa-arrow-right-long"></i>
         </li>
-        <li className="list-item-menu">
+
+        { isLoggedIn && <li className="list-item-menu">
           <Link to={"/createYourPizza"} className="link-menu"
           createYourPizza={<CreateYourPizza/>}>
             CREATE YOUR PIZZA
           </Link>
           <i className="fa-solid fa-arrow-right-long"></i>
-        </li>
+        </li>}
       </ul>
     </section>
   );

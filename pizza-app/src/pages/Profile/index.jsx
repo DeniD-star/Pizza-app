@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import PizzaCard from '../PizzaCard';
 import './index.css';
-import MyOrders from './MyOrders';
-import MyPizzas from './MyPizzas';
+import Myorders from './Myorders';
+import Mypizzas from './Mypizzas';
 
 
 
@@ -17,7 +17,7 @@ const Profile = (props) => {
           <Link
             to={"/my-pizzas-profile"}
             className="link-menu"
-            myPizzas={<MyPizzas />}
+            mypizzas={<Mypizzas />}
           >
             MY PIZZAS
           </Link>
@@ -26,7 +26,7 @@ const Profile = (props) => {
         <li className="list-item-menu">
           <Link to="/my-orders"
            className="link-menu"
-           myOrders={<MyOrders/>}
+           myorders={<Myorders/>}
            >
             MY ORDERS
           </Link>

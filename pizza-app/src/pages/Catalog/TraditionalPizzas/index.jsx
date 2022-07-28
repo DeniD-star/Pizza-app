@@ -7,7 +7,7 @@ import './index.css';
 
 const TraditionalPizzas = () => {
 
-  const[cardsPizza, setCardsPiza] = useState([
+  const traditionalPizzas= [
     {id: 0, name: 'Margherita', imageUrl: 'https://www.kuokko.com/it/webservice/restaurant/get_image/11/61rAHinjJq4Op5bDaQ9I', ingredients: 'Salsa di pomodoro , Mozzarella fior di latte , Olio extra vergine di oliva , Basilico', price: "4.50"},
     {id: 1, name: 'Americana', imageUrl: 'https://www.kuokko.com/it/webservice/restaurant/get_image/11/JAp0dRGhLUA5wTXmaY40', ingredients: 'Mozzarella fior di latte, Salsa di pomodoro, Wurstel, Patate fritte', price: "6.50"},
     {id: 2, name: 'Montanara', imageUrl: 'https://www.kuokko.com/it/webservice/restaurant/get_image/11/yipq5N2eRHY7QyegYYZu', ingredients: 'Salsa di pomodoro, Mozzarella fior di latte, Speck, Brie, Funghi porcini', price: "8.00"},
@@ -18,7 +18,7 @@ const TraditionalPizzas = () => {
     {id: 7, name: 'Quattro formaggi', imageUrl: 'https://www.kuokko.com/it/webservice/restaurant/get_image/11/Ook8RijuuLkeI3w5exuE', ingredients: 'Parmigiano, Zola, Salsa di pomodoro, Mozzarella fior di latte, Brie', price: "6.50"},
     {id: 8, name: 'Capricciosa', imageUrl: 'https://www.kuokko.com/it/webservice/restaurant/get_image/11/VgCXc6i8HXaGcjoTa6dt', ingredients: 'Salsa di pomodoro, Mozzarella fior di latte, Carciofi, Funghi, Olive taggiasche, Acciughe, Origano', price: "7.50"},
     {id: 9, name: 'Siciliana', imageUrl: 'https://www.kuokko.com/it/webservice/restaurant/get_image/11/dwTNl2czilEz40NxmuTN', ingredients: 'Salsa di pomodoro, Mozzarella fior di latte, Acciughe, Capperi di Pantelleria, Olive taggiasche, Origano', price: "6.00"},
-  ])
+  ];
   return (
   
    
@@ -27,7 +27,7 @@ const TraditionalPizzas = () => {
       <article className="traditional-pizzas-section">
 
         <ul className="traditional-pizzas-list">
-          {cardsPizza.map(pizza=> <li key={pizza.id}><PizzaCard
+          {traditionalPizzas.map(pizza=> <li key={pizza.id}><PizzaCard
            imageUrl={pizza.imageUrl}
            name={pizza.name}
            ingredients={pizza.ingredients}

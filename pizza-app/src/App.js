@@ -1,4 +1,6 @@
 import AuthenticationHoc from './components/hocs/AuthenticationHoc';
+import { useDispatch } from 'react-redux';
+import { login } from './features/userManagement/userManagement';
 
 import {
   Routes,
@@ -25,13 +27,21 @@ import EditYourPizza from './pages/Catalog/EditYourPizza';
 import Details from './pages/Catalog/Details';
 import ClientCatalog from './pages/ClientCatalog';
 import Cart from './pages/Cart';
-import MyPizzas from './pages/Profile/MyPizzas';
-import MyOrders from './pages/Profile/MyOrders';
+import Mypizzas from './pages/Profile/Mypizzas';
+import Myorders from './pages/Profile/Myorders';
 
 
 
 
 function App() {
+    const tokenId =localStorage.getItem('userId');
+    const dispatch = useDispatch();//si cercami login e inviami il token
+    if(tokenId){
+      dispatch(login(tokenId));
+      
+    }
+
+
   return (
     <>
     <Navigation/>
@@ -68,9 +78,9 @@ function App() {
       </Route>
       <Route path="/cart" element={<AuthenticationHoc><Cart/></AuthenticationHoc>}>
       </Route>
-      <Route path="/my-pizzas-profile" element={<AuthenticationHoc><MyPizzas/></AuthenticationHoc>}>
+      <Route path="/my-pizzas-profile" element={<AuthenticationHoc><Mypizzas/></AuthenticationHoc>}>
       </Route>
-      <Route path="/my-orders" element={<AuthenticationHoc><MyOrders/></AuthenticationHoc>}>
+      <Route path="/my-orders" element={<AuthenticationHoc><Myorders/></AuthenticationHoc>}>
       </Route>
     </Routes>
     <Footer/>

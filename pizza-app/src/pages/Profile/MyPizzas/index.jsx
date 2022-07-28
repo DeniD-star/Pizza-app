@@ -3,7 +3,7 @@ import PizzaCard from '../../PizzaCard';
 import './index.css';
 
 
-const MyPizzas = () => {
+const Mypizza = () => {
     const pizzas = [
         { id: 0, name: "Name", imageUrl:'https://www.kuokko.com/it/webservice/restaurant/get_image/11/61rAHinjJq4Op5bDaQ9I', ingredients:'Salsa di pomodoro , Mozzarella fior di latte , Olio extra vergine di oliva , Basilico', price: '4.50'}
       ];
@@ -24,4 +24,4 @@ const MyPizzas = () => {
   )
 }
 
-export default MyPizzas;
+export default Mypizza;

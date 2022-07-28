@@ -1,4 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+// import { Navigate, useNavigate } from 'react-router';
+// const navigate = useNavigate;
+
 
 const userManagementSlice = createSlice({
   name: 'userManagement',
@@ -6,13 +9,13 @@ const userManagementSlice = createSlice({
   reducers: {
    login(state, action) {
     console.log('action', action);
-      state.user = {...state.user, email:action.payload};
+      state.user = {...state.user, tokenId:action.payload};
        //actiona 6te sudurja na6iq user
-       
      
     },
     logout(state) {
       state.user = null;
+   
     }
   }
 })

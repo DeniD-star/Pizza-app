@@ -1,19 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './index.css';
  import { useState } from 'react';
  import {auth} from '../../firebase';
  import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {login} from '../../features/userManagement/userManagement';
+import useIsLoggedIn from '../../customHook/useIsLoggedIn';
+import { Link } from 'react-router-dom';
+
 
 const Login = () => {
+
+ const isLoggedIn = useIsLoggedIn();
+
   
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const[email, setEmail] = useState('');
   const[password, setPassword] = useState('');
  
+  useEffect(()=>{
+    if(isLoggedIn){ //react non vuole che chiamo i hook in modo condizionale
+      navigate('/')
+    }
+  }, []);
 
   const handleLogin = (e)=>{
     console.log(email);
@@ -24,15 +35,14 @@ const Login = () => {
  signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
+
    
-   
-    const user = userCredential.user;//
-    console.log('user', user);
-    dispatch(login(user.email));
-    navigate('/');
-    // ...
-    // localStorage.setItem("isLogged", true)
-    // console.log(user);
+   if(userCredential && userCredential.user && userCredential.user.accessToken){
+        const accessToken = userCredential.user.accessToken;
+        localStorage.setItem('userId', accessToken);
+        dispatch(login(accessToken));
+        navigate('/');
+   }
    
   })
   .catch((error) => {
@@ -67,8 +77,8 @@ const Login = () => {
           <button type="submit" className="login-btn" onClick={handleLogin} >LOGIN</button>
         </form>
         <article className="login-links">
-          <a href="##" className="link-forgotten">Forgotten username/password</a>
-          <a href="/register" className="create-account">Create new account</a>
+          <Link to="##" className="link-forgotten">Forgotten username/password</Link>
+          <Link to="/register" className="create-account">Create new account</Link>
         </article>
       </article>
     </section>

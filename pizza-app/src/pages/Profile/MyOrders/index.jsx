@@ -3,8 +3,8 @@ import React from "react";
 import "./index.css";
 import OrderItem from "./OrderItem";
 
-const MyOrders = () => {
-  const myOrders = [
+const Myorders = () => {
+  const myorders = [
     {
       id: 0,
       name: "Name",
@@ -26,7 +26,7 @@ const MyOrders = () => {
     <section className="my-orders-profile">
       <h1 className="my-orders-heading">My Orders</h1>
       <ul className="list-my-orders">
-        {myOrders.map((order) => (
+        {myorders.map((order) => (
           <li key={order.id}>
             <OrderItem
               imageUrl={order.imageUrl}
@@ -41,4 +41,4 @@ const MyOrders = () => {
   );
 };
 
-export default MyOrders;
+export default Myorders;

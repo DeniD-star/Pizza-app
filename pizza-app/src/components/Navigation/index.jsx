@@ -3,6 +3,8 @@ import "./index.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../features/userManagement/userManagement';
+import useIsLoggedIn from "../../customHook/useIsLoggedIn";
+
 
 const Navigation = () => {
   const user = useSelector((store) => store.userManagement.user);
@@ -11,9 +13,11 @@ const Navigation = () => {
   // const isLogged = localStorage.getItem("isLogged");
 
 const handleLogout= ()=>{
-  // localStorage.setItem("isLogged", false);
-  dispatch(logout());
+  localStorage.removeItem("userId");
+  dispatch(logout());//toglie userId anche dal redux
 }
+
+const isLoggedIn = useIsLoggedIn();
   return (
     <header className="header">
       <h1 className="title">
@@ -73,7 +77,7 @@ const handleLogout= ()=>{
             (
               <li className="list-item">
                 <i className="fa-solid fa-right-to-bracket"></i>
-                <Link to="/logout" className="nav-link" onClick={handleLogout} >
+                <Link to="/" className="nav-link" onClick={handleLogout} >
                   Logout
                 </Link>
               </li>
@@ -85,12 +89,12 @@ const handleLogout= ()=>{
                 Cart
               </Link>
             </li>
-            <li className="list-item">
+            {isLoggedIn && <li className="list-item">
               <i className="fa-solid fa-user"></i>
               <Link to="/profile" className="nav-link">
-                Profile
+               Hi, {user.username}
               </Link>
-            </li>
+            </li>}
           </section>
         </ul>
       </nav>
