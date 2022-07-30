@@ -37,6 +37,9 @@ const Myorders = () => {
           </li>
         ))}
       </ul>
+      <article className="empty-order-list">
+      <p>Your order list is empty!</p>
+    </article>
     </section>
   );
 };

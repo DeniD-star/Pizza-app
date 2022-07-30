@@ -27,6 +27,10 @@ const Cart = (props) => {
         <button className="cancel-order">Cancel the order</button>
         <button className="place-order">Place the order</button>
       </article>
+
+      <article className="no-orders">
+        <p>No orders at the moment!</p>
+      </article>
     </section>
   );
 };

@@ -1,7 +1,7 @@
 .client-section{
  
     background-color: bisque;
-    height: 100vh;
+    height: 250vh;
 }
 
 .client-section-heading{
@@ -50,3 +50,9 @@
 
 }
 
+
+.no-pizzas{
+    margin: auto 450px;
+    font-size: 90px;
+    color:rgb(230, 96, 96);
+}

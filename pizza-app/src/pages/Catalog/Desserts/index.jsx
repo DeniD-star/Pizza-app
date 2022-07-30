@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DessertItem from "../../../components/DessertItem";
-import PizzaCard from "../../PizzaCard";
+import PizzaCard from "../../ClientsCatalog/PizzaCard";
 import "./index.css";
 
 const Desserts = () => {

@@ -186,3 +186,21 @@
   .about-comments{
     margin: 100px 400px;
   }
+
+  .comment-item{
+   
+    display: flex; 
+    justify-content: space-between;
+  }
+  .comment-item h3, .comment-item p{
+    background-color: white;
+   color: black;
+    margin-bottom:5px;
+    padding: 5px;
+    border-radius: 8px; 
+   
+  }
+
+  .comment-item h3{
+    margin-right: 7px;
+  }

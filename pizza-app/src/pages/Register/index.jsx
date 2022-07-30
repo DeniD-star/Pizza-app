@@ -1,15 +1,16 @@
 // import React from "react";
 import "./index.css";
 // import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { auth } from "../../firebase";
+// import { createUserWithEmailAndPassword } from "firebase/auth";
+// import { signInWithEmailAndPassword } from "firebase/auth";
 
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { login } from "../../features/userManagement/userManagement";
+import { createUserData } from "../../httpRequest";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rePass, setRepass] = useState("");
+  const [generalError, setGeneralError] = useState("");
 
   const handleRegister = async (e) => {
     console.log(email);
@@ -27,44 +29,85 @@ const Register = () => {
     console.log(rePass);
     e.preventDefault();
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        signInWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            // Signed in
-            if (
-              userCredential &&
-              userCredential.user &&
-              userCredential.user.accessToken
-            ) {
-              const accessToken = userCredential.user.accessToken;
-              localStorage.setItem("userId", accessToken);
-              dispatch(login(accessToken)); //non sono sicura se devo cambiare con register
-              navigate("/");
-            }
-            
-            // const user = userCredential.user;//
-            // console.log('user', user);
-            // dispatch(login(user.email));
-            // navigate('/');
-            // // ...
-            // // localStorage.setItem("isLogged", true)
-            // // console.log(user);
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-          });
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
-        const user = userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-      });
+    if (!email) {
+      setGeneralError("Email is required!");
+      return;
+    } else if (!regexEmail.test(email)) {
+      setGeneralError("This is not a valid email!");
+      return;
+    }
+
+    if (!username) {
+      setGeneralError("Username is required!");
+      return;
+    } else if (username.length < 3) {
+      setGeneralError("Username must be more than 2 characters long!");
+      return;
+    }
+
+    if (!password) {
+      setGeneralError("Password is required!");
+      return;
+    } else if (password.length < 5) {
+      setGeneralError("Password must be more than 4 characters long!");
+      return;
+    }
+
+    if (!rePass) {
+      setGeneralError("Repeating password is required!");
+      return;
+    } else if (password !== rePass) {
+      setGeneralError("Passwords don`t match!");
+      return;
+    }
+
+    // // createUserWithEmailAndPassword(auth, email, password)
+    //   .then((userCredential) => {
+    //     //la risoluzione della promise della registrazione
+    //     createUserData({
+    //       name: "testName",
+    //       lastName: "testLastName",
+    //     });
+
+    //     // Signed in
+    //     // signInWithEmailAndPassword(auth, email, password)
+    //       .then((userCredential) => {
+    //         // Signed in
+    //         if (
+    //           userCredential &&
+    //           userCredential.user &&
+    //           userCredential.user.accessToken
+    //         ) {
+    //           const accessToken = userCredential.user.accessToken;
+    //           localStorage.setItem("userId", accessToken);
+    //           dispatch(login(accessToken)); //non sono sicura se devo cambiare con register
+    //           navigate("/");
+    //         }
+
+    //         // const user = userCredential.user;//
+    //         // console.log('user', user);
+    //         // dispatch(login(user.email));
+    //         // navigate('/');
+    //         // // ...
+    //         // // localStorage.setItem("isLogged", true)
+
+    //         // // console.log(user);
+    //       })
+    //       .catch((error) => {
+    //         const errorCode = error.code;
+    //         const errorMessage = error.message;
+    //       });
+
+    //     const user = userCredential.user;
+    //     // ...
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     // ..
+    //   });
   };
   return (
     <section id="register">
@@ -122,6 +165,8 @@ const Register = () => {
           >
             Register
           </button>
+
+          {generalError && generalError}
           <article className="register-links">
             <Link to="/login">Already have an account?</Link>
           </article>
@@ -132,8 +177,6 @@ const Register = () => {
 };
 
 export default Register;
-
-
 
 //without any help library
 

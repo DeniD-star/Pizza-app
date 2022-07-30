@@ -54,7 +54,7 @@ const isLoggedIn = useIsLoggedIn();
             </li> */}
             <li className="list-item">
             <i className="fa-solid fa-comments"></i>
-              <Link to="/clients-catalog" className="nav-link">
+              <Link to="/clientsPizzas" className="nav-link">
                Clients catalog
               </Link>
             </li> 

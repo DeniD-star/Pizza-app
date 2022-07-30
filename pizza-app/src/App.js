@@ -25,7 +25,7 @@ import Desserts from './pages/Catalog/Desserts';
 import CreateYourPizza from './pages/Catalog/CreateYourPizza';
 import EditYourPizza from './pages/Catalog/EditYourPizza';
 import Details from './pages/Catalog/Details';
-import ClientCatalog from './pages/ClientCatalog';
+import ClientsCatalog from './pages/ClientsCatalog';
 import Cart from './pages/Cart';
 import Mypizzas from './pages/Profile/Mypizzas';
 import Myorders from './pages/Profile/Myorders';
@@ -74,7 +74,7 @@ function App() {
       </Route>
       <Route path="/details/:pizzaId" element={<AuthenticationHoc><Details/></AuthenticationHoc>}>
       </Route>
-      <Route path="/clients-catalog" element={<AuthenticationHoc><ClientCatalog/></AuthenticationHoc>}>
+      <Route path="/clientsPizzas" element={<AuthenticationHoc><ClientsCatalog/></AuthenticationHoc>}>
       </Route>
       <Route path="/cart" element={<AuthenticationHoc><Cart/></AuthenticationHoc>}>
       </Route>

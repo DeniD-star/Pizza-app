@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import PizzaCard from "../../PizzaCard";
+import PizzaCard from "../../ClientsCatalog/PizzaCard";
 import Details from "../Details";
 import './index.css';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import PizzaCard from '../../PizzaCard';
+import PizzaCard from '../../ClientsCatalog/PizzaCard';
 import './index.css';
 
 
