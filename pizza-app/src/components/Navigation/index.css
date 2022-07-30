@@ -85,3 +85,9 @@ img{
     width: 100vw;
     height: 100vh;
 } */
+
+
+.title-link{
+    cursor: pointer;
+    text-decoration: none;
+}

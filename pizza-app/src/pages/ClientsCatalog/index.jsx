@@ -3,24 +3,16 @@ import { Link } from "react-router-dom";
 import PizzaCard from "./PizzaCard";
 import "./index.css";
 import useIsLoggedIn from "../../customHook/useIsLoggedIn";
-import * as pizzaService from "../../services/pizzaService";
-import { useState, useEffect } from "react";
 
-const ClientsCatalog = (props) => {
-  const [pizzas, setPizzas] = useState([]);
 
-  useEffect(() => {
-    // taka imam zapazeni igrite vutre v state na ClientsCatalog
-    pizzaService.getAll().then((pizzas) => {
-      setPizzas(pizzas);
-    });
-  }, []);
+const ClientsCatalog = () => {
+ 
 
   const isLoggedIn = useIsLoggedIn();
 
   const clientsPizzas = [
     {
-      id: 0,
+      _id: 0,
       name: "Name",
       imageUrl:
         "https://www.kuokko.com/it/webservice/restaurant/get_image/11/61rAHinjJq4Op5bDaQ9I",
@@ -29,7 +21,7 @@ const ClientsCatalog = (props) => {
       price: "4.50",
     },
     {
-      id: 1,
+      _id: 1,
       name: "Bella Margherita",
       imageUrl:
         "https://media.istockphoto.com/photos/slice-of-pizza-with-tomato-and-melting-hot-melted-mozzarella-picture-id1285997591?k=20&m=1285997591&s=612x612&w=0&h=MDZk0y9CLxSAqlYjU-S_lfSOYndNTB85-W-Susik0TQ=",
@@ -38,7 +30,7 @@ const ClientsCatalog = (props) => {
       price: "6.00",
     },
     {
-      id: 2,
+      _id: 2,
       name: "La mia Preferita",
       imageUrl:
         "https://blog.giallozafferano.it/ricettedilibellula/wp-content/uploads/2016/11/pizza-salame-pecorino.jpg",
@@ -69,7 +61,7 @@ const ClientsCatalog = (props) => {
       {clientsPizzas.length > 0 ?
       <ul className="my-pizzas-list">
         {clientsPizzas.map((pizza) => (
-          <li key={pizza.id}>
+          <li key={pizza._id}>
             <PizzaCard pizza={pizza} />
           </li>
         ))}

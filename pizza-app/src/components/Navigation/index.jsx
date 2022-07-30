@@ -20,9 +20,9 @@ const handleLogout= ()=>{
 const isLoggedIn = useIsLoggedIn();
   return (
     <header className="header">
-      <h1 className="title">
+      <Link to="/" className="title-link"><h1 className="title">
         Pizza is <span className="italy">Italy</span>
-      </h1>
+      </h1></Link>
       <nav className="navigation">
         <ul className="nav-list">
           <section className="welcome">

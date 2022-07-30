@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import'./index.css';
 
 
+
 const PizzaCard = ({
    pizza
 }) => {
+  
   return (
     <article className="pizze-tradizionali margherita">
         <article className="img">
@@ -18,7 +20,7 @@ const PizzaCard = ({
             <h5 className="price">{pizza.price}$</h5>
           <h3 className="pizza-name">{pizza.name}</h3>
           <p className="description">{pizza.ingredients}</p>
-          <Link to="/details/:pizzaId">Add</Link>
+          <Link to={`/details/${pizza._id}`}>Add</Link>
         </article>
       </article>
   )

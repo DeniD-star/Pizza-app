@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
+import { useParams } from "react-router-dom";
 
-const Details = ({
-  pizzaName,
-  imageUrl,
-  ingredients,
-  notes,
-  price
+const Details = ({ 
+  pizzas ,
+  addComment
 }) => {
+  const { pizzaId } = useParams();
+  const pizza = pizzas.find((x) => x._id === pizzaId);
+  console.log(pizza);
+
   const [quantity, setQuantity] = useState(1);
+  const [comment, setComment] = useState({
+    username: "",
+    comment: "",
+  });
 
   const increaseQuantity = () => {
     setQuantity((quantity) => quantity + 1);
@@ -18,17 +24,27 @@ const Details = ({
   const decreaseQuantity = () => {
     setQuantity((quantity) => quantity - 1);
   };
+
+  const addCommentHandler = (e) => {
+    e.preventDefault();
+    addComment(pizzaId, `${comment.username} : ${comment.comment}`)
+    console.log(comment);
+  };
+
+  const onChange = (e) => {
+    setComment((state) => ({
+      ...state,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   return (
     <section className="details-page-section">
       <article className="details-page">
         <article className="details-page-article-header">
-          <img
-            src={require("./images/margherita-pizza.jpg")}
-            alt="img"
-            className="details-img"
-          />
+          <img src={pizza.imageUrl} alt="img" className="details-img" />
           <article className="info-quantity">
-            <h1 className="details-pizza-name">{pizzaName}</h1>
+            <h1 className="details-pizza-name">{pizza.name}</h1>
             <article className="details-quantity">
               <h2 className="details-quantity-header">QUANTITY</h2>
               <article>
@@ -46,18 +62,16 @@ const Details = ({
         <article className="other-info">
           <article className="details-ingredients">
             <h2 className="ingredients-h2">INGREDIENTS</h2>
-            <p className="ingredients-description">
-             {ingredients}
-            </p>
+            <p className="ingredients-description">{pizza.ingredients}</p>
           </article>
 
           <article className="details-notes">
             <h2 className="notes-h2">NOTES</h2>
-            <p className="notes-description">{notes}</p>
+            <p className="notes-description">{pizza.notes}</p>
           </article>
         </article>
         <article className="details-order">
-          <h2 className="details-price-order">{price}$</h2>
+          <h2 className="details-price-order">{pizza.price}$</h2>
           <button className="details-btn-order">ADD TO THE ORDER</button>
         </article>
 
@@ -73,31 +87,48 @@ const Details = ({
             DELETE
           </Link>
         </article>
-      
       </article>
 
-     <article className="about-comments"> 
-     <article className="comments">
+      <article className="about-comments">
+        <article className="comments">
           <h3 className="heading-comments">Comments</h3>
           <ul className="list-comments">
             <li className="comment-item">
-              <h3 className="username-name">{'username'}</h3> 
-              <p className="comment-content">Content comment</p></li>
+              <h3 className="username-name">{"username"}</h3>
+              <p className="comment-content">Content comment</p>
+            </li>
             <li className="comment-item">
-            <h3 className="username-name">{'username'}</h3> 
-              <p className="comment-content">ok</p></li>
+              <h3 className="username-name">{"username"}</h3>
+              <p className="comment-content">ok</p>
+            </li>
             <li className="comment-item">
-              <h3 className="username-name">{'username'}</h3>
-              <p className="comment-content">Content comment</p></li>
+              <h3 className="username-name">{"username"}</h3>
+              <p className="comment-content">Content comment</p>
+            </li>
           </ul>
         </article>
         <article className="comments-add-mew">
           <h3 className="heading-comments">New Comment</h3>
-          <form className="form">
-            <textarea name="comment" placeholder="Comment......"></textarea>
+          <form className="form" onSubmit={addCommentHandler}>
+            <input 
+              type="text" 
+              name="username" 
+              placeholder="Joel Doe" 
+              onChange={onChange}
+              value={comment.username}
+            />
+
+            <textarea
+              name="comment"
+              placeholder="Comment......"
+              onChange={onChange}
+              value={comment.comment}
+            />
+
             <input className="btn-add-comment" type="submit" value="Add" />
           </form>
-        </article></article>
+        </article>
+      </article>
     </section>
   );
 };

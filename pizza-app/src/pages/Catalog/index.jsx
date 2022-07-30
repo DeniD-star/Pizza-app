@@ -12,35 +12,35 @@ const Catalog = (props) => {
       <ul className="nav-menu">
         <li className="list-item-menu">
           <Link
-            to={"/traditionalPizzas"}
+            to={"/catalog/traditionalpizzas"}
             className="link-menu"
-            traditionalPizzas={<TraditionalPizzas />}
+            traditionalpizzas={<TraditionalPizzas />}
           >
             TRADITIONAL PIZZAS
           </Link>
           <i className="fa-solid fa-arrow-right-long"></i>
         </li>
         <li className="list-item-menu">
-          <Link to="/whitePizzas" className="link-menu">
+          <Link to="/catalog/whitepizzas" className="link-menu">
             WHITE PIZZAS
           </Link>
           <i className="fa-solid fa-arrow-right-long"></i>
         </li>
         <li className="list-item-menu">
-          <Link to="/drinks" className="link-menu">
+          <Link to="/catalog/drinks" className="link-menu">
             DRINKS
           </Link>
           <i className="fa-solid fa-arrow-right-long"></i>
         </li>
         <li className="list-item-menu">
-          <Link to="/desserts" className="link-menu">
+          <Link to="/catalog/desserts" className="link-menu">
             DESSERTS
           </Link>
           <i className="fa-solid fa-arrow-right-long"></i>
         </li>
 
         { isLoggedIn && <li className="list-item-menu">
-          <Link to={"/createYourPizza"} className="link-menu"
+          <Link to={"/catalog/createYourPizza"} className="link-menu"
           createYourPizza={<CreateYourPizza/>}>
             CREATE YOUR PIZZA
           </Link>

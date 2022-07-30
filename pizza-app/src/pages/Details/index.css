@@ -1,12 +1,12 @@
 .details-page-section{
-  height: 150vh;
+  height: 200vh;
 }
 
 .details-page {
     width: 700px;
     border: 3px solid gray;
     padding: 15px;
-    height: 500px;
+    height: 530px;
     position: relative;
     top:15px;
     left: 25%;
@@ -48,6 +48,7 @@
   }
   .details-page article h2{
     font-size: 22px;
+    margin-right: 15px;
   }
   
  
@@ -67,6 +68,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    top:-20px;
   }
   .details-btns-admin p{
     font-weight: bold;
