@@ -16,6 +16,10 @@ const Details = ({
     username: "",
     comment: "",
   });
+  const [error, setError] = useState({
+    username: "",
+    comment: "",
+  });
 
   const increaseQuantity = () => {
     setQuantity((quantity) => quantity + 1);
@@ -37,6 +41,18 @@ const Details = ({
       [e.target.name]: e.target.value,
     }));
   };
+
+  const validateUsername = (e)=>{
+    const value = e.target.value;
+
+    if(value.length < 3){ //--tova 
+        setError(state =>({
+            ...state,
+            username: 'Username must be at least 3 characters long!'
+        }))
+    }
+
+  }
 
   return (
     <section className="details-page-section">
@@ -93,18 +109,14 @@ const Details = ({
         <article className="comments">
           <h3 className="heading-comments">Comments</h3>
           <ul className="list-comments">
+            
+            {pizza.comments?.map(comment=> 
             <li className="comment-item">
-              <h3 className="username-name">{"username"}</h3>
-              <p className="comment-content">Content comment</p>
-            </li>
-            <li className="comment-item">
-              <h3 className="username-name">{"username"}</h3>
-              <p className="comment-content">ok</p>
-            </li>
-            <li className="comment-item">
-              <h3 className="username-name">{"username"}</h3>
-              <p className="comment-content">Content comment</p>
-            </li>
+            <h3 className="username-name">{"username"}</h3>
+            <p className="comment-content">{comment}</p>
+          </li>)}
+            
+           
           </ul>
         </article>
         <article className="comments-add-mew">
@@ -115,8 +127,15 @@ const Details = ({
               name="username" 
               placeholder="Joel Doe" 
               onChange={onChange}
+              onBlur={validateUsername}
               value={comment.username}
             />
+
+            {/* tova otdolu su6to mislq 4e nqma da mi trqbva */}
+            {error.username && 
+            <div style={{color: 'red'}}> 
+              {error.username}
+            </div>}
 
             <textarea
               name="comment"

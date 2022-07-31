@@ -5,7 +5,13 @@ import TraditionalPizzas from "./TraditionalPizzas";
 import CreateYourPizza from "./CreateYourPizza";
 import useIsLoggedIn from "../../customHook/useIsLoggedIn";
 
+
+import { useContext } from "react"; //-tezi dvete
+import { UserContext } from "../../context/UserContext";
+
 const Catalog = (props) => {
+
+  const {user} = useContext(UserContext);
   const isLoggedIn = useIsLoggedIn();
   return (
     <section className="menu">
@@ -39,13 +45,15 @@ const Catalog = (props) => {
           <i className="fa-solid fa-arrow-right-long"></i>
         </li>
 
-        { isLoggedIn && <li className="list-item-menu">
+        { user.email && 
+        <li className="list-item-menu">
           <Link to={"/catalog/createYourPizza"} className="link-menu"
           createYourPizza={<CreateYourPizza/>}>
             CREATE YOUR PIZZA
           </Link>
           <i className="fa-solid fa-arrow-right-long"></i>
-        </li>}
+        </li>
+         }
       </ul>
     </section>
   );

@@ -3,12 +3,12 @@ import './index.css';
 import { useState } from 'react';
 
 
-const CreateYourPizza = () => {
+const CreateYourPizza = ({addPizzaHandler}) => {//-tova v skobite
  
   const [error, setError] = useState('');
   const [name, setName] = useState('');
-  const [image, setImage] = useState('');
-  const [ingredients, setIingredients] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const [ingredients, setIngredients] = useState('');
   const [notes, setNotes] = useState('');
   const [price, setPrice] = useState('');
  
@@ -16,10 +16,13 @@ const CreateYourPizza = () => {
   const onSubmit = (e)=>{
       e.preventDefault();
      let  isValidForm = true;
+     const pizzaData ={name, imageUrl, ingredients, notes, price};//--tova
+     console.log(pizzaData);
 
+     addPizzaHandler(pizzaData)//--tova
      const regex = /^(http|https):\/\/[^ "]+$/
 
-    if(!regex.test(image)){
+    if(!regex.test(imageUrl)){
 
         setError('Image have not valid url!')
     }
@@ -38,6 +41,8 @@ const CreateYourPizza = () => {
       setError('Price is required!')
     }else if(price < 4){
       setError('Value must be grater or equal to 4!')
+    }else if(price > 20){
+      setError('Value must be less or equal to 20!')
     }
 
 
@@ -67,8 +72,8 @@ const CreateYourPizza = () => {
           id="imageUrl"
           name="imageUrl"
           placeholder="Upload a photo..."
-          onChange={(e)=>setImage(e.target.value)}
-          value={image}
+          onChange={(e)=>setImageUrl(e.target.value)}
+          value={imageUrl}
         />
         <label htmlFor="ingredients">Your Ingredients</label>
         <textarea
@@ -78,19 +83,22 @@ const CreateYourPizza = () => {
           placeholder="Enter your ingredients..."
           rows={30}
           cols={30}
-          defaultValue={"          "}
+          onChange={(e)=>setIngredients(e.target.value)}
+          value={ingredients}
         />
         
         <label htmlFor="notes">Notes:</label>
-        <textarea name="notes" id="notes" rows={30} cols={30} defaultValue={""} />
+        <textarea name="notes" id="notes" rows={30} cols={30}  onChange={(e)=>setNotes(e.target.value)}
+          value={notes}/>
         <label htmlFor="price">Price:</label>
         <input
           type="number"
           id="price"
           name="price"
           min={4}
-         
           placeholder={4}
+          onChange={(e)=>setPrice(e.target.value)}
+          value={price}
         />
         <span>$</span>
         {error && error}

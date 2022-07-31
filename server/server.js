@@ -1364,6 +1364,38 @@
         },
         comments: {
         
+        },
+        clientsPizzas:{
+            "0" :{
+               
+                "name": "Just Margherita",
+                "imageUrl":
+                  "https://www.kuokko.com/it/webservice/restaurant/get_image/11/61rAHinjJq4Op5bDaQ9I",
+                "ingredients":
+                  "Salsa di pomodoro , Mozzarella fior di latte , Olio extra vergine di oliva , Basilico",
+                  "notes": "Simple Margherita",
+                "price": "4.50",
+              },
+              "1" :{
+               
+                "name": "Bella Margherita",
+                "imageUrl":
+                  "https://media.istockphoto.com/photos/slice-of-pizza-with-tomato-and-melting-hot-melted-mozzarella-picture-id1285997591?k=20&m=1285997591&s=612x612&w=0&h=MDZk0y9CLxSAqlYjU-S_lfSOYndNTB85-W-Susik0TQ=",
+                "ingredients":
+                  "Double portion of mozzarella cheese, salsa di pomodoro",
+                  "notes": "This pizza is for those who love mozzarella in abundance. Not recommended for lactose intolerant.",
+                "price": "6.00",
+              },
+              "2":{
+                
+               "name": "La mia Preferita",
+                "imageUrl":
+                  "https://blog.giallozafferano.it/ricettedilibellula/wp-content/uploads/2016/11/pizza-salame-pecorino.jpg",
+                "ingredients":
+                  "Salame piccante, peccorino a volontà, salsa di pomodoro",
+                  "notes": "Abundant with the peccorino and salame; Go light with the tomato sauce.",
+                "price": "7.50",
+              },
         }
     };
     var rules$1 = {

@@ -3,11 +3,13 @@ import { useDispatch } from 'react-redux';
 import { login } from './features/userManagement/userManagement';
 import { useState, useEffect } from 'react';
 import * as pizzaService from "./services/pizzaService";
+import uniqid from 'uniqid';
+import {UserContext} from './context/UserContext'
 
 
 import {
   Routes,
-  Route,
+  Route, useNavigate
 } from "react-router-dom";
 
 import './App.css';
@@ -32,6 +34,8 @@ import ClientsCatalog from './pages/ClientsCatalog';
 import Cart from './pages/Cart';
 import Mypizzas from './pages/Profile/Mypizzas';
 import Myorders from './pages/Profile/Myorders';
+import PageNotFound from './components/PageNotFound';
+import Logout from './components/Logout';
 
 
 
@@ -40,6 +44,15 @@ import Myorders from './pages/Profile/Myorders';
 function App() {
 
   const [pizzas, setPizzas] = useState([]);
+  const [user, setUser] = useState({})
+  const navigate = useNavigate();
+
+  const userLogin = (userData)=>{
+        setUser(userData);
+  }
+  const userLogout = (userData)=>{//po tozi na4in premahvame sesiqta i ot klienta
+        setUser({});
+  }
 
   const addComment = (pizzaId, comment)=>{
       setPizzas(state=>{
@@ -72,8 +85,22 @@ function App() {
       
     }
 
+    const addPizzaHandler = (pizzaData)=>{//--tova,tova go pravim za da zapazim stata na pizzite, kogato se suzdava nov apizza(toest obnovqva se stata)(lektor)
+        setPizzas(state=> [   //i tova koeto podavame na componenta createYourPizza
+          ...state, 
+          {
+              ...pizzaData,
+              _id: uniqid()
+          }
+          
+        ]);
+
+        navigate('/clientsPizzas')
+    }
+
 
   return (
+    <UserContext.Provider value={{user, userLogin, userLogout}}>
     <>
     <Navigation/>
     <Routes>
@@ -91,6 +118,8 @@ function App() {
       </Route>
       <Route path="/register" element={<Register />}>
       </Route>
+      <Route path="/logout" element={<Logout />}>
+      </Route>
       <Route path="/catalog/traditionalPizzas" element={<TraditionalPizzas/>}>
       </Route>
       <Route path="/catalog/whitePizzas" element={<WhitePizzas/>}>
@@ -99,13 +128,13 @@ function App() {
       </Route>
       <Route path="/catalog/desserts" element={<Desserts/>}>
       </Route>
-      <Route path="/catalog/createYourPizza" element={<AuthenticationHoc><CreateYourPizza/></AuthenticationHoc>}>
+      <Route path="/catalog/createYourPizza" element={<AuthenticationHoc><CreateYourPizza addPizzaHandler={addPizzaHandler}/></AuthenticationHoc>}>
       </Route>
       <Route path="/edit/:pizzaId" element={<AuthenticationHoc><EditYourPizza/></AuthenticationHoc>}>
       </Route>
       <Route path="/details/:pizzaId" element={<Details pizzas={pizzas} addComment={addComment}/>}>
       </Route>
-      <Route path="/clientsPizzas" element={<AuthenticationHoc><ClientsCatalog/></AuthenticationHoc>}>
+      <Route path="/clientsPizzas" element={<AuthenticationHoc><ClientsCatalog pizzas={pizzas}/></AuthenticationHoc>}>
       </Route>
       <Route path="/cart" element={<Cart/>}>
       </Route>
@@ -113,9 +142,12 @@ function App() {
       </Route>
       <Route path="/my-orders" element={<AuthenticationHoc><Myorders/></AuthenticationHoc>}>
       </Route>
+      <Route path="/404" element={<PageNotFound/>}>
+      </Route>
     </Routes>
     <Footer/>
   </>
+  </UserContext.Provider>
   );
 }
 
