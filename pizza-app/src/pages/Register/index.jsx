@@ -11,8 +11,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../features/userManagement/userManagement";
 import { createUserData } from "../../httpRequest";
+import * as userService from '../../services/userService';
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
+
 
 const Register = () => {
+  const {userLogin} = useContext(UserContext);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -63,6 +68,12 @@ const Register = () => {
       return;
     }
 
+
+    userService.register(email, username, password, rePass)
+    .then(userData=>{
+        userLogin(userData);
+        navigate('/');
+    })
     // // createUserWithEmailAndPassword(auth, email, password)
     //   .then((userCredential) => {
     //     //la risoluzione della promise della registrazione
@@ -113,7 +124,7 @@ const Register = () => {
     <section id="register">
       <article className="register-form">
         <h2>Create your account:</h2>
-        <form id="view-register">
+        <form id="view-register" >
           <label htmlFor="email">
             <i className="fa-solid fa-envelope"></i>Email:
           </label>

@@ -95,7 +95,7 @@ const Navigation = () => {
               <li className="list-item">
                 <i className="fa-solid fa-user"></i>
                 <Link to="/profile" className="nav-link">
-                  Hi, {user.email}
+                  Hi, {user.username}
                 </Link>
               </li>
             )}
