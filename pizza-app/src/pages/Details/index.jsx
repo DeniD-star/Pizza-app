@@ -3,33 +3,18 @@ import { Link } from "react-router-dom";
 import "./index.css";
 import { useParams } from "react-router-dom";
 import * as pizzaService from '../../services/pizzaService';
+import * as commentService from '../../services/commentService';
 import { useEffect } from "react";
+import { useContext } from "react";
+import { PizzaContext } from "../../context/pizzaContext";
 
-const Details = ({ 
-  addComment
-}) => {
+const Details = () => {
+  const { addComment} = useContext(PizzaContext);
   const { pizzaId } = useParams();
+  
   const [pizza, setPizza] = useState({});
 
   const [quantity, setQuantity] = useState(1);
-  const [comment, setComment] = useState({
-    username: "",
-    comment: "",
-  });
-
-  const [error, setError] = useState({
-    username: "",
-    comment: "",
-  });
-
-
-  useEffect(()=>{
-    pizzaService.getOne(pizzaId)
-    .then(result=>{
-      setPizza(result);
-    })
-  })
-  
 
   const increaseQuantity = () => {
     setQuantity((quantity) => quantity + 1);
@@ -39,30 +24,28 @@ const Details = ({
     setQuantity((quantity) => quantity - 1);
   };
 
+  useEffect(()=>{
+    pizzaService.getOne(pizzaId)
+    .then(result=>{
+      setPizza(result);
+    })
+  }, []);
+
   const addCommentHandler = (e) => {
     e.preventDefault();
-    addComment(pizzaId, `${comment.username} : ${comment.comment}`)
-    console.log(comment);
+    const formData = new FormData(e.target);
+    const comment = formData.get('comment')
+
+    commentService.createComment(pizzaId, comment)
+    .then(result=>{
+      addComment(pizzaId, comment)
+    })
+    
   };
 
-  const onChange = (e) => {
-    setComment((state) => ({
-      ...state,
-      [e.target.name]: e.target.value,
-    }));
-  };
+ 
 
-  const validateUsername = (e)=>{
-    const value = e.target.value;
-
-    if(value.length < 3){ //--tova 
-        setError(state =>({
-            ...state,
-            username: 'Username must be at least 3 characters long!'
-        }))
-    }
-
-  }
+  
 
   return (
     <section className="details-page-section">
@@ -117,7 +100,7 @@ const Details = ({
 
       <article className="about-comments">
         <article className="comments">
-          <h3 className="heading-comments">Comments</h3>
+          <h3 className="heading-comments">Comments:</h3>
           <ul className="list-comments">
             
             {pizza.comments?.map(comment=> 
@@ -132,26 +115,11 @@ const Details = ({
         <article className="comments-add-mew">
           <h3 className="heading-comments">New Comment</h3>
           <form className="form" onSubmit={addCommentHandler}>
-            <input 
-              type="text" 
-              name="username" 
-              placeholder="Joel Doe" 
-              onChange={onChange}
-              onBlur={validateUsername}
-              value={comment.username}
-            />
-
-            {/* tova otdolu su6to mislq 4e nqma da mi trqbva */}
-            {error.username && 
-            <div style={{color: 'red'}}> 
-              {error.username}
-            </div>}
 
             <textarea
               name="comment"
               placeholder="Comment......"
-              onChange={onChange}
-              value={comment.comment}
+             
             />
 
             <input className="btn-add-comment" type="submit" value="Add" />

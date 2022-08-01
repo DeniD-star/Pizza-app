@@ -20,9 +20,9 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const onSubmit = (e)=>{
-    e.preventDefault()
-  }
+  // const onSubmit = (e)=>{
+  //   e.preventDefault()
+  // }
   // const isLoggedIn = useIsLoggedIn();
 
   // const dispatch = useDispatch();
@@ -40,12 +40,31 @@ const Login = () => {
     console.log(password);
     e.preventDefault();
 
+
+
+    if (error && error.code === 403) {
+       setError('Invalid email or password!')
+      }else{
+        setError('Authentication error!')
+      }
+
     userService.login(email, password)
     .then(userData=>{
        userLogin(userData);//podavame i dannite na usera ot tuk i v App.js, funkziqta userLogin 6te setne dannite v stata na usera, koito puk user state e dostupen su6to prez kontexta
        navigate('/');
     }).catch((error)=>{
-      navigate('/404')
+      const errorCode = error.code;
+      const errorMessage = error.message;
+
+      console.log(errorMessage)
+
+    console.log(error.code);
+
+       if (error && errorCode === 403) {
+         setError("Login or password don't match")
+        }else{
+         setError('Authentication error!')
+       }
     })
 
     // signInWithEmailAndPassword(auth, email, password)
@@ -85,7 +104,7 @@ const Login = () => {
     <section id="login">
       <article className="login-form">
         <h2>Login:</h2>
-        <form id="view-login" onSubmit={onSubmit}>
+        <form id="view-login">
           <label htmlFor="email">
             {" "}
             <i className="fa-solid fa-user"></i>Email:
