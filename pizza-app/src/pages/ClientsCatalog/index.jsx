@@ -6,12 +6,16 @@ import useIsLoggedIn from "../../customHook/useIsLoggedIn";
 
 import { useContext } from "react"; //-tezi dvete
 import { UserContext } from "../../context/UserContext";
+import { PizzaContext } from "../../context/pizzaContext";
 
 
-const ClientsCatalog = ({pizzas}) => {
+const ClientsCatalog = () => {
  const {user} = useContext(UserContext);
+ const {pizzas} = useContext(PizzaContext)
 
-  const isLoggedIn = useIsLoggedIn();
+ console.log(pizzas);
+
+  // const isLoggedIn = useIsLoggedIn();
 
   // const clientsPizzas = [
   //   {

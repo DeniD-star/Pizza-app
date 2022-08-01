@@ -1,27 +1,31 @@
-import React from 'react';
-import PizzaCard from '../../ClientsCatalog/PizzaCard';
-import './index.css';
-
+import React from "react";
+import PizzaCard from "../../ClientsCatalog/PizzaCard";
+import "./index.css";
+import { useContext } from "react";
+import { PizzaContext } from "../../../context/pizzaContext";
+import { UserContext } from "../../../context/UserContext";
 
 const Mypizza = () => {
-    const pizzas = [
-        { id: 0, name: "Name", imageUrl:'https://www.kuokko.com/it/webservice/restaurant/get_image/11/61rAHinjJq4Op5bDaQ9I', ingredients:'Salsa di pomodoro , Mozzarella fior di latte , Olio extra vergine di oliva , Basilico', price: '4.50'}
-      ];
+  const { pizzas } = useContext(PizzaContext);
+  const { user } = useContext(UserContext);
+
+  let ownerPizzas = pizzas.filter((p) => p._ownerId === user._id);
+  console.log(ownerPizzas);
+
   return (
     <section className="my-pizzas-profile">
-         <h1 className="profile-heading">Here are pizzas created by you!</h1>
+      <h1 className="profile-heading">Here are pizzas created by you!</h1>
       <article className="section-article">
-      <ul className="my-pizzas-list">
-          {pizzas.map(pizza=> <li key={pizza.id}><PizzaCard
-           imageUrl={pizza.imageUrl}
-           name={pizza.name}
-           ingredients={pizza.ingredients}
-           price={pizza.price}
-           /></li>)}
+        <ul className="my-pizzas-list">
+          {ownerPizzas.map((pizza) => (
+            <li key={pizza.id}>
+              <PizzaCard pizza={pizza} />
+            </li>
+          ))}
         </ul>
-      </article> 
+      </article>
     </section>
-  )
-}
+  );
+};
 
 export default Mypizza;

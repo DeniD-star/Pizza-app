@@ -2,24 +2,34 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 import { useParams } from "react-router-dom";
+import * as pizzaService from '../../services/pizzaService';
+import { useEffect } from "react";
 
 const Details = ({ 
-  pizzas ,
   addComment
 }) => {
   const { pizzaId } = useParams();
-  const pizza = pizzas.find((x) => x._id === pizzaId);
-  console.log(pizza);
+  const [pizza, setPizza] = useState({});
 
   const [quantity, setQuantity] = useState(1);
   const [comment, setComment] = useState({
     username: "",
     comment: "",
   });
+
   const [error, setError] = useState({
     username: "",
     comment: "",
   });
+
+
+  useEffect(()=>{
+    pizzaService.getOne(pizzaId)
+    .then(result=>{
+      setPizza(result);
+    })
+  })
+  
 
   const increaseQuantity = () => {
     setQuantity((quantity) => quantity + 1);
@@ -92,14 +102,14 @@ const Details = ({
         </article>
 
         <article className="details-btns-admin">
-          <Link to="/edit/:pizzaId" className="details-btn-edit">
+          <Link to={`/edit/${pizza._id}`} className="details-btn-edit">
             EDIT
           </Link>
-          <Link to="/like/:pizzaId" className="details-btn-edit">
+          <Link to={`/like/${pizza._id}`} className="details-btn-edit">
             Like
           </Link>
           <p>0 likes</p>
-          <Link to="/delete/:pizzaId" className="details-btn-delete">
+          <Link to={`/delete/${pizza._id}`} className="details-btn-delete">
             DELETE
           </Link>
         </article>

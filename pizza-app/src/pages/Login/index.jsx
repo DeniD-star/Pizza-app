@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 import "./index.css";
 import { useState } from "react";
 // import { auth } from "../../firebase";
 // import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 // import { login } from "../../features/userManagement/userManagement";
 import useIsLoggedIn from "../../customHook/useIsLoggedIn";
 import { Link } from "react-router-dom";
@@ -14,25 +14,26 @@ import { useContext } from "react";
 
 const Login = () => {
   const {userLogin}= useContext(UserContext);//vzimam si userLogin funkziqta(setvaneto na usera),koqto q podadohme prez kontexta na App.js
-
-  const onSubmit = (e)=>{
-    e.preventDefault()
-  }
-  const isLoggedIn = useIsLoggedIn();
-
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      //react non vuole che chiamo i hook in modo condizionale
-      navigate("/");
-    }
-  }, []);
+  const onSubmit = (e)=>{
+    e.preventDefault()
+  }
+  // const isLoggedIn = useIsLoggedIn();
+
+  // const dispatch = useDispatch();
+ 
+
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     //react non vuole che chiamo i hook in modo condizionale
+  //     navigate("/");
+  //   }
+  // }, []);
 
   const handleLogin = (e) => {
     console.log(email);
@@ -43,7 +44,7 @@ const Login = () => {
     .then(userData=>{
        userLogin(userData);//podavame i dannite na usera ot tuk i v App.js, funkziqta userLogin 6te setne dannite v stata na usera, koito puk user state e dostupen su6to prez kontexta
        navigate('/');
-    }).catch(()=>{
+    }).catch((error)=>{
       navigate('/404')
     })
 

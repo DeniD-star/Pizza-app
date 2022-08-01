@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { login } from './features/userManagement/userManagement';
 import { useState, useEffect } from 'react';
 import * as pizzaService from "./services/pizzaService";
-import uniqid from 'uniqid';
-import {UserContext} from './context/UserContext'
+import { UserContext } from './context/UserContext';
+import { PizzaContext } from './context/pizzaContext';
 
 
 import {
@@ -36,118 +36,120 @@ import Mypizzas from './pages/Profile/Mypizzas';
 import Myorders from './pages/Profile/Myorders';
 import PageNotFound from './components/PageNotFound';
 import Logout from './components/Logout';
-
-
-
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 
 function App() {
 
   const [pizzas, setPizzas] = useState([]);
-  const [user, setUser] = useState({})
+  const [user, setUser] = useLocalStorage('user', {})                                                 //zapazvame stata v localstorage
   const navigate = useNavigate();
 
-  const userLogin = (userData)=>{
-        setUser(userData);
+  const userLogin = (userData) => {
+    setUser(userData);
   }
-  const userLogout = (userData)=>{//po tozi na4in premahvame sesiqta i ot klienta
-        setUser({});
+  const userLogout = (userData) => {                                                              //po tozi na4in premahvame sesiqta i ot klienta
+    setUser({});
   }
 
-  const addComment = (pizzaId, comment)=>{
-      setPizzas(state=>{
-        const pizza = state.find(x=> x._id === pizzaId);//vzimam pizzata ot stata s pizzi
-        const comments = pizza.comments || [];// suzdavamm si masiv ot comentari kato se baziram na sega6nite komentari ili nov masiv ot prazni komentari
-        comments.push(comment);//kum koito dobavqm noviq
-        
+  const addComment = (pizzaId, comment) => {
+    setPizzas(state => {
+      const pizza = state.find(x => x._id === pizzaId);                                                   //vzimam pizzata ot stata s pizzi
+      const comments = pizza.comments || [];                                                                  // suzdavamm si masiv ot comentari kato se baziram na sega6nite komentari ili nov masiv ot prazni komentari
+      comments.push(comment);                                                                             //kum koito dobavqm noviq
 
-        //kogato iskame da promenqme state, vinagi trqbva da promenqme po novata referenziq
-        //trqbva po nemotira6t na4in da obnovim stata
+
+      //kogato iskame da promenqme state, vinagi trqbva da promenqme po novata referenziq
+      //trqbva po nemotira6t na4in da obnovim stata
       return [
-        ...state.filter(x=> x._id !== pizzaId),//sled tova iskam da vurna 4isto nov state, dai mi samo pizzata koqto mi trqbva
-       { ...pizza, comments: comments}//dobavi nov obekt , toest pizzata, koqto izrqzvan ot gore, na koqto i dobavqm komentarite, podmenqm komentarite da sa aktualnite komentari
+        ...state.filter(x => x._id !== pizzaId),                                  //sled tova iskam da vurna 4isto nov state, dai mi samo pizzata koqto mi trqbva
+        { ...pizza, comments: comments }                                            //dobavi nov obekt , toest pizzata, koqto izrqzvan ot gore, na koqto i dobavqm komentarite, podmenqm komentarite da sa aktualnite komentari
       ]
-      })
+    })
 
+  }
+
+  const addPizzaHandler = (pizzaData) => {                                                        //--tova,tova go pravim za da zapazim stata na pizzite, kogato se suzdava nov apizza(toest obnovqva se stata)(lektor)
+    setPizzas(state => [                                                                        //i tova koeto podavame na componenta createYourPizza
+      ...state,
+      pizzaData
+
+    ]);
+
+    navigate('/clientsPizzas');
+  }
+
+  const pizzaEditHandler = (pizzaId, pizzaData)=>{
+    setPizzas(state=>{
+      state.map(x=> x._id === pizzaId ? pizzaData : x)
+    })
   }
 
   useEffect(() => {
     // taka imam zapazeni igrite vutre v state na ClientsCatalog
     pizzaService.getAll()
-    .then((pizzas) => {
-      setPizzas(pizzas);
-    });
+      .then(pizzas => {
+        setPizzas(pizzas);
+      });
   }, []);
-    const tokenId =localStorage.getItem('userId');
-    const dispatch = useDispatch();//si cercami login e inviami il token
-    if(tokenId){
-      dispatch(login(tokenId));
-      
-    }
+  const tokenId = localStorage.getItem('userId');
+  const dispatch = useDispatch();//si cercami login e inviami il token
+  if (tokenId) {
+    dispatch(login(tokenId));
 
-    const addPizzaHandler = (pizzaData)=>{//--tova,tova go pravim za da zapazim stata na pizzite, kogato se suzdava nov apizza(toest obnovqva se stata)(lektor)
-        setPizzas(state=> [   //i tova koeto podavame na componenta createYourPizza
-          ...state, 
-          {
-              ...pizzaData,
-              _id: uniqid()
-          }
-          
-        ]);
-
-        navigate('/clientsPizzas')
-    }
+  }
 
 
   return (
-    <UserContext.Provider value={{user, userLogin, userLogout}}>
-    <>
-    <Navigation/>
-    <Routes>
-      <Route path="/" element={<App />}></Route>
-      <Route index element={<HomePage />} />
-      <Route path="/catalog" element={<Catalog />}>
-      </Route>
-      <Route path="/about" element={<AboutUs/>}>
-      </Route>
-      <Route path="/contacts" element={<Contacts />}>
-      </Route>
-      <Route path="/profile" element={<AuthenticationHoc><Profile /></AuthenticationHoc>}>
-      </Route>
-      <Route path="/login" element={<Login />}>
-      </Route>
-      <Route path="/register" element={<Register />}>
-      </Route>
-      <Route path="/logout" element={<Logout />}>
-      </Route>
-      <Route path="/catalog/traditionalPizzas" element={<TraditionalPizzas/>}>
-      </Route>
-      <Route path="/catalog/whitePizzas" element={<WhitePizzas/>}>
-      </Route>
-      <Route path="/catalog/drinks" element={<Drinks/>}>
-      </Route>
-      <Route path="/catalog/desserts" element={<Desserts/>}>
-      </Route>
-      <Route path="/catalog/createYourPizza" element={<AuthenticationHoc><CreateYourPizza addPizzaHandler={addPizzaHandler}/></AuthenticationHoc>}>
-      </Route>
-      <Route path="/edit/:pizzaId" element={<AuthenticationHoc><EditYourPizza/></AuthenticationHoc>}>
-      </Route>
-      <Route path="/details/:pizzaId" element={<Details pizzas={pizzas} addComment={addComment}/>}>
-      </Route>
-      <Route path="/clientsPizzas" element={<AuthenticationHoc><ClientsCatalog pizzas={pizzas}/></AuthenticationHoc>}>
-      </Route>
-      <Route path="/cart" element={<Cart/>}>
-      </Route>
-      <Route path="/my-pizzas-profile" element={<AuthenticationHoc><Mypizzas/></AuthenticationHoc>}>
-      </Route>
-      <Route path="/my-orders" element={<AuthenticationHoc><Myorders/></AuthenticationHoc>}>
-      </Route>
-      <Route path="/404" element={<PageNotFound/>}>
-      </Route>
-    </Routes>
-    <Footer/>
-  </>
-  </UserContext.Provider>
+    <UserContext.Provider value={{ user, userLogin, userLogout }}>
+      <>
+        <Navigation />
+        <PizzaContext.Provider value={{pizzas, addPizzaHandler, pizzaEditHandler}}>
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/catalog" element={<Catalog />}>
+          </Route>
+          <Route path="/about" element={<AboutUs />}>
+          </Route>
+          <Route path="/contacts" element={<Contacts />}>
+          </Route>
+          <Route path="/profile" element={<AuthenticationHoc><Profile /></AuthenticationHoc>}>
+          </Route>
+          <Route path="/login" element={<Login />}>
+          </Route>
+          <Route path="/register" element={<Register />}>
+          </Route>
+          <Route path="/logout" element={<Logout />}>
+          </Route>
+          <Route path="/catalog/traditionalPizzas" element={<TraditionalPizzas />}>
+          </Route>
+          <Route path="/catalog/whitePizzas" element={<WhitePizzas />}>
+          </Route>
+          <Route path="/catalog/drinks" element={<Drinks />}>
+          </Route>
+          <Route path="/catalog/desserts" element={<Desserts />}>
+          </Route>
+          <Route path="/catalog/createYourPizza" element={<AuthenticationHoc><CreateYourPizza /></AuthenticationHoc>}>
+          </Route>
+          <Route path="/edit/:pizzaId" element={<AuthenticationHoc><EditYourPizza /></AuthenticationHoc>}>
+          </Route>
+          <Route path="/details/:pizzaId" element={<Details pizzas={pizzas} addComment={addComment} />}>
+          </Route>
+          <Route path="/clientsPizzas" element={<AuthenticationHoc><ClientsCatalog pizzas={pizzas} /></AuthenticationHoc>}>
+          </Route>
+          <Route path="/cart" element={<Cart />}>
+          </Route>
+          <Route path="/my-pizzas-profile" element={<AuthenticationHoc><Mypizzas pizzas={pizzas}/></AuthenticationHoc>}>
+          </Route>
+          <Route path="/my-orders" element={<AuthenticationHoc><Myorders /></AuthenticationHoc>}>
+          </Route>
+          <Route path="/404" element={<PageNotFound />}>
+          </Route>
+        </Routes>
+        </PizzaContext.Provider>
+        <Footer />
+      </>
+    </UserContext.Provider>
   );
 }
 

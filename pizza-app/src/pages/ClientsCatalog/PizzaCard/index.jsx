@@ -7,7 +7,7 @@ import'./index.css';
 const PizzaCard = ({
    pizza
 }) => {
-  
+   console.log(pizza);
   return (
     <article className="pizze-tradizionali margherita">
         <article className="img">

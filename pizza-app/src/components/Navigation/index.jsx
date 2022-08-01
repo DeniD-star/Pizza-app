@@ -83,14 +83,14 @@ const Navigation = () => {
                 Cart
               </Link>
             </li>
-            {isLoggedIn && (
+            {/* {isLoggedIn && (
               <li className="list-item">
                 <i className="fa-solid fa-user"></i>
                 <Link to="/profile" className="nav-link">
                   Hi, {user.username}
                 </Link>
               </li>
-            )}
+            )} */}
             {user.email && (
               <li className="list-item">
                 <i className="fa-solid fa-user"></i>
