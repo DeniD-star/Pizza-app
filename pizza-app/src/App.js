@@ -1,6 +1,6 @@
-import AuthenticationHoc from './components/hocs/AuthenticationHoc';
-import { useDispatch } from 'react-redux';
-import { login } from './features/userManagement/userManagement';
+// import AuthenticationHoc from './components/hocs/AuthenticationHoc';
+// import { useDispatch } from 'react-redux';
+// import { login } from './features/userManagement/userManagement';
 import { UserProvider } from './context/UserContext';
 import { PizzaProvider} from './context/pizzaContext';
 
@@ -34,6 +34,7 @@ import Mypizzas from './pages/Profile/Mypizzas';
 import Myorders from './pages/Profile/Myorders';
 import PageNotFound from './components/PageNotFound';
 import Logout from './components/Logout';
+import PrivateRoute from './common/PrivateRoute';
 
 
 
@@ -63,7 +64,7 @@ function App() {
           </Route>
           <Route path="/contacts" element={<Contacts />}>
           </Route>
-          <Route path="/profile" element={<AuthenticationHoc><Profile /></AuthenticationHoc>}>
+          <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>}>
           </Route>
           <Route path="/login" element={<Login />}>
           </Route>
@@ -79,19 +80,19 @@ function App() {
           </Route>
           <Route path="/catalog/desserts" element={<Desserts />}>
           </Route>
-          <Route path="/catalog/createYourPizza" element={<AuthenticationHoc><CreateYourPizza /></AuthenticationHoc>}>
+          <Route path="/catalog/createYourPizza" element={<PrivateRoute><CreateYourPizza /></PrivateRoute>}>
           </Route>
-          <Route path="/edit/:pizzaId" element={<AuthenticationHoc><EditYourPizza /></AuthenticationHoc>}>
+          <Route path="/edit/:pizzaId" element={<PrivateRoute><EditYourPizza /></PrivateRoute>}>
           </Route>
           <Route path="/details/:pizzaId" element={<Details  />}>
           </Route>
-          <Route path="/clientsPizzas" element={<AuthenticationHoc><ClientsCatalog /></AuthenticationHoc>}>
+          <Route path="/clientsPizzas" element={<ClientsCatalog />}>
           </Route>
           <Route path="/cart" element={<Cart />}>
           </Route>
-          <Route path="/my-pizzas-profile" element={<AuthenticationHoc><Mypizzas/></AuthenticationHoc>}>
+          <Route path="/my-pizzas-profile" element={<PrivateRoute><Mypizzas/></PrivateRoute>}>
           </Route>
-          <Route path="/my-orders" element={<AuthenticationHoc><Myorders /></AuthenticationHoc>}>
+          <Route path="/my-orders" element={<PrivateRoute><Myorders /></PrivateRoute>}>
           </Route>
           <Route path="/404" element={<PageNotFound />}>
           </Route>

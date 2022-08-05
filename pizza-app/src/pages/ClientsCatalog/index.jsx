@@ -2,50 +2,31 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PizzaCard from "./PizzaCard";
 import "./index.css";
-import useIsLoggedIn from "../../customHook/useIsLoggedIn";
 
-import { useContext } from "react"; //-tezi dvete
+import * as pizzaService from '../../services/pizzaService';
+
+import { useContext, useEffect, useState } from "react"; //-tezi dvete
 import { UserContext } from "../../context/UserContext";
 import { PizzaContext } from "../../context/pizzaContext";
 
 
 const ClientsCatalog = () => {
+  const [clientsPizzas, setClientsPizzas] = useState([])
  const {user} = useContext(UserContext);
  const {pizzas} = useContext(PizzaContext)
 
  console.log(pizzas);
 
-  // const isLoggedIn = useIsLoggedIn();
+ useEffect(()=>{
+  pizzaService.getAll()
+  .then(result=>{
+    console.log(result);
+  result = result.filter(p=> p.type === 'client');
+    setClientsPizzas(result)
+  })      
+}, [])
 
-  // const clientsPizzas = [
-  //   {
-  //     _id: 0,
-  //     name: "Name",
-  //     imageUrl:
-  //       "https://www.kuokko.com/it/webservice/restaurant/get_image/11/61rAHinjJq4Op5bDaQ9I",
-  //     ingredients:
-  //       "Salsa di pomodoro , Mozzarella fior di latte , Olio extra vergine di oliva , Basilico",
-  //     price: "4.50",
-  //   },
-  //   {
-  //     _id: 1,
-  //     name: "Bella Margherita",
-  //     imageUrl:
-  //       "https://media.istockphoto.com/photos/slice-of-pizza-with-tomato-and-melting-hot-melted-mozzarella-picture-id1285997591?k=20&m=1285997591&s=612x612&w=0&h=MDZk0y9CLxSAqlYjU-S_lfSOYndNTB85-W-Susik0TQ=",
-  //     ingredients:
-  //       "Double portion of mozzarella cheese, salsa di pomodoro",
-  //     price: "6.00",
-  //   },
-  //   {
-  //     _id: 2,
-  //     name: "La mia Preferita",
-  //     imageUrl:
-  //       "https://blog.giallozafferano.it/ricettedilibellula/wp-content/uploads/2016/11/pizza-salame-pecorino.jpg",
-  //     ingredients:
-  //       "Salame piccante, peccorino a volontà, salsa di pomodoro",
-  //     price: "7.50",
-  //   },
-  // ];
+  // const isLoggedIn = useIsLoggedIn();
   return (
     <section className="client-section">
       <article className="client-section-title">
@@ -53,7 +34,7 @@ const ClientsCatalog = () => {
           Pizzas created by our clients
         </h1>
         <p className="client-section-subtitle">
-          We are so exited to realize that this is not just a dream. Is owner
+          We are so exited to realize that this is not just a dream. Is honer
           for us to make you , our clients, part of our passion. Now, you'll not
           just order a pizza, but you'll be able to create it
           <strong> by your self</strong>.
@@ -67,7 +48,7 @@ const ClientsCatalog = () => {
       </article>
       {pizzas.length > 0 ?
       <ul className="my-pizzas-list">
-        {pizzas.map((pizza) => (
+        {clientsPizzas.length > 0 && clientsPizzas.map((pizza) => (
           <li key={pizza._id}>
             <PizzaCard pizza={pizza} />
           </li>

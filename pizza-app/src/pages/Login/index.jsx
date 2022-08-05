@@ -6,19 +6,28 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { useDispatch, useSelector } from "react-redux";
 // import { login } from "../../features/userManagement/userManagement";
-import useIsLoggedIn from "../../customHook/useIsLoggedIn";
+
 import { Link } from "react-router-dom";
 import * as userService from '../../services/userService';
 import { UserContext } from "../../context/UserContext";
 import { useContext } from "react";
+import { useEffect } from "react";
 
 const Login = () => {
   const {userLogin}= useContext(UserContext);//vzimam si userLogin funkziqta(setvaneto na usera),koqto q podadohme prez kontexta na App.js
   const navigate = useNavigate();
+  const { user } = useContext(UserContext);
+  console.log(user);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(()=>{
+    if(user && user.accessToken ){
+      navigate('/');
+    }
+  },[user])
 
   // const onSubmit = (e)=>{
   //   e.preventDefault()
@@ -41,30 +50,30 @@ const Login = () => {
     e.preventDefault();
 
 
-
-    if (error && error.code === 403) {
-       setError('Invalid email or password!')
-      }else{
-        setError('Authentication error!')
-      }
-
     userService.login(email, password)
     .then(userData=>{
-       userLogin(userData);//podavame i dannite na usera ot tuk i v App.js, funkziqta userLogin 6te setne dannite v stata na usera, koito puk user state e dostupen su6to prez kontexta
-       navigate('/');
+       //
+       if( userData && userData.accessToken){
+        userLogin(userData);
+        navigate('/');
+        return;//blocca lesecuzione del codice
+       }
+       
+       if (userData && userData.code === 403) {
+        setErrorMessage("Login or password don't match")
+       
+      }//podavame i dannite na usera ot tuk i v App.js, funkziqta userLogin 6te setne dannite v stata na usera, koito puk user state e dostupen su6to prez kontexta
+       //
+       console.log('then', userData)
     }).catch((error)=>{
       const errorCode = error.code;
       const errorMessage = error.message;
+      console.log('catch', error)
 
       console.log(errorMessage)
 
     console.log(error.code);
 
-       if (error && errorCode === 403) {
-         setError("Login or password don't match")
-        }else{
-         setError('Authentication error!')
-       }
     })
 
     // signInWithEmailAndPassword(auth, email, password)
@@ -132,7 +141,7 @@ const Login = () => {
           <button type="submit" className="login-btn" onClick={handleLogin}>
             LOGIN
           </button>
-          {error && error}
+          {errorMessage && errorMessage}
         </form>
         <article className="login-links">
           <Link to="##" className="link-forgotten">

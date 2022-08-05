@@ -1333,69 +1333,317 @@
         }
     };
     var seedData = {
-        games: {
-            "ff436770-76c5-40e2-b231-77409eda7a61": {
-                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
-                "title": "CoverFire",
-                "category": "Action",
-                "maxLevel": "70",
-                "imageUrl": "/images/CoverFire.png",
-                "summary": "Best action shooter game, easy controls, realistic 3D graphics and fun offline missions. Get your best shooting gun and take to action!",
-                "_createdOn": 1617194128618,
-            },
-            "1840a313-225c-416a-817a-9954d4609f7c": {
-                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
-                "title": "MineCraft",
-                "category": "Arcade",
-                "maxLevel": "250",
-                "imageUrl": "/images/MineCraft.png",
-                "summary": "Set in a world where fantasy creatures live side by side with humans. A human cop is forced to work with an Orc to find a weapon everyone is prepared to kill for. Set in a world where fantasy creatures live side by side with humans. A human cop is forced to work with an Orc to find a weapon everyone is prepared to kill for.",
-                "_createdOn": 1617194210928,
-            },
-            "126777f5-3277-42ad-b874-76d043b069cb": {
-                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
-                "title": "Zombie Lang",
-                "category": "Vertical Shooter",
-                "maxLevel": "100",
-                "imageUrl": "/images/ZombieLang.png",
-                "summary": "With it’s own unique story, set between the events of the first movie, Zombieland: Double Tap- Road Trip is a ridiculously fun top-down twin-stick shooter featuring local co-op multiplayer for up to four players. Play as your favorite heroes from the original — Tallahassee, Columbus, Wichita and Little Rock — as well as new unlockable characters from the upcoming sequel.  The game embraces the game-like elements seen in the film by  incorporating everything from the “Rules” to “Zombie Kill of the Week”.  Use your special abilities, an arsenal of weapons and the essential Zombieland rules for survival to stay alive against huge numbers of uniquely grotesque and dangerous undead monstrosities in Zombieland: Double Tap- Road Trip’s story-based campaign mode, wave-based horde mode, and boss battles.",
-                "_createdOn": 1617194295474,
-            }
-        },
+        // games: {
+        //     "ff436770-76c5-40e2-b231-77409eda7a61": {
+        //         "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+        //         "title": "CoverFire",
+        //         "category": "Action",
+        //         "maxLevel": "70",
+        //         "imageUrl": "/images/CoverFire.png",
+        //         "summary": "Best action shooter game, easy controls, realistic 3D graphics and fun offline missions. Get your best shooting gun and take to action!",
+        //         "_createdOn": 1617194128618,
+        //     },
+        //     "1840a313-225c-416a-817a-9954d4609f7c": {
+        //         "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+        //         "title": "MineCraft",
+        //         "category": "Arcade",
+        //         "maxLevel": "250",
+        //         "imageUrl": "/images/MineCraft.png",
+        //         "summary": "Set in a world where fantasy creatures live side by side with humans. A human cop is forced to work with an Orc to find a weapon everyone is prepared to kill for. Set in a world where fantasy creatures live side by side with humans. A human cop is forced to work with an Orc to find a weapon everyone is prepared to kill for.",
+        //         "_createdOn": 1617194210928,
+        //     },
+        //     "126777f5-3277-42ad-b874-76d043b069cb": {
+        //         "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
+        //         "title": "Zombie Lang",
+        //         "category": "Vertical Shooter",
+        //         "maxLevel": "100",
+        //         "imageUrl": "/images/ZombieLang.png",
+        //         "summary": "With it’s own unique story, set between the events of the first movie, Zombieland: Double Tap- Road Trip is a ridiculously fun top-down twin-stick shooter featuring local co-op multiplayer for up to four players. Play as your favorite heroes from the original — Tallahassee, Columbus, Wichita and Little Rock — as well as new unlockable characters from the upcoming sequel.  The game embraces the game-like elements seen in the film by  incorporating everything from the “Rules” to “Zombie Kill of the Week”.  Use your special abilities, an arsenal of weapons and the essential Zombieland rules for survival to stay alive against huge numbers of uniquely grotesque and dangerous undead monstrosities in Zombieland: Double Tap- Road Trip’s story-based campaign mode, wave-based horde mode, and boss battles.",
+        //         "_createdOn": 1617194295474,
+        //     }
+        // },
         comments: {
-        
+
         },
-        clientsPizzas:{
-            "0" :{
-               
-                "name": "Just Margherita",
-                "imageUrl":
-                  "https://www.kuokko.com/it/webservice/restaurant/get_image/11/61rAHinjJq4Op5bDaQ9I",
-                "ingredients":
-                  "Salsa di pomodoro , Mozzarella fior di latte , Olio extra vergine di oliva , Basilico",
-                  "notes": "Simple Margherita",
+        likes: {
+            
+        },
+        menu: {
+            "0": {
+
+                "name": "Margherita",
+                "type": "traditional",
+                "imageUrl": "https://www.kuokko.com/it/webservice/restaurant/get_image/11/61rAHinjJq4Op5bDaQ9I",
+                "ingredients": "Salsa di pomodoro , Mozzarella fior di latte , Olio extra vergine di oliva , Basilico",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
                 "price": "4.50",
-              },
-              "1" :{
-               
-                "name": "Bella Margherita",
-                "imageUrl":
-                  "https://media.istockphoto.com/photos/slice-of-pizza-with-tomato-and-melting-hot-melted-mozzarella-picture-id1285997591?k=20&m=1285997591&s=612x612&w=0&h=MDZk0y9CLxSAqlYjU-S_lfSOYndNTB85-W-Susik0TQ=",
-                "ingredients":
-                  "Double portion of mozzarella cheese, salsa di pomodoro",
-                  "notes": "This pizza is for those who love mozzarella in abundance. Not recommended for lactose intolerant.",
-                "price": "6.00",
-              },
-              "2":{
-                
-               "name": "La mia Preferita",
-                "imageUrl":
-                  "https://blog.giallozafferano.it/ricettedilibellula/wp-content/uploads/2016/11/pizza-salame-pecorino.jpg",
-                "ingredients":
-                  "Salame piccante, peccorino a volontà, salsa di pomodoro",
-                  "notes": "Abundant with the peccorino and salame; Go light with the tomato sauce.",
+                "canBeEdit": false
+            },
+            "1": {
+
+                "name": "Americana",
+                "type": "traditional",
+                "imageUrl": "https://www.kuokko.com/it/webservice/restaurant/get_image/11/JAp0dRGhLUA5wTXmaY40",
+                "ingredients": "Mozzarella fior di latte, Salsa di pomodoro, Wurstel, Patate fritte",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
+                "price": "6.50",
+                "canBeEdit": false,
+
+            },
+            "2": {
+
+                "name": "Montanara",
+                "type": "traditional",
+                "imageUrl": "https://www.kuokko.com/it/webservice/restaurant/get_image/11/yipq5N2eRHY7QyegYYZu",
+                "ingredients": "Salsa di pomodoro, Mozzarella fior di latte, Speck, Brie, Funghi porcini",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
+                "price": "8.00",
+                "canBeEdit": false
+            },
+            "3": {
+
+                "name": "Buffala",
+                "type": "traditional",
+                "imageUrl": "https://www.kuokko.com/it/webservice/restaurant/get_image/11/5qvwFLAiSHr9qfGxIwdt",
+                "ingredients": "Salsa di pomodoro, Mozzarella di bufala d.o.p., Olio extra vergine di oliva, Basilico",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
+                "price": "6.50",
+                "canBeEdit": false
+            },
+            "4": {
+
+                "name": "Chef",
+                "type": "traditional",
+                "imageUrl": "https://www.kuokko.com/it/webservice/restaurant/get_image/11/faaf60a5e638fbcbad16fbab2ca36942",
+                "ingredients": "Mozzarella fior di latte, Salsa di pomodoro, Panna, Funghi, Speck",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
                 "price": "7.50",
-              },
+                "canBeEdit": false
+            },
+            "5": {
+
+                "name": "Quattro Staggioni",
+                "type": "traditional",
+                "imageUrl": "https://www.kuokko.com/it/webservice/restaurant/get_image/11/tlmZCk3KAtEmJhPigWth",
+                "ingredients": "Salsa di pomodoro, Mozzarella fior di latte, Prosciutto cotto, Funghi, Carciofi, Olive taggiasche",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
+                "price": "7.00",
+                "canBeEdit": false,
+
+            },
+            "6": {
+
+                "name": "Oasi",
+                "type": "traditional",
+                "imageUrl": "https://www.kuokko.com/it/webservice/restaurant/get_image/11/g9kgySKuGwwSFW0lqkfz",
+                "ingredients": "Salsa di pomodoro, Mozzarella fior di latte, Salamino piccante, Zola, Olive taggiasche",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
+                "price": "6.50",
+                "canBeEdit": false
+            },
+            "7": {
+
+                "name": "Quattro formaggi",
+                "type": "traditional",
+                "imageUrl": "https://www.kuokko.com/it/webservice/restaurant/get_image/11/Ook8RijuuLkeI3w5exuE",
+                "ingredients": "Parmigiano, Zola, Salsa di pomodoro, Mozzarella fior di latte, Brie",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
+                "price": "6.50",
+                "canBeEdit": false
+            },
+            "8": {
+                "name": "Capricciosa",
+                "type": "traditional",
+                "imageUrl": "https://www.kuokko.com/it/webservice/restaurant/get_image/11/VgCXc6i8HXaGcjoTa6dt",
+                "ingredients": "Salsa di pomodoro, Mozzarella fior di latte, Carciofi, Funghi, Olive taggiasche, Acciughe, Origano",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
+                "price": "7.50",
+                "canBeEdit": false
+            },
+            "9": {
+
+                "name": "Siciliana",
+                "type": "traditional",
+                "imageUrl": "https://www.kuokko.com/it/webservice/restaurant/get_image/11/dwTNl2czilEz40NxmuTN",
+                "ingredients": "Mozzarella fior di latte, Spinaci, Zucchine, Funghi porcini",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
+                "price": "8.00",
+                "canBeEdit": false
+            },
+            "10": {
+
+                "name": "Delicata",
+                "type": "white",
+                "imageUrl":  "https://www.kuokko.com/it/webservice/restaurant/get_image/11/fO96Xtj5hthvOKHyhMXe",
+                "ingredients": "Salsa di pomodoro, Mozzarella fior di latte, Acciughe, Capperi di Pantelleria, Olive taggiasche, Origano",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
+                "price": "6.00",
+                "canBeEdit": false
+            },
+            "11": {
+
+                "name": "Partenopea",
+                "type": "white",
+                "imageUrl":  "https://www.kuokko.com/it/webservice/restaurant/get_image/11/kdPOsMKT3Gnhz7zhGnaA",
+                "ingredients": "Pomodorini salsati interi, Mozzarella di bufala d.o.p., Basilico",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
+                "price": "7.00",
+                "canBeEdit": false
+            },
+            "12": {
+
+                "name": "Primavera",
+                "type": "white",
+                "imageUrl":   "https://www.kuokko.com/it/webservice/restaurant/get_image/11/KVvnJ5vbzTNKwyUwBVxQ",
+                "ingredients": "Mozzarella fior di latte, Pomodorini, Rucola, Scaglie di parmigiano, Prosciutto crudo",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
+                "price": "8.00",
+                "canBeEdit": false
+            },
+            "13": {
+
+                "name": "Regina",
+                "type": "white",
+                "imageUrl":  "https://www.kuokko.com/it/webservice/restaurant/get_image/11/DxTmVCJkOwGE0nwDRrxK",
+                "ingredients": "Mozzarella di bufala d.o.p., Pomodorini, Basilico",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
+                "price": "7.00",
+                "canBeEdit": false
+            },
+            "14": {
+
+                "name": "Saporita",
+                "type": "white",
+                "imageUrl":  "https://www.kuokko.com/it/webservice/restaurant/get_image/11/6HR0OAve6t6WcFaSWoRw",
+                "ingredients": "Mozzarella fior di latte, Funghi, Salsiccia, Scamorza, Peperoncino",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
+                "price": "6.50",
+                "canBeEdit": false
+            },
+            "15": {
+
+                "name": "Spaccanapoli",
+                "type": "white",
+                "imageUrl":  "https://www.kuokko.com/it/webservice/restaurant/get_image/11/00f9c18c6ee3c45350fd6c4d147d9e49",
+                "ingredients": "Mozzarella fior di latte, Patate novelle al forno, Porchetta, Funghi",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
+                "price": "7.50",
+                "canBeEdit": false
+            },
+            "16": {
+
+                "name": "Tokyo",
+                "type": "white",
+                "imageUrl":  "https://www.kuokko.com/it/webservice/restaurant/get_image/11/ZZRm2RVCo4TZNs6E7Ino",
+                "ingredients": "Prosciutto cotto, Funghi, Salsiccia, Panna",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
+                "price": "7.50",
+                "canBeEdit": false
+            },
+            "17": {
+
+                "name": "Vagdo",
+                "type": "white",
+                "imageUrl":  "https://www.kuokko.com/it/webservice/restaurant/get_image/11/hhG8HwDCNDUpK0pRupa8",
+                "ingredients": "Mozzarella fior di latte, Patate novelle al forno, Brie, Pesto fatto in casa, Porchetta",
+                "notes": "Dough left to rise for 24. Top quality ingredients",
+                "price": "8.50",
+                "canBeEdit": false
+            },
+            "18": {
+
+                "name": "Wather",
+                "type": "drinks",
+                "imageUrl":  "https://efabcatering.com/wp-content/uploads/2021/05/Water-050cl.jpg",
+                "ingredients": "",
+                "notes": "0.5l; Plastic bottle.",
+                "price": "1.00",
+                "canBeEdit": false
+            },
+            "19": {
+
+                "name": "Coca-cola",
+                "type": "drinks",
+                "imageUrl":  "https://supplies-eu.com/wp-content/uploads/2021/05/Coca-Cola-500-ml.jpg",
+                "ingredients": "",
+                "notes": "0.5l; Plastic bottle.",
+                "price": "2.50",
+                "canBeEdit": false
+            },
+            "20": {
+
+                "name": "Fanta",
+                "type": "drinks",
+                "imageUrl":  "https://i.ebayimg.com/images/g/850AAOSwm-Fb8H5F/s-l500.jpg",
+                "ingredients": "",
+                "notes": "0.5l; Plastic bottle.",
+                "price": "2.50",
+                "canBeEdit": false
+            },
+            "21": {
+
+                "name": "Airan",
+                "type": "drinks",
+                "imageUrl":   "http://cdn.shopify.com/s/files/1/0562/6439/2727/products/bio-green-drinking-yogurt-lassi-ayran-500ml.jpg?v=1643309777",
+                "ingredients": "",
+                "notes": "0.5l;  Bulgarian product. Amazing taste.",
+                "price": "1.80",
+                "canBeEdit": false
+            },
+            "22": {
+
+                "name": "Beer",
+                "type": "drinks",
+                "imageUrl":  "https://glassbottles.co.uk/wp-content/uploads/2017/07/500ml-Clear-Cider-Bottle-w-Label.jpg",
+                "ingredients": "",
+                "notes": "0.5l; 4.5%-alc; British product.",
+                "price": "2.00",
+                "canBeEdit": false
+            },
+            "23": {
+
+                "name": "Crostata alla nutella",
+                "type": "dessert",
+                "imageUrl":  "https://www.kuokko.com/it/webservice/restaurant/get_image/11/xUK3QkDENTMNW8LdXxDK",
+                "ingredients": "",
+                "notes": "Homemade soft and creamy Nutella tart for you.",
+                "price": "3.00",
+                "canBeEdit": false
+            },
+            "24": {
+
+                "name": "New York Cheesecake",
+                "type": "dessert",
+                "imageUrl":  "https://www.giallozafferano.it/images/175-17503/New-York-Cheesecake_650x433_wm.jpg",
+                "ingredients": "",
+                "notes": "Garnished with the typical berry sauce. Homemade for you.",
+                "price": "5.00",
+                "canBeEdit": false
+            },
+            "25": {
+
+                "name": "La mia Preferita",
+                "type": "client",
+                "imageUrl":
+                    "https://blog.giallozafferano.it/ricettedilibellula/wp-content/uploads/2016/11/pizza-salame-pecorino.jpg",
+                "ingredients":
+                    "Salame piccante, peccorino a volontà, salsa di pomodoro",
+                "notes": "Abundant with the peccorino and salame; Go light with the tomato sauce.",
+                "price": "7.50",
+                "canBeEdit": true
+            },
+            "26": {
+
+                "name": "Bella Marherita",
+                "type": "client",
+                "imageUrl":
+                    "https://media.istockphoto.com/photos/slice-of-pizza-with-tomato-and-melting-hot-melted-mozzarella-picture-id1285997591?k=20&m=1285997591&s=612x612&w=0&h=MDZk0y9CLxSAqlYjU-S_lfSOYndNTB85-W-Susik0TQ=",
+                "ingredients":
+                    "Double portion of mozzarella cheese, salsa di pomodoro",
+                "notes": "Abundant with mozzarella cheese; Not recommended for lactose intolerant.",
+                "price": "7.50",
+                "canBeEdit": true
+            },
         }
     };
     var rules$1 = {

@@ -75,7 +75,7 @@
     font-weight: bold;
   }
   .details-btn-edit, .details-btn-delete {
-    width: 80px;
+    width: 130px;
     padding: 8px 15px;
     border-radius: 8px;
     font-size: 24px;
@@ -191,19 +191,34 @@
   }
 
   .comment-item{
-   
-    display: flex; 
-    justify-content: space-between;
-  }
-  .comment-item h3, .comment-item p{
     background-color: white;
    color: black;
-    margin-bottom:5px;
+    padding: 5px;
+    border-radius: 8px; 
+    margin-bottom: 3px;
+    /* display: flex; 
+    justify-content: space-between; */
+  }
+  /* .comment-item h3, .comment-item p{
+    background-color: white;
+   color: black;
     padding: 5px;
     border-radius: 8px; 
    
-  }
+  } */
 
   .comment-item h3{
-    margin-right: 7px;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 2px;
   }
+  .comment-item p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .fa-check{
+    margin-left: 5px;
+    color:rgb(230, 96, 96);
+  }
+ 

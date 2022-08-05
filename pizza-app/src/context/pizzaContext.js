@@ -1,36 +1,69 @@
 import { createContext } from "react";
-import {  useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import * as pizzaService from "../services/pizzaService";
 import { useNavigate } from "react-router-dom";
 import { useReducer } from "react";
+import {UserContext} from './UserContext';
+
 
 export const PizzaContext = createContext();
 
 
-const pizzaReducer = (state, action)=>{
-    switch(action.type){
-        case 'ADD_PIZZAS':
-            return action.payload.map(p=> ({...p, comments: []}));
-        case 'ADD_PIZZA' :
+const pizzaReducer = (state, action, user) => {
+    switch (action.type) {
+         case 'ADD_PIZZAS':
+            return action.payload.length > 0 ? action.payload.map(x => ({ ...x, comments: [] })) : [];
+        case 'ADD_PIZZA':
             return [...state, action.payload];
-        case 'EDIT_PIZZA' :
-            return state.map(p=>p._id === action.pizzaId ? action.payload : p);
-        case 'ADD_COMMENT' :
-            return state.map(c=>c._id === action.pizzaId ? {...c, comments: [...c.comments, action.payload]} : c);
-            default:
-                return state;
+        case 'FETCH_PIZZADETAILS':
+        case 'EDIT_PIZZA':
+            return state.map(x => x._id === action.pizzaId ? action.payload : x);
+        case 'ADD_COMMENT':
+            //return state.map(x => x._id === action.pizzaId ? { ...x, comments: [...x.comments, action.payload] } : x);
+            return state.map(c=>c._id === action.pizzaId ? {...c, comments: [...c.comments, {newComment:action.payload, author: user}]} : c);
+            // return state.map(x=> {
+            //     console.log(state)
+            //     if(x._id === action.pizzaId){
+            //         console.log(x)
+            //         console.log(action)
+
+            //         const currentComments = x.comments && x.comments.length > 0 ? x.comments : [];//suzdavame masiv za commenti
+            //         //const commentObj = {_id: Math.random(), author: x.username, comment : action.payload}
+            //         const commentObj = { _id: x._id, author: action.user, comment : action.payload}
+            //         console.log(commentObj)
+            //         console.log(x); //la pizza con comments object vuoto
+            //         console.log(action);//type, pizzaId, payload: comment, user
+            //         currentComments.push(commentObj)
+            //         console.log(currentComments);
+            //         const currentObj = {...x, comments : currentComments};
+            //         console.log(currentObj);
+            //         console.log(x)
+            //         return currentObj;
+               // }
+
+                //console.log(x)
+            
+            //     return x;
+         //  })
+            //state.map(x => x._id === action.pizzaId ? console.log(x) : null);
+           
+        case 'REMOVE_PIZZA':
+            return state.filter(x=> x._id !== action.pizzaId)
+        default:
+            return state;
     }
-    
+
 }
 
 
 export const PizzaProvider = ({
     children,//vsi4ko, koeto stoi pod UserProvider v App.js, toest vsi4ki komponenti  pod nego
 }) => {
-  
+
     const navigate = useNavigate();
     const [pizzas, dispatcher] = useReducer(pizzaReducer, []);
-   
+    const {user} = useContext(UserContext);
+
 
     useEffect(() => {
         // taka imam zapazeni igrite vutre v state na ClientsCatalog
@@ -46,13 +79,28 @@ export const PizzaProvider = ({
 
     //zapazvame stata v localstorage
 
+    const selectPizzaFromState = (pizzaId)=>{
+        console.log(pizzaId);
+            return pizzas.find(p=> p._id === pizzaId) || {} ;
+    }
 
-    const addComment = (pizzaId, comment) => {
-            dispatcher({
-                type: 'ADD_COMMENT',
-                payload: comment,
-                pizzaId
-            })
+    const fetchPizzaDetails = (pizzaId, pizzaDetails) => {
+        console.log(pizzaDetails);
+        dispatcher({
+            type: 'FETCH_PIZZA_DETAILS',
+            payload: pizzaDetails,
+            pizzaId
+        })
+    }
+
+
+    const addComment = (pizzaId, comment, user) => {
+        dispatcher({
+            type: 'ADD_COMMENT',
+            payload: comment,
+            pizzaId,
+            user
+        })
 
         // setPizzas(state => {
         //     const pizza = state.find(x => x._id === pizzaId);                                                   //vzimam pizzata ot stata s pizzi
@@ -67,17 +115,16 @@ export const PizzaProvider = ({
     }
 
     const addPizzaHandler = (pizzaData) => {                                                        //--tova,tova go pravim za da zapazim stata na pizzite, kogato se suzdava nov apizza(toest obnovqva se stata)(lektor)
-            dispatcher({
-                type: 'ADD_PIZZA',
-                payload: pizzaData
-            })
-      
+        dispatcher({
+            type: 'ADD_PIZZA',
+            payload: pizzaData
+        })
+
 
         navigate('/clientsPizzas');
     }
 
     const pizzaEditHandler = (pizzaId, pizzaData) => {
-
         dispatcher({
             type: 'EDIT_PIZZA',
             payload: pizzaData,
@@ -85,18 +132,26 @@ export const PizzaProvider = ({
         })
     }
 
-  
+    const removePizza = (pizzaId)=> {
+        dispatcher({
+            type: 'REMOVE_PIZZA',
+            pizzaId
+
+        })
+    }
+
+
 
     return (
-        <PizzaContext.Provider value={{pizzas, addPizzaHandler, pizzaEditHandler}}>
-                {children}
+        <PizzaContext.Provider value={{ pizzas, addPizzaHandler, pizzaEditHandler, addComment, fetchPizzaDetails, selectPizzaFromState, removePizza }}>
+            {children}
         </PizzaContext.Provider>
     )
 
 }
 
 
-//useReducer e funkziq koqto opredelq kak da se promenq daden state, toi funkziq, koqto 6te 
+//useReducer e funkziq koqto opredelq kak da se promenq daden state, toi funkziq, koqto 6te
 //vzeme star state i 6te vurne nov state, koito nov state e nova referenciq
 //action e' object, s koito opisvame kakvo se o4akva da se slu4i, kakuv action
 //patern and convenciq e actiona da ima type and payload, no ne e zaduljitelno

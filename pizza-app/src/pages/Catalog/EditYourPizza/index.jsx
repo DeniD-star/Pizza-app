@@ -5,19 +5,30 @@ import { PizzaContext } from "../../../context/pizzaContext";
 import { useParams, useNavigate } from "react-router-dom";
 import * as pizzaService from "../../../services/pizzaService";
 import { useEffect, useState } from "react";
+import { UserContext} from "../../../context/UserContext";
+
 
 const EditYourPizza = () => {
-  const [pizza, setPizza] = useState({});
+  const [editedPizza, setEditedPizza] = useState({});
    const {pizzaEditHandler} = useContext(PizzaContext);
   const { pizzaId } = useParams();
+  const { user} = useContext(UserContext);
   const navigate = useNavigate();
 
-  useEffect(() => { //po tozi na4in vzimame poslednoto copie koeto e editnato, nqma na4in da napravim gre6ka, dokato ako e prez kontexta ima opasnost nqkoi da doide, da go smeni i ne6to da se oburka, a s useEffect (i po konkretno sus zaqvka)se osigurqvame 
+
+ 
+  useEffect(() => { 
+    
+    //po tozi na4in vzimame poslednoto copie koeto e editnato, nqma na4in da napravim gre6ka, dokato ako e prez kontexta ima opasnost nqkoi da doide, da go smeni i ne6to da se oburka, a s useEffect (i po konkretno sus zaqvka)se osigurqvame 
     pizzaService.getOne(pizzaId)
-    .then(pizzaData=>{
-      setPizza(pizzaData)
+    .then(editedPizza=>{
+      if( user._id !== editedPizza._ownerId){
+        navigate('/404');
+      }
+      setEditedPizza(editedPizza);
     })
-  }, []);
+  }, [user]);
+
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -25,35 +36,44 @@ const EditYourPizza = () => {
     // let isValidForm = true;
     
     const pizzaData = Object.fromEntries(new FormData(e.target));
+    pizzaData.type = editedPizza.type;
+    pizzaData.canBeEdit= editedPizza.canBeEdit;
+    pizzaData._ownerId = editedPizza._ownerId;
+    pizzaData._id = editedPizza._id;
+    pizzaData._createdOn = editedPizza._createdOn;
+
+
+  
+   
     pizzaService.edit(pizzaId, pizzaData)
     .then((dataResult) => {
       pizzaEditHandler(pizzaId, dataResult)
-      console.log(dataResult);
       navigate(`/details/${pizzaId}`)
     });
 
+   
   }
 
   return (
-    <section id="edit-pizza" className="auth">
+    <section id="edit-editedPizza" className="auth">
       <form id="edit" onSubmit={onSubmit}>
         <div className="container">
           <h1>Edit Your Pizza</h1>
-          <label htmlFor="title-pizza">Pizza name:</label>
+          <label htmlFor="title-editedPizza">Pizza name:</label>
           <input
             type="text"
-            id="title-pizza"
+            id="title-editedPizza"
             name="name"
-            placeholder="Enter pizza name..."
-            defaultValue={pizza.name}
+            placeholder="Enter editedPizza name..."
+            defaultValue={editedPizza.name}
           />
-          <label htmlFor="pizza-img">Image:</label>
+          <label htmlFor="editedPizza-img">Image:</label>
           <input
             type="text"
             id="imageUrl"
             name="imageUrl"
             placeholder="Upload a photo..."
-            defaultValue={pizza.imageUrl}
+            defaultValue={editedPizza.imageUrl}
           />
           <label htmlFor="ingredients">Your Ingredients</label>
           <textarea
@@ -63,7 +83,7 @@ const EditYourPizza = () => {
             placeholder="Enter your ingredients..."
             rows={30}
             cols={30}
-            defaultValue={pizza.ingredients}
+            defaultValue={editedPizza.ingredients}
           />
           <label htmlFor="notes">Notes:</label>
           <textarea
@@ -71,7 +91,7 @@ const EditYourPizza = () => {
             id="notes"
             rows={30}
             cols={30}
-            defaultValue={pizza.notes}
+            defaultValue={editedPizza.notes}
           />
           <label htmlFor="price">Price:</label>
           <input
@@ -81,7 +101,7 @@ const EditYourPizza = () => {
             min={4}
             max={30}
             placeholder={4}
-            defaultValue={pizza.price}
+            defaultValue={editedPizza.price}
           />
           <span>$</span>
           <input className="btn submit" type="submit" value="EDIT" />

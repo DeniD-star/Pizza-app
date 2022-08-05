@@ -20,7 +20,7 @@ const PizzaCard = ({
             <h5 className="price">{pizza.price}$</h5>
           <h3 className="pizza-name">{pizza.name}</h3>
           <p className="description">{pizza.ingredients}</p>
-          <Link to={`/details/${pizza._id}`}>Add</Link>
+          <Link to={`/details/${pizza._id}`}>Details</Link>
         </article>
       </article>
   )

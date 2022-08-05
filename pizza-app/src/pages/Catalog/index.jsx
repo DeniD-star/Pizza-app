@@ -3,7 +3,7 @@ import "./index.css";
 import { Link } from "react-router-dom";
 import TraditionalPizzas from "./TraditionalPizzas";
 import CreateYourPizza from "./CreateYourPizza";
-import useIsLoggedIn from "../../customHook/useIsLoggedIn";
+
 
 
 import { useContext } from "react"; //-tezi dvete
@@ -12,13 +12,13 @@ import { UserContext } from "../../context/UserContext";
 const Catalog = (props) => {
 
   const {user} = useContext(UserContext);
-  const isLoggedIn = useIsLoggedIn();
+
   return (
     <section className="menu">
       <ul className="nav-menu">
         <li className="list-item-menu">
           <Link
-            to={"/catalog/traditionalpizzas"}
+            to='/catalog/traditionalpizzas'
             className="link-menu"
             traditionalpizzas={<TraditionalPizzas />}
           >
@@ -47,7 +47,7 @@ const Catalog = (props) => {
 
         { user.email && 
         <li className="list-item-menu">
-          <Link to={"/catalog/createYourPizza"} className="link-menu"
+          <Link to="/catalog/createYourPizza" className="link-menu"
           createYourPizza={<CreateYourPizza/>}>
             CREATE YOUR PIZZA
           </Link>
