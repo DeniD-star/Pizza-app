@@ -43,7 +43,7 @@ The project is divided into folders of pages and components, with .jsx i .css fa
 
 ## License
 
-Distributed under the MIT License. Link to: https://choosealicense.com/licenses/mit/.
+Distributed under the MIT License. See LICENSE.txt for more information.
 
 ## Contact
 Denitsa Dimitrova, email: dimitrova.denise@gmail.com
