@@ -1,12 +1,6 @@
-// import React, { useEffect } from "react";
 import "./index.css";
 import { useState } from "react";
-// import { auth } from "../../firebase";
-// import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
-// import { login } from "../../features/userManagement/userManagement";
-
 import { Link } from "react-router-dom";
 import * as userService from '../../services/userService';
 import { UserContext } from "../../context/UserContext";
@@ -14,7 +8,7 @@ import { useContext } from "react";
 import { useEffect } from "react";
 
 const Login = () => {
-  const {userLogin}= useContext(UserContext);//vzimam si userLogin funkziqta(setvaneto na usera),koqto q podadohme prez kontexta na App.js
+  const {userLogin}= useContext(UserContext);
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   console.log(user);
@@ -27,22 +21,7 @@ const Login = () => {
     if(user && user.accessToken ){
       navigate('/');
     }
-  },[user])
-
-  // const onSubmit = (e)=>{
-  //   e.preventDefault()
-  // }
-  // const isLoggedIn = useIsLoggedIn();
-
-  // const dispatch = useDispatch();
- 
-
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     //react non vuole che chiamo i hook in modo condizionale
-  //     navigate("/");
-  //   }
-  // }, []);
+  },[user]);
 
   const handleLogin = (e) => {
     console.log(email);
@@ -52,18 +31,17 @@ const Login = () => {
 
     userService.login(email, password)
     .then(userData=>{
-       //
        if( userData && userData.accessToken){
         userLogin(userData);
         navigate('/');
-        return;//blocca lesecuzione del codice
+        return;
        }
        
        if (userData && userData.code === 403) {
         setErrorMessage("Login or password don't match")
        
-      }//podavame i dannite na usera ot tuk i v App.js, funkziqta userLogin 6te setne dannite v stata na usera, koito puk user state e dostupen su6to prez kontexta
-       //
+      }
+       
        console.log('then', userData)
     }).catch((error)=>{
       const errorCode = error.code;
@@ -72,42 +50,10 @@ const Login = () => {
 
       console.log(errorMessage)
 
-    console.log(error.code);
+    console.log(errorCode);
 
     })
 
-    // signInWithEmailAndPassword(auth, email, password)
-      // .then((userCredential) => {
-      //   // Signed in
-
-      //   if (
-      //     userCredential &&
-      //     userCredential.user &&
-      //     userCredential.user.accessToken
-      //   ) {
-      //     const accessToken = userCredential.user.accessToken;
-      //     localStorage.setItem("userId", accessToken);
-      //     dispatch(login(accessToken));
-      //     navigate("/");
-      //   } 
-         
-      // })
-      // .catch((error) => {
-      //   const errorCode = error.code;
-      //   const errorMessage = error.message;
-
-      //   console.log(errorMessage)
-
-      //   console.log(error.code);
-
-      //   if (error && error.code === 400) {
-      //     setError('Invalid email or password!')
-      //   }else{
-      //     setError('Authentication error!')
-      //   }
-      // });
-
-      // console.log(error)
   };
   return (
     <section id="login">

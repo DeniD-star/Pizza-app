@@ -6,7 +6,7 @@ import CreateYourPizza from "./CreateYourPizza";
 
 
 
-import { useContext } from "react"; //-tezi dvete
+import { useContext } from "react"; 
 import { UserContext } from "../../context/UserContext";
 
 const Catalog = (props) => {

@@ -27,8 +27,3 @@ const Logout = () => {
 export default Logout;
 
 
-//no za da razpoznae survura 4e sme nie koito iskame da se logoutnem,
-//trqbva da mu podadem autoriziran request, kato dobavim accesstokena v headera
-
-//i tui kato servisa nqma dostup do accessTokena, mu go podavame 4rez usercontexta.(tui kato servisire nqmat dostup do stata ili kontexta,
-// samo hookovete tui kato sa 4ast ot komponentite, imat dostup do stata, do vseki edin kontext)

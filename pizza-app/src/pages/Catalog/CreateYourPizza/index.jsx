@@ -6,7 +6,6 @@ import { useContext } from "react";
 import { PizzaContext } from "../../../context/pizzaContext";
 
 const CreateYourPizza = () => {
-  //-tova v skobite
 
   const { addPizzaHandler } = useContext(PizzaContext);
 
@@ -27,7 +26,6 @@ const CreateYourPizza = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    let isValidForm = true;
     const pizzaData = {
       name,
       imageUrl,
@@ -36,7 +34,7 @@ const CreateYourPizza = () => {
       price,
       type,
       canBeEdit,
-    }; //--tova
+    }; 
     console.log(pizzaData);
     
   
@@ -148,6 +146,4 @@ export default CreateYourPizza;
 
 
 
-//non mi trova il commento quando creo per prima volta un commento
 
-//iztrivane na textarea comment, quando ne invio

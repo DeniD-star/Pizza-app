@@ -18,8 +18,6 @@ const EditYourPizza = () => {
 
  
   useEffect(() => { 
-    
-    //po tozi na4in vzimame poslednoto copie koeto e editnato, nqma na4in da napravim gre6ka, dokato ako e prez kontexta ima opasnost nqkoi da doide, da go smeni i ne6to da se oburka, a s useEffect (i po konkretno sus zaqvka)se osigurqvame 
     pizzaService.getOne(pizzaId)
     .then(editedPizza=>{
       if( user._id !== editedPizza._ownerId){
@@ -33,7 +31,7 @@ const EditYourPizza = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    // let isValidForm = true;
+
     
     const pizzaData = Object.fromEntries(new FormData(e.target));
     pizzaData.type = editedPizza.type;

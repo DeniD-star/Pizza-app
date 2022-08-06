@@ -1,5 +1,4 @@
 import React from "react";
-//import Navigation from '../../components/Navigation'
 import "./index.css";
 import Contacts from '../Contacts';
 import AboutUs from '../AboutUs';

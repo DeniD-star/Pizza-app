@@ -24,11 +24,7 @@ const Details = () => {
 
   console.log(commentsList)
   const [pizza, setPizza] = useState('')
-  //const pizza = selectPizzaFromState(pizzaId);
-  
-
-  
-
+ 
   useEffect(()=>{
     likeService.getLikesByPizzaId(pizzaId)
     .then(res=> {
@@ -38,7 +34,7 @@ const Details = () => {
         res.forEach( item => {
             
           if ( item.pizzaId == pizzaId ) {
-            likes ++
+            likes ++;
 
           }
           if(item._owneId == user._id){
@@ -90,7 +86,6 @@ const Details = () => {
         ...pizzaDetails,
        comments: pizzaComments.length > 0 ? pizzaComments.map((x) => `${x.user.username}: ${x.text}`) : [],
      
-      //  comments: pizzaComments.length> 0 ? pizzaComments.map((x) => {username: x.user.username, comment : x.text}) : [],
       });
       console.log(pizzaComments)
     })();
@@ -223,13 +218,6 @@ const Details = () => {
                 <p className="comment-content">{text}</p>
               </li>
             ))}
-            {/* {pizza.comments?.map((comment) => (
-              <li key={comment} className="comment-item">
-                <h3 className="username-name">{user.username}<i className="fa-solid fa-check"></i></h3>
-                <p className="comment-content">{comment}</p>
-              </li>
-            ))} */}
-
           </ul>
         </article>
         <article className="comments-add-mew">

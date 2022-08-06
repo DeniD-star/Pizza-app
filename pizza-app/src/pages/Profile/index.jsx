@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import PizzaCard from '../ClientsCatalog/PizzaCard';
 import './index.css';
 import Myorders from './Myorders';
 import Mypizzas from './Mypizzas';

@@ -1,27 +1,12 @@
 import React from "react";
 import "./index.css";
 import { Link } from "react-router-dom";
-
-// import { logout } from "../../features/userManagement/userManagement";
-// import useIsLoggedIn from "../../customHook/useIsLoggedIn";
-
-import { useContext } from "react"; //-tezi dvete
+import { useContext } from "react"; 
 import { UserContext } from "../../context/UserContext";
 
 const Navigation = () => {
   const { user } = useContext(UserContext);
-
-  // const user = useSelector((store) => store.userManagement.user);
-  console.log("user", user);
  
-  // const isLogged = localStorage.getItem("isLogged");
-
-  // const handleLogout = () => {
-  //   localStorage.removeItem("userId");
-  //   dispatch(logout()); //toglie userId anche dal redux
-  // };
-
-  // const isLoggedIn = useIsLoggedIn();
   return (
     <header className="header">
       <Link to="/" className="title-link">
@@ -83,14 +68,6 @@ const Navigation = () => {
                 Cart
               </Link>
             </li>
-            {/* {isLoggedIn && (
-              <li className="list-item">
-                <i className="fa-solid fa-user"></i>
-                <Link to="/profile" className="nav-link">
-                  Hi, {user.username}
-                </Link>
-              </li>
-            )} */}
             {user.email && (
               <li className="list-item">
                 <i className="fa-solid fa-user"></i>

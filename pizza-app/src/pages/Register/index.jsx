@@ -1,10 +1,5 @@
-// import React from "react";
-import "./index.css";
-// import { useState, useEffect } from "react";
-// import { auth } from "../../firebase";
-// import { createUserWithEmailAndPassword } from "firebase/auth";
-// import { signInWithEmailAndPassword } from "firebase/auth";
 
+import "./index.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -76,51 +71,7 @@ const Register = () => {
         userLogin(userData);
         navigate('/');
     })
-    // // createUserWithEmailAndPassword(auth, email, password)
-    //   .then((userCredential) => {
-    //     //la risoluzione della promise della registrazione
-    //     createUserData({
-    //       name: "testName",
-    //       lastName: "testLastName",
-    //     });
-
-    //     // Signed in
-    //     // signInWithEmailAndPassword(auth, email, password)
-    //       .then((userCredential) => {
-    //         // Signed in
-    //         if (
-    //           userCredential &&
-    //           userCredential.user &&
-    //           userCredential.user.accessToken
-    //         ) {
-    //           const accessToken = userCredential.user.accessToken;
-    //           localStorage.setItem("userId", accessToken);
-    //           dispatch(login(accessToken)); //non sono sicura se devo cambiare con register
-    //           navigate("/");
-    //         }
-
-    //         // const user = userCredential.user;//
-    //         // console.log('user', user);
-    //         // dispatch(login(user.email));
-    //         // navigate('/');
-    //         // // ...
-    //         // // localStorage.setItem("isLogged", true)
-
-    //         // // console.log(user);
-    //       })
-    //       .catch((error) => {
-    //         const errorCode = error.code;
-    //         const errorMessage = error.message;
-    //       });
-
-    //     const user = userCredential.user;
-    //     // ...
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     // ..
-    //   });
+   
   };
   return (
     <section id="register">

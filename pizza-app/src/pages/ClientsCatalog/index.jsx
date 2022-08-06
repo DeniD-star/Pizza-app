@@ -5,7 +5,7 @@ import "./index.css";
 
 import * as pizzaService from '../../services/pizzaService';
 
-import { useContext, useEffect, useState } from "react"; //-tezi dvete
+import { useContext, useEffect, useState } from "react"; 
 import { UserContext } from "../../context/UserContext";
 import { PizzaContext } from "../../context/pizzaContext";
 
@@ -26,7 +26,7 @@ const ClientsCatalog = () => {
   })      
 }, [])
 
-  // const isLoggedIn = useIsLoggedIn();
+
   return (
     <section className="client-section">
       <article className="client-section-title">

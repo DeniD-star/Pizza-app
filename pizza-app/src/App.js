@@ -1,16 +1,9 @@
-// import AuthenticationHoc from './components/hocs/AuthenticationHoc';
-// import { useDispatch } from 'react-redux';
-// import { login } from './features/userManagement/userManagement';
 import { UserProvider } from './context/UserContext';
 import { PizzaProvider} from './context/pizzaContext';
-
-
 import {
   Routes,
   Route
 } from "react-router-dom";
-
-
 
 import Catalog from './pages/Catalog';
 import Contacts from './pages/Contacts'
@@ -38,17 +31,7 @@ import PrivateRoute from './common/PrivateRoute';
 
 
 
-
 function App() {
-
- 
-  // const tokenId = localStorage.getItem('userId');
-  // const dispatch = useDispatch();//si cercami login e inviami il token
-  // if (tokenId) {
-  //   dispatch(login(tokenId));
-
-  // }
-
 
   return (
     <>
