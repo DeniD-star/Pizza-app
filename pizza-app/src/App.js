@@ -86,7 +86,7 @@ function App() {
           </Route>
           <Route path="/details/:pizzaId" element={<Details  />}>
           </Route>
-          <Route path="/clientsPizzas" element={<ClientsCatalog />}>
+          <Route path="/clientsPizzas" element={<PrivateRoute><ClientsCatalog /></PrivateRoute>}>
           </Route>
           <Route path="/cart" element={<Cart />}>
           </Route>
