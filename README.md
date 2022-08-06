@@ -10,7 +10,7 @@ The main idea for the project is to be able to access a pizza app, where you can
 
 ## Description and how to use
 
-Before logging in, the Home page will be accessible, where you can see more information on the staff who work, how they work, the ingredients they use and their contacts. You will also have access to the traditional menu, where you can find the pizzas that the restaurant itself offers and certainly also the desserts and drinks. You will be able to place these orders and, of course, see your orders on the shop cart page, but you will not be able to access the Customer Catalog, where there are all the pizzas that registered users create, you will not be able to comment or like a pizza, and you certainly won't be able to create your own pizza.
+Before logging in, the Home page will be accessible, where you can see more information on the staff who work, how they work, the ingredients they use and their contacts. You will also have access to the traditional menu, where you can find the pizzas that the restaurant itself offers and certainly also the desserts and drinks. You will be able to place these orders and, of course, see your orders on the shop cart page, but you will not be able to access the Customer Catalog, where there are all the pizzas that registered users create, you will not be able to comment or like a pizza, and you certainly won't be able to create your own pizza.You will also be able to access your personal area, where you will see the pizzas you have created and the orders you have made.
 
 ### Used Language
 
@@ -40,6 +40,15 @@ To create your own pizza, you can use the images, accessible in the pizza-images
 ## Architecture
 
 The project is divided into folders of pages and components, with .jsx i .css fail within them of each component, page. There is a common folder that contains PrivateRoute.js, which acts as a Route Guard for unauthorized access. UserContext.js and PizzaContext.js created in the context folder. UseLocalStorage.js helps maintain data persistence when the page is reloaded. In the services folder are userService.js, pizzaService.js, commentService.js and LikeService.js, which are the ones who communicate with the server and take care of the execution of requests. App.js contains all amounts of components and pages, contexts, etc. and mainly deals with the routes.
+
+## License
+
+Distributed under the MIT License. Link to: https://choosealicense.com/licenses/mit/.
+
+## Contact
+Denitsa Dimitrova, email: dimitrova.denise@gmail.com
+
+Project Link: https://github.com/DeniD-star/Pizza-app.git
 
 
 
