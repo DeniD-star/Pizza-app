@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { PizzaContext } from "../../context/pizzaContext";
 import { UserContext } from "../../context/UserContext";
 import * as likeService from "../../services/likeService";
+import * as orderService from '../../services/ordersService'
 
 const Details = () => {
   const { addComment, fetchPizzaDetails, selectPizzaFromState, removePizza } =
@@ -20,6 +21,8 @@ const Details = () => {
   const [likesNumber, setLikesNumber] = useState(0);
   const [canAddLike, setCanAddLike] = useState(true);
   const [likeList, setLikeList] = useState([]);
+  const [orderList, setOrdersList] = useState([]);
+  let isAdded = false;
 
   console.log(commentsList);
   const [pizza, setPizza] = useState("");
@@ -60,13 +63,36 @@ const Details = () => {
 
   const isOwner = pizza._ownerId === user._id;
 
-  const increaseQuantity = () => {
+  const increaseQuantity = (e) => {
+    e.preventDefault()
     setQuantity((quantity) => quantity + 1);
+    orderService
+    .addOrder(pizzaId, user.username)
+    .then((result) => {
+      if (result._id) {
+        setOrdersList((currentOrders) => [...currentOrders, result]);
+        console.log('order');
+      }
+      console.log(orderList)
+    })
    
   };
 
-  const decreaseQuantity = () => {
+  const decreaseQuantity = (e) => {
+    e.preventDefault()
     setQuantity((quantity) => quantity - 1);
+    orderService
+    .delOrder(pizzaId)
+    .then((result) => {
+      console.log(result)
+      if (result._deletedOn) {
+        console.log(result._deletedOn);
+       // setOrdersList((currentOrders) => [...currentOrders, result]);
+        setOrdersList((currentOrders) => currentOrders.filter(o=> o._id !== pizzaId));
+        console.log('order');
+      }
+      console.log(orderList)
+    })
    
   };
 pizzaPrice = pizza.price * quantity;
@@ -125,7 +151,23 @@ console.log(pizzaPrice);
     }
   };
 
-  const addOrderToMyProfile = () => {};
+  const addOrderHandler = (e) => {
+    e.preventDefault()
+    orderService
+      .addOrder(pizzaId, user.username)
+      .then((result) => {
+        if (result._id) {
+          setOrdersList((currentOrders) => [...currentOrders, result]);
+          console.log('order');
+        }
+        console.log(orderList)
+      });
+    isAdded = true;
+  };
+  const cancelOrder = () => {
+    
+    isAdded = false;
+  };
   const removeLike = () => {
     var likeId = "";
     if (likeList.length == 0) return;
@@ -177,9 +219,12 @@ console.log(pizzaPrice);
         </article>
         <article className="details-order">
           <h2 className="details-price-order">{pizzaPrice}$</h2>
-          <button className="details-btn-order" onClick={addOrderToMyProfile}>
+         {!isAdded && <button className="details-btn-order" onClick={addOrderHandler}>
             ADD TO THE ORDER
-          </button>
+          </button>}
+         {isAdded && <button className="details-btn-order" onClick={cancelOrder}>
+            Added
+          </button>}
         </article>
 
         {pizza.canBeEdit && (

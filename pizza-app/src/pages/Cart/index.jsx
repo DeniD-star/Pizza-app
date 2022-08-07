@@ -1,7 +1,18 @@
 import React from "react";
 import "./index.css";
+import {useNavigate} from 'react-router-dom';
+import CartOrderItem from "./CartOrderItem";
 
-const Cart = (props) => {
+const Cart = (orders) => {
+  const navigate = useNavigate();
+  const successfulOrderHandler = (e)=>{
+    e.preventDefault()
+    navigate('/successfulOrder')
+  }
+  const cancelOrders = (e)=>{
+    e.preventDefault()
+    navigate('/cart')
+  }
   return (
     <section className="cart">
       <h1 className="cart-page-heading">PIZZERIA</h1>
@@ -9,23 +20,25 @@ const Cart = (props) => {
         <h2 className="cart-article-heading">CART</h2>
         <article className="cart-info-article">
           <ul className="cart-list">
-            <li className="cart-item">
-              <article className="quantity-items">
-                <p className="counter-item">1{props.count}</p>
-                <p className="name-item">Margherita{props.name}</p>
-              </article>
-              <article className="price-item">
-                <p className="price-item">4.50{props.price}$</p>
-              </article>
-            </li>
+          {orders.length> 0 && orders.map((dessert) => (
+          <li key={dessert.id}>
+            <CartOrderItem
+              imageUrl={dessert.imageUrl}
+              name={dessert.name}
+              notes={dessert.notes}
+              price={dessert.price}
+            />
+          </li>
+        ))}
+           
           </ul>
-          <p className="total-price">Total Price: 4.50{props.totalPrice}$</p>
+          <p className="total-price">Total Price: 4.50{orders.totalPrice}$</p>
         </article>
       </article>
 
       <article className="btns-order">
-        <button className="cancel-order">Cancel the order</button>
-        <button className="place-order">Place the order</button>
+        <button className="cancel-order" onClick={cancelOrders}>Cancel the order</button>
+        <button className="place-order" onClick={successfulOrderHandler}>Place the order</button>
       </article>
 
       <article className="no-orders">

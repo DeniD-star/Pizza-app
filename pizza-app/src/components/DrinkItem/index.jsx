@@ -1,10 +1,12 @@
 import React from "react";
 import './index.css';
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const DrinkItem = ({ imageUrl, name, price, notes }) => {
   const [quantity, setQuantity] = useState(1);
   let drinkPrice = price;
+  const navigate = useNavigate();
 
   const increaseQuantity = () => {
     setQuantity((quantity) => quantity + 1);
@@ -14,6 +16,11 @@ const DrinkItem = ({ imageUrl, name, price, notes }) => {
     setQuantity((quantity) => quantity - 1);
   };
   drinkPrice = price* quantity;
+
+  const addOrderHandler = (e)=>{
+    e.preventDefault()
+   
+  }
 
   return (
     <article className="drink-article drink">
@@ -37,7 +44,7 @@ const DrinkItem = ({ imageUrl, name, price, notes }) => {
         <h4 className="drink-price">{drinkPrice} $</h4>
         <h3 className="drink-name">{name}</h3>
         <p className="description">{notes}</p>
-        <button className="add-drink">ADD</button>
+        <button className="add-drink" onClick={addOrderHandler}>ADD</button>
       
       </article>
     </article>

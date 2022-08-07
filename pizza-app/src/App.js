@@ -28,6 +28,7 @@ import Myorders from './pages/Profile/Myorders';
 import PageNotFound from './components/PageNotFound';
 import Logout from './components/Logout';
 import PrivateRoute from './common/PrivateRoute';
+import SuccessfulOrder from './components/Successful';
 
 
 
@@ -78,6 +79,8 @@ function App() {
           <Route path="/my-orders" element={<PrivateRoute><Myorders /></PrivateRoute>}>
           </Route>
           <Route path="/404" element={<PageNotFound />}>
+          </Route>
+          <Route path="/successful-order" element={<SuccessfulOrder />}>
           </Route>
         </Routes>
         </PizzaProvider>

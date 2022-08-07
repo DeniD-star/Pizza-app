@@ -10,7 +10,7 @@ The main idea for the project is to be able to access a pizza app, where you can
 
 ## Description and how to use
 
-Before logging in, the Home page will be accessible, where you can see more information on the staff who work, how they work, the ingredients they use and their contacts. You will also have access to the traditional menu, where you can find the pizzas that the restaurant itself offers and certainly also the desserts and drinks. You will be able to place these orders and, of course, see your orders on the shop cart page, but you will not be able to access the Customer Catalog, where there are all the pizzas that registered users create, you will not be able to comment or like a pizza, and you certainly won't be able to create your own pizza.You will also be able to access your personal area, where you will see the pizzas you have created and the orders you have made.
+Before logging in, the Home page will be accessible, where you can see more information on the staff who work, how they work, the ingredients they use and their contacts. You will have access to the public menu, which the pizzeria itself offers. Without being login, you will not be able to place any order and you will not be able to access the customer catalog, where are all the pizzas created by registered and logged in users only. As a logged in user, you will have access to this catalog, you can also comment, put a like to the pizzas of others users, and above all you can create your own pizza, and of course, place your order.You will also be able to access your personal area, where you will see the pizzas you have created and the orders you have made.
 
 ### Used Language
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-
+import { useNavigate } from "react-router";
 
 const DessertItem = ({
     imageUrl,
@@ -12,6 +12,7 @@ const DessertItem = ({
 
   const [quantity, setQuantity] = useState(1);
   let dessertPrice = price;
+  const navigate = useNavigate();
 
   const increaseQuantity = () => {
     setQuantity((quantity) => quantity + 1);
@@ -21,6 +22,11 @@ const DessertItem = ({
     setQuantity((quantity) => quantity - 1);
   };
   dessertPrice = price* quantity;
+
+  const addOrderHandler = (e)=>{
+    e.preventDefault()
+   
+  }
   return (
     <article className="dessert-article">
         <article className="img-dessert">
@@ -39,7 +45,7 @@ const DessertItem = ({
             <h4 className="dessert-price">{dessertPrice} $</h4>
             <h3 className="dessert-name">{name}</h3>
             <p className="description">{notes}</p>
-            <button className="add-dessert">ADD</button>
+            <button className="add-dessert" onClick={addOrderHandler}>ADD</button>
         </article>
       </article>
   )
