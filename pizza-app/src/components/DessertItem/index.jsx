@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 const DessertItem = ({
     imageUrl,
@@ -11,6 +13,7 @@ const DessertItem = ({
 
 
   const [quantity, setQuantity] = useState(1);
+  const {user} = useContext(UserContext)
   let dessertPrice = price;
   const navigate = useNavigate();
 
@@ -25,6 +28,9 @@ const DessertItem = ({
 
   const addOrderHandler = (e)=>{
     e.preventDefault()
+    if(!user.email){
+      navigate('/login')
+    }
    
   }
   return (

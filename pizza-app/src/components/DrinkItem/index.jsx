@@ -2,9 +2,13 @@ import React from "react";
 import './index.css';
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
+
 
 const DrinkItem = ({ imageUrl, name, price, notes }) => {
   const [quantity, setQuantity] = useState(1);
+  const {user} = useContext(UserContext)
   let drinkPrice = price;
   const navigate = useNavigate();
 
@@ -18,7 +22,10 @@ const DrinkItem = ({ imageUrl, name, price, notes }) => {
   drinkPrice = price* quantity;
 
   const addOrderHandler = (e)=>{
-    e.preventDefault()
+    e.preventDefault();
+    if(!user.email){
+      navigate('/login')
+    }
    
   }
 

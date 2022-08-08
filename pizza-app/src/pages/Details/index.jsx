@@ -66,41 +66,33 @@ const Details = () => {
   const increaseQuantity = (e) => {
     e.preventDefault()
     setQuantity((quantity) => quantity + 1);
-    orderService
-    .addOrder(pizzaId, user.username)
-    .then((result) => {
-      if (result._id) {
-        setOrdersList((currentOrders) => [...currentOrders, result]);
-        console.log('order');
-      }
-      console.log(orderList)
-    })
-   
+    
   };
 
   const decreaseQuantity = (e) => {
     e.preventDefault()
     setQuantity((quantity) => quantity - 1);
-    orderService
-    .delOrder(pizzaId)
-    .then((result) => {
-      console.log(result)
-      if (result._deletedOn) {
-        console.log(result._deletedOn);
-       // setOrdersList((currentOrders) => [...currentOrders, result]);
-        setOrdersList((currentOrders) => currentOrders.filter(o=> o._id !== pizzaId));
-        console.log('order');
-      }
-      console.log(orderList)
-    })
+    // orderService
+    // .delOrder(pizzaId)
+    // .then((result) => {
+    //   console.log(result)
+    //   if (result._deletedOn) {
+    //     console.log(result._deletedOn);
+    //    // setOrdersList((currentOrders) => [...currentOrders, result]);
+    //     setOrdersList((currentOrders) => currentOrders.filter(o=> o._id !== pizzaId));
+    //     console.log('order');
+      // }
+      // console.log(orderList)
+    // })
    
   };
-pizzaPrice = pizza.price * quantity;
+pizzaPrice = Number(pizza.price * quantity);
 console.log(pizzaPrice);
 
   useEffect(() => {
     (async () => {
       const pizzaDetails = await pizzaService.getOne(pizzaId);
+      console.log(pizzaDetails);
       const pizzaComments = await commentService.getPizzaById(pizzaId);
 
       console.log(pizzaComments);
@@ -153,8 +145,12 @@ console.log(pizzaPrice);
 
   const addOrderHandler = (e) => {
     e.preventDefault()
+
+    if(!user.email){
+      navigate('/login');
+    }
     orderService
-      .addOrder(pizzaId, user.username)
+      .addOrder(pizzaId, user.username, quantity, pizza)
       .then((result) => {
         if (result._id) {
           setOrdersList((currentOrders) => [...currentOrders, result]);

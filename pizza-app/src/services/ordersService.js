@@ -23,8 +23,11 @@ import uniqId from 'uniqid';
 
 const baseUrl = 'http://localhost:3030/data/orders';
 
-export const addOrder=(orderId, user)=>{
-   return request.post(baseUrl, {_id: uniqId(), orderId, user})
+export const getAllOrders=()=>{
+   return request.get(baseUrl)
+}
+export const addOrder=(orderId, user, quantity, item)=>{
+   return request.post(baseUrl, {_id: uniqId(), orderId, user, quantity, item})
 }
 
 export const getOrderById =(orderId)=>{
