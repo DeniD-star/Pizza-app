@@ -21,10 +21,7 @@ const Drinks = () => {
         {drinks.length > 0 && drinks.map((drink) => (
           <li key={drink._id}>
             <DrinkItem
-              imageUrl={drink.imageUrl}
-              name={drink.name}
-              notes={drink.notes}
-              price={drink.price}
+             drink={drink}
             />
           </li>
         ))}

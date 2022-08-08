@@ -1,16 +1,34 @@
 import React from "react";
 import './index.css';
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import {useParams, useNavigate } from "react-router";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import * as orderService from '../../services/ordersService'
+import * as pizzaService from '../../services/pizzaService'
+import { useEffect } from "react";
 
 
-const DrinkItem = ({ imageUrl, name, price, notes }) => {
+const DrinkItem = ({ drink }) => {
   const [quantity, setQuantity] = useState(1);
-  const {user} = useContext(UserContext)
-  let drinkPrice = price;
+  const [orderList, setOrdersList] = useState([]);
+  const [order, setOrder] = useState([]);
+  const {user} = useContext(UserContext);
+  const { drinkId } = useParams();
   const navigate = useNavigate();
+  let drinkPrice = drink.price;
+  
+  let isAdded = false;
+
+  useEffect(()=>{
+    pizzaService.getOne(drinkId).then((result) => {
+      if (result) {
+        console.log(result._id);
+        setOrder(result);
+        console.log(result);
+      }
+    });
+  }, [])
 
   const increaseQuantity = () => {
     setQuantity((quantity) => quantity + 1);
@@ -19,13 +37,24 @@ const DrinkItem = ({ imageUrl, name, price, notes }) => {
   const decreaseQuantity = () => {
     setQuantity((quantity) => quantity - 1);
   };
-  drinkPrice = price* quantity;
+  drinkPrice = drink.price* quantity;
 
   const addOrderHandler = (e)=>{
     e.preventDefault();
     if(!user.email){
       navigate('/login')
     }
+    orderService
+    .addOrder(order._id, user.username, quantity, drink)
+   
+    .then((result) => {
+      if (result._id) {
+        setOrdersList((currentOrders) => [...currentOrders, result]);
+        console.log('order');
+      }
+      console.log(orderList)
+    });
+  isAdded = true;
    
   }
 
@@ -33,7 +62,7 @@ const DrinkItem = ({ imageUrl, name, price, notes }) => {
     <article className="drink-article drink">
       <article className="img-drink">
         <img
-          src={imageUrl}
+          src={drink.imageUrl}
           alt="drink-img"
           className="drink-dessert-img"
         />
@@ -48,9 +77,9 @@ const DrinkItem = ({ imageUrl, name, price, notes }) => {
           </button>
         </div>
       <article className="info-drink">
-        <h4 className="drink-price">{drinkPrice} $</h4>
-        <h3 className="drink-name">{name}</h3>
-        <p className="description">{notes}</p>
+        <h4 className="drink-price">{drink.drinkPrice} $</h4>
+        <h3 className="drink-name">{drink.name}</h3>
+        <p className="description">{drink.notes}</p>
         <button className="add-drink" onClick={addOrderHandler}>ADD</button>
       
       </article>
