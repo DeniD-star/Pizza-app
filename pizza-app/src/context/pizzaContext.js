@@ -21,32 +21,6 @@ const pizzaReducer = (state, action, user) => {
         case 'ADD_COMMENT':
             //return state.map(x => x._id === action.pizzaId ? { ...x, comments: [...x.comments, action.payload] } : x);
             return state.map(c=>c._id === action.pizzaId ? {...c, comments: [...c.comments, {newComment:action.payload, author: user}]} : c);
-            // return state.map(x=> {
-            //     console.log(state)
-            //     if(x._id === action.pizzaId){
-            //         console.log(x)
-            //         console.log(action)
-
-            //         const currentComments = x.comments && x.comments.length > 0 ? x.comments : [];//suzdavame masiv za commenti
-            //         //const commentObj = {_id: Math.random(), author: x.username, comment : action.payload}
-            //         const commentObj = { _id: x._id, author: action.user, comment : action.payload}
-            //         console.log(commentObj)
-            //         console.log(x); //la pizza con comments object vuoto
-            //         console.log(action);//type, pizzaId, payload: comment, user
-            //         currentComments.push(commentObj)
-            //         console.log(currentComments);
-            //         const currentObj = {...x, comments : currentComments};
-            //         console.log(currentObj);
-            //         console.log(x)
-            //         return currentObj;
-               // }
-
-                //console.log(x)
-            
-            //     return x;
-         //  })
-            //state.map(x => x._id === action.pizzaId ? console.log(x) : null);
-           
         case 'REMOVE_PIZZA':
             return state.filter(x=> x._id !== action.pizzaId)
         default:

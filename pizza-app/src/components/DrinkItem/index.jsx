@@ -4,14 +4,15 @@ import { useState } from "react";
 import {useParams, useNavigate } from "react-router";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
-import * as orderService from '../../services/ordersService'
+//import * as orderService from '../../services/ordersService'
 import * as pizzaService from '../../services/pizzaService'
 import { useEffect } from "react";
+import * as cartService from '../../services/cartService'
 
 
 const DrinkItem = ({ drink }) => {
   const [quantity, setQuantity] = useState(1);
-  const [orderList, setOrdersList] = useState([]);
+  const [cartList, setCartList] = useState([]);
   const [order, setOrder] = useState([]);
   const {user} = useContext(UserContext);
   const { drinkId } = useParams();
@@ -39,20 +40,20 @@ const DrinkItem = ({ drink }) => {
   };
   drinkPrice = drink.price* quantity;
 
-  const addOrderHandler = (e)=>{
+  const addToTheCartHandler = (e)=>{
     e.preventDefault();
     if(!user.email){
       navigate('/login')
     }
-    orderService
-    .addOrder(order._id, user.username, quantity, drink)
+    cartService
+    .addToTheCart(drink._id, user.username, quantity, drink)
    
     .then((result) => {
       if (result._id) {
-        setOrdersList((currentOrders) => [...currentOrders, result]);
+        setCartList((currentOrders) => [...currentOrders, result]);
         console.log('order');
       }
-      console.log(orderList)
+      console.log(cartList)
     });
   isAdded = true;
    
@@ -80,7 +81,7 @@ const DrinkItem = ({ drink }) => {
         <h4 className="drink-price">{drink.drinkPrice} $</h4>
         <h3 className="drink-name">{drink.name}</h3>
         <p className="description">{drink.notes}</p>
-        <button className="add-drink" onClick={addOrderHandler}>ADD</button>
+        <button className="add-drink" onClick={addToTheCartHandler}>ADD</button>
       
       </article>
     </article>

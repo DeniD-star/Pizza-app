@@ -1,15 +1,17 @@
 import React from 'react';
 import './index.css';
 
-const CartOrderItem = (props) => {
+const CartOrderItem = ({order}) => {
+  console.log(order);
+  let priceItem = Number(order.item.price * order.quantity);
   return (
     <li className="cart-item">
               <article className="quantity-items">
-                <p className="counter-item">1{props.count}</p>
-                <p className="name-item">Margherita{props.name}</p>
+                <p className="counter-item">{order.quantity}</p>
+                <p className="name-item">{order.item.name}</p>
               </article>
               <article className="price-item">
-                <p className="price-item">4.50{props.price}$</p>
+                <p className="price-item">{priceItem}$</p>
               </article>
             </li>
   )

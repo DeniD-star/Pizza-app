@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { PizzaContext } from "../../context/pizzaContext";
 import { UserContext } from "../../context/UserContext";
 import * as likeService from "../../services/likeService";
-import * as orderService from '../../services/ordersService'
+import * as cartService from '../../services/cartService'
 
 const Details = () => {
   const { addComment, fetchPizzaDetails, selectPizzaFromState, removePizza } =
@@ -21,7 +21,8 @@ const Details = () => {
   const [likesNumber, setLikesNumber] = useState(0);
   const [canAddLike, setCanAddLike] = useState(true);
   const [likeList, setLikeList] = useState([]);
-  const [orderList, setOrdersList] = useState([]);
+  const [cartList, setCartList] = useState([]);
+  const [textComment, setTextComment] = useState('');
   let isAdded = false;
 
   console.log(commentsList);
@@ -86,7 +87,7 @@ const Details = () => {
     // })
    
   };
-pizzaPrice = Number(pizza.price * quantity);
+pizzaPrice = Number(pizza.price);
 console.log(pizzaPrice);
 
   useEffect(() => {
@@ -118,8 +119,11 @@ console.log(pizzaPrice);
       .then((result) => {
         if (result._id) {
           setCommentsList((currentComments) => [...currentComments, result]);
+          setTextComment('')
         }
       });
+
+   
   };
 
   const likePizza = () => {
@@ -143,24 +147,27 @@ console.log(pizzaPrice);
     }
   };
 
-  const addOrderHandler = (e) => {
+  const addToTheCartHandler = (e) => {
     e.preventDefault()
 
     if(!user.email){
       navigate('/login');
     }
-    orderService
-      .addOrder(pizzaId, user.username, quantity, pizza)
+    cartService
+      .addToTheCart(pizzaId, user, quantity, pizza, pizzaPrice)
       .then((result) => {
+        console.log(result);
         if (result._id) {
-          setOrdersList((currentOrders) => [...currentOrders, result]);
-          console.log('order');
+          console.log(result._id);
+          setCartList((currentItems) =>  currentItems.length > 0 ? [...currentItems, result] : [result]);
+          console.log('item');
+          
         }
-        console.log(orderList)
+        console.log(cartList)
       });
     isAdded = true;
   };
-  const cancelOrder = () => {
+  const cancelOrderfromCart = () => {
     
     isAdded = false;
   };
@@ -215,10 +222,10 @@ console.log(pizzaPrice);
         </article>
         <article className="details-order">
           <h2 className="details-price-order">{pizzaPrice}$</h2>
-         {!isAdded && <button className="details-btn-order" onClick={addOrderHandler}>
+         {!isAdded && <button className="details-btn-order" onClick={addToTheCartHandler}>
             ADD TO THE ORDER
           </button>}
-         {isAdded && <button className="details-btn-order" onClick={cancelOrder}>
+         {isAdded && <button className="details-btn-order" onClick={cancelOrderfromCart}>
             Added
           </button>}
         </article>
@@ -269,7 +276,12 @@ console.log(pizzaPrice);
           <article className="comments-add-mew">
             <h3 className="heading-comments">New Comment</h3>
             <form className="form" onSubmit={addCommentHandler}>
-              <textarea name="comment" placeholder="Comment......" />
+              <textarea 
+              name="comment"
+              placeholder="Comment......" 
+              onChange={(e)=>setTextComment(e.target.value)}
+              value={textComment}
+              />
 
               <input className="btn-add-comment" type="submit" value="Add" />
             </form>

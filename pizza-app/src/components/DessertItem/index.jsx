@@ -3,8 +3,9 @@ import { useState, useEffect} from 'react';
 import { useNavigate, useParams } from "react-router";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
-import * as orderService from '../../services/ordersService'
+//import * as orderService from '../../services/ordersService'
 import * as pizzaService from '../../services/pizzaService'
+import * as cartService from '../../services/cartService'
 
 const DessertItem = ({
     imageUrl,
@@ -16,8 +17,8 @@ const DessertItem = ({
 
   const [quantity, setQuantity] = useState(1);
   const {user} = useContext(UserContext);
-  const [orderList, setOrdersList] = useState([]);
-  const [order, setOrder] = useState([]);
+  const [cartList, setCartList] = useState([]);
+  const [item, setItem] = useState([]);
   const { dessertId } = useParams();
   let dessertPrice = price;
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const DessertItem = ({
     pizzaService.getOne(dessertId).then((result) => {
       if (result) {
         console.log(result._id);
-        setOrder(result);
+        setItem(result);
         console.log(result);
       }
     });
@@ -43,13 +44,13 @@ const DessertItem = ({
   };
   dessertPrice = price* quantity;
 
-  const addOrderHandler = (e)=>{
+  const addToTheCartHandler = (e)=>{
     e.preventDefault()
     if(!user.email){
       navigate('/login')
     }
-    orderService
-    .addOrder(order._id, user.username, quantity,{
+    cartService
+    .addToTheCart(item._id, user.username, quantity,{
       imageUrl,
       name,
       price,
@@ -58,10 +59,10 @@ const DessertItem = ({
    
     .then((result) => {
       if (result._id) {
-        setOrdersList((currentOrders) => [...currentOrders, result]);
+        setCartList((currentOrders) => [...currentOrders, result]);
         console.log('order');
       }
-      console.log(orderList)
+      console.log(cartList)
     });
   isAdded = true;
    
@@ -84,7 +85,7 @@ const DessertItem = ({
             <h4 className="dessert-price">{dessertPrice} $</h4>
             <h3 className="dessert-name">{name}</h3>
             <p className="description">{notes}</p>
-            <button className="add-dessert" onClick={addOrderHandler}>ADD</button>
+            <button className="add-dessert" onClick={addToTheCartHandler}>ADD</button>
         </article>
       </article>
   )
