@@ -41,7 +41,8 @@ const Myorders = () => {
   console.log(userOrders);
 
   useEffect(() => {
-   setUserOrders(orders.filter((o) => o._ownerId === user._id))
+    const orderObj = orders.filter((o) => o._ownerId === user._id).reverse()
+   setUserOrders(orderObj)
   }, [orders]);
 
   console.log(userOrders);

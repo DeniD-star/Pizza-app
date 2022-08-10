@@ -23,7 +23,7 @@ const Details = () => {
   const [likeList, setLikeList] = useState([]);
   const [cartList, setCartList] = useState([]);
   const [textComment, setTextComment] = useState('');
-  let isAdded = false;
+ const[isAdded, setIsAdded] = useState(false);
 
   console.log(commentsList);
   const [pizza, setPizza] = useState("");
@@ -36,22 +36,22 @@ const Details = () => {
     navigate('/')
   }
 
+
+  
   useEffect(() => {
     likeService.getLikesByPizzaId(pizzaId).then((res) => {
       if (res.length > 0) {
         setLikeList(res);
         var likes = 0;
         res.forEach((item) => {
-          if (item.pizzaId == pizzaId) {
+          if (item.pizzaId == pizzaId) {//se id del like e == pizzaId
             likes++;
           }
-          if (item._owneId == user._id) {
+          if (item._owneId == user._id) {//se id dell"owner._id == usera
             setCanAddLike(false);
           }
         });
-
-        console.log(likes);
-        setLikesNumber(likes);
+        setLikesNumber(likes);//salviamo numero totale dei like del post
       }
     });
     commentService.getPizzaById(pizzaId).then((res) => {
@@ -132,9 +132,9 @@ console.log(pizzaPrice);
 
   const likePizza = () => {
     likeService.addLike(pizzaId, user.username).then((res) => {
-      setLikesNumber((tempt) => tempt + 1);
-      setLikeList((list) => [...list, res]);
-      setCanAddLike(false);
+      setLikesNumber((tempt) => tempt + 1);//numerolikes
+      setLikeList((list) => [...list, res]);//aggiunge i like alla lista del like
+      setCanAddLike(false);//lutemte ha gia inserito il like e non lo puo fare piu
     });
   };
 
@@ -165,6 +165,7 @@ console.log(pizzaPrice);
           console.log(result._id);
           setCartList((currentItems) =>  currentItems.length > 0 ? [...currentItems, result] : [result]);
           console.log('item');
+          setIsAdded(true);
           
         }
         console.log(cartList)
@@ -176,13 +177,14 @@ console.log(pizzaPrice);
     isAdded = false;
   };
   const removeLike = () => {
-    var likeId = "";
-    if (likeList.length == 0) return;
+    var likeId = "";//
+    if (likeList.length == 0) return;//se ci sonono i like
     likeList.forEach((item) => {
-      if (item._ownerId == user._id && item.pizzaId == pizzaId) {
-        likeId = item._id;
+      if (item._ownerId == user._id && item.pizzaId == pizzaId) {//se rimuovo like giusto, se risponde alla pizza e utente corente
+        likeId = item._id;//salvo id
       }
     });
+    if(!likeId) return;
     likeService.removeLike(likeId).then((res) => {
       if (res._deletedOn) {
         setLikesNumber(likesNumber - 1);
@@ -190,6 +192,11 @@ console.log(pizzaPrice);
       }
     });
   };
+
+
+  isAdded && setTimeout(()=>{
+    setIsAdded(false)
+  }, 5000)
 
   console.log(pizza);
   return (
@@ -226,12 +233,10 @@ console.log(pizzaPrice);
         </article>
         <article className="details-order">
           <h2 className="details-price-order">{pizzaPrice}$</h2>
-         {!isAdded && <button className="details-btn-order" onClick={addToTheCartHandler}>
+        <button className="details-btn-order" onClick={addToTheCartHandler}>
             ADD TO THE ORDER
-          </button>}
-         {isAdded && <button className="details-btn-order" onClick={cancelOrderfromCart}>
-            Added
-          </button>}
+          </button>
+          {isAdded && <p>{pizza.name} added to the cart!</p>}
         </article>
 
         {pizza.canBeEdit && (
