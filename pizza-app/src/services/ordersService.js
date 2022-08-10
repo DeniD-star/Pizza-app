@@ -36,7 +36,7 @@ export const addOrder=(order)=>{
          _ownerId 
       }
     })
-   return request.post(baseUrl, {_id: uniqId(), currentOrder})
+   return request.post(baseUrl, { currentOrder})
 }
 
 export const getOrderById =(orderId)=>{

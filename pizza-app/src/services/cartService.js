@@ -7,7 +7,7 @@ export const getAllOrders=()=>{
    return request.get(baseUrl)
 }
 export const addToTheCart=(itemId, userId, quantity, item)=>{
-   return request.post(baseUrl, {_id: uniqId(), itemId, userId, quantity, item})
+   return request.post(baseUrl, { itemId, userId, quantity, item})
 }
 
 export const getItemById =(itemId)=>{

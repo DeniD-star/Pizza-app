@@ -70,6 +70,7 @@
     align-items: center;
     position: relative;
     top:-20px;
+    margin-bottom: 0px;
   }
   .details-btns-admin p{
     font-weight: bold;
@@ -90,6 +91,7 @@
   
   .details-btns-admin .details-btn-edit {
     margin-right: 20px;
+ 
   }
 
   
