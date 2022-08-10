@@ -30,9 +30,7 @@ const pizzaReducer = (state, action, user) => {
 }
 
 
-export const PizzaProvider = ({
-    children,
-}) => {
+export const PizzaProvider = ({children}) => {
 
     const navigate = useNavigate();
     const [pizzas, dispatcher] = useReducer(pizzaReducer, []);

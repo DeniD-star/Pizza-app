@@ -32,6 +32,10 @@ const Details = () => {
   console.log(pizzaPrice)
   console.log(pizza.price)
 
+  if(!user.email && pizza && pizza.canBeEdit){
+    navigate('/')
+  }
+
   useEffect(() => {
     likeService.getLikesByPizzaId(pizzaId).then((res) => {
       if (res.length > 0) {

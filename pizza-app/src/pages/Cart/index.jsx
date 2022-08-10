@@ -15,6 +15,7 @@ const Cart = () => {
    const [currentOrderId, setCurrentOrderId] = useState([]);//orderId that will create in orders
   const [cartList, setCartList] = useState([]);//cartList array 
   const [orderList, setOrdersList] = useState([]);//ordersList array
+ 
 let totalPrice = 0;
   
   const { user } = useContext(UserContext);
@@ -57,25 +58,24 @@ let totalPrice = 0;
           cartService.delOrder(element._id)
         });
       }
-      console.log(orderList)
-      console.log(currentOrderId)
    });
 
-
-    console.log(orderList)//all cartlist
-  console.log(currentOrderId)//cartListId
   setCurrentOrderId(cartList._id)
     navigate("/successful-order");
     setCurrentOrderId(cartList._id)
 
   };
 
-  console.log(orderList)
-  console.log(currentOrderId)
 
   const cancelOrders = (e) => {
     e.preventDefault();
-    navigate("/cart");
+    userCartList.forEach(element => {
+      cartService.delOrder(element._id)
+     
+    console.log(userCartList)
+    });
+
+    setCartList([]);
   };
 
   console.log(cartList)//all orders in the cart
@@ -88,7 +88,7 @@ let totalPrice = 0;
   console.log()
 
   console.log(userCartList);
-  console.log(currentOrderId)
+  console.log(cartList)
   return (
     <section className="cart">
       <h1 className="cart-page-heading">PIZZERIA</h1>
@@ -99,7 +99,7 @@ let totalPrice = 0;
             {userCartList.length > 0 &&
               userCartList.map((order) => (
                 <li key={order._id}>
-                  <CartOrderItem order={order} cartList={cartList}/>
+                  <CartOrderItem order={order}/>
                 </li>
               ))}
           </ul>

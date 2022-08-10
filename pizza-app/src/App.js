@@ -72,7 +72,7 @@ function App() {
           </Route>
           <Route path="/clientsPizzas" element={<PrivateRoute><ClientsCatalog /></PrivateRoute>}>
           </Route>
-          <Route path="/cart" element={<Cart />}>
+          <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>}>
           </Route>
           <Route path="/my-pizzas-profile" element={<PrivateRoute><Mypizzas/></PrivateRoute>}>
           </Route>
