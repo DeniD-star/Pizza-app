@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 //import { PizzaContext } from "../../context/PizzaContext";
 import { useParams } from "react-router";
-import uniqId from 'uniqid';
+
 
 const Cart = () => {
   // const [currItem, setCurrItem] = useState({});//item that will create in cart

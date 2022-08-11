@@ -20,10 +20,11 @@ const DessertItem = ({
   const [cartList, setCartList] = useState([]);
   const [item, setItem] = useState([]);
   const { dessertId } = useParams();
+  const[isAdded, setIsAdded] = useState(false);
   let dessertPrice = price;
   const navigate = useNavigate();
 
-  let isAdded = false;
+ 
 
   useEffect(()=>{
     pizzaService.getOne(dessertId).then((result) => {
@@ -60,13 +61,18 @@ const DessertItem = ({
     .then((result) => {
       if (result._id) {
         setCartList((currentOrders) => [...currentOrders, result]);
-        console.log('order');
+        setIsAdded(true);
       }
-      console.log(cartList)
+   
     });
-  isAdded = true;
+ 
    
   }
+
+  isAdded && setTimeout(()=>{
+    setIsAdded(false)
+  }, 5000)
+
   return (
     <article className="dessert-article">
         <article className="img-dessert">
@@ -86,6 +92,7 @@ const DessertItem = ({
             <h3 className="dessert-name">{name}</h3>
             <p className="description">{notes}</p>
             <button className="add-dessert" onClick={addToTheCartHandler}>ADD</button>
+            {isAdded && <p className="drinkP">{name} added to the cart!</p>}
         </article>
       </article>
   )

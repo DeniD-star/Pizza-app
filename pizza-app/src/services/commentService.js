@@ -1,5 +1,5 @@
 import * as request from "./util/requestService";
-import uniqId from 'uniqid';
+
 
 const baseUrl = 'http://localhost:3030/data/comments';
 

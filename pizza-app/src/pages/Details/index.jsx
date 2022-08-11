@@ -170,12 +170,9 @@ console.log(pizzaPrice);
         }
         console.log(cartList)
       });
-    isAdded = true;
+    //isAdded = true;
   };
-  const cancelOrderfromCart = () => {
-    
-    isAdded = false;
-  };
+
   const removeLike = () => {
     var likeId = "";//
     if (likeList.length == 0) return;//se ci sonono i like

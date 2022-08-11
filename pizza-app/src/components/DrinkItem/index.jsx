@@ -14,12 +14,13 @@ const DrinkItem = ({ drink }) => {
   const [quantity, setQuantity] = useState(1);
   const [cartList, setCartList] = useState([]);
   const [order, setOrder] = useState([]);
+  const[isAdded, setIsAdded] = useState(false);
   const {user} = useContext(UserContext);
   const { drinkId } = useParams();
   const navigate = useNavigate();
   let drinkPrice = drink.price;
   
-  let isAdded = false;
+
 
   useEffect(()=>{
     pizzaService.getOne(drinkId).then((result) => {
@@ -52,12 +53,17 @@ const DrinkItem = ({ drink }) => {
       if (result._id) {
         setCartList((currentOrders) => [...currentOrders, result]);
         console.log('order');
+        setIsAdded(true);
       }
       console.log(cartList)
     });
-  isAdded = true;
+ 
    
   }
+
+  isAdded && setTimeout(()=>{
+    setIsAdded(false)
+  }, 5000)
 
   return (
     <article className="drink-article drink">
@@ -82,7 +88,7 @@ const DrinkItem = ({ drink }) => {
         <h3 className="drink-name">{drink.name}</h3>
         <p className="description">{drink.notes}</p>
         <button className="add-drink" onClick={addToTheCartHandler}>ADD</button>
-      
+       {isAdded && <p className="drinkP">{drink.name} added to the cart!</p>}
       </article>
     </article>
   );
