@@ -54,6 +54,8 @@
     background-color: rgb(230, 96, 96); 
     color: rgb(53, 51, 51);
     cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
 
 }
 
@@ -65,4 +67,8 @@
 
 .register-form h2{
     color: gray;
+}
+
+.register-links{
+    font-weight: bold;
 }

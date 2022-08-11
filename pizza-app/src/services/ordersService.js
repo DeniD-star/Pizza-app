@@ -1,23 +1,3 @@
-// import * as request from "./util/requestService";
-
-// const baseUrl = 'http://localhost:3030/data/orders';
-
-
-// export const addOrder=(orderId, author)=>{
-//    return request.post(baseUrl, { orderId, author})
-// }
-
-// export const getOrderById =(orderId)=>{
-   
-//    const search = encodeURIComponent(`orderId="${orderId}"`);
-//    return request.get(`${baseUrl}?orderId=${orderId}`);
-// }
-
-// export const removeLike= (likeId)=>{
-//         return request.del(`${baseUrl}/${likeId}`)
-// }
-
-
 import * as request from "./util/requestService";
 
 

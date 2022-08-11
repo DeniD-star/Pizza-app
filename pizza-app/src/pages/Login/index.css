@@ -54,6 +54,8 @@
     background-color: rgb(230, 96, 96); 
     color: rgb(53, 51, 51);
     cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
 
 }
 
@@ -64,4 +66,9 @@
 
 .login-form h2{
     color: gray;
+}
+
+.create-account, .link-forgotten{
+    font-weight: bold;
+    color: blue;
 }

@@ -88,7 +88,7 @@ const DessertItem = ({
           </button>
         </div>
         <article className="info-dessert">
-            <h4 className="dessert-price">{dessertPrice} $</h4>
+            <h4 className="dessert-price">{dessertPrice.toFixed(2)} $</h4>
             <h3 className="dessert-name">{name}</h3>
             <p className="description">{notes}</p>
             <button className="add-dessert" onClick={addToTheCartHandler}>ADD</button>

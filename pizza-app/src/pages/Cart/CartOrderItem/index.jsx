@@ -11,7 +11,7 @@ const CartOrderItem = ({order}) => {
                 <p className="name-item">{order.item.name}</p>
               </article>
               <article className="price-item">
-                <p className="price-item">{priceItem}$</p>
+                <p className="price-item">{priceItem.toFixed(2)}$</p>
               </article>
             </li>
   )
