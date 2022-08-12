@@ -10,7 +10,7 @@ export const addLike=(pizzaId, author)=>{
 export const getLikesByPizzaId =(pizzaId)=>{
    
    const search = encodeURIComponent(`pizzaId="${pizzaId}"`);
-   return request.get(`${baseUrl}?pizzaId=${pizzaId}`);
+   return request.get(`${baseUrl}?where=${search}`);
 }
 
 export const removeLike= (likeId)=>{
