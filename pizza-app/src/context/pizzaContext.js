@@ -74,16 +74,7 @@ export const PizzaProvider = ({children}) => {
             user
         })
 
-        // setPizzas(state => {
-        //     const pizza = state.find(x => x._id === pizzaId);                                                   
-        //     const comments = pizza.comments || [];                                                                 
-        //     comments.push(comment);                                                                                                                                          
-        //     return [
-        //         ...state.filter(x => x._id !== pizzaId),                            
-        //         { ...pizza, comments: comments }                                           
-        //     ]
-        // })
-
+      
     }
 
     const addPizzaHandler = (pizzaData) => {                                                      
