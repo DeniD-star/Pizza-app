@@ -39,7 +39,7 @@ const DrinkItem = ({ drink }) => {
   const decreaseQuantity = () => {
     setQuantity((quantity) => quantity - 1);
   };
-  drinkPrice = drink.price* quantity;
+  drinkPrice = Number(drink.price).toFixed(2)
 
   const addToTheCartHandler = (e)=>{
     e.preventDefault();
@@ -84,7 +84,7 @@ const DrinkItem = ({ drink }) => {
           </button>
         </div>
       <article className="info-drink">
-        <h4 className="drink-price">{drinkPrice.toFixed(2)} $</h4>
+        <h4 className="drink-price">{drinkPrice} $</h4>
         <h3 className="drink-name">{drink.name}</h3>
         <p className="description">{drink.notes}</p>
         <button className="add-drink" onClick={addToTheCartHandler}>ADD</button>
