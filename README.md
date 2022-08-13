@@ -50,5 +50,11 @@ Denitsa Dimitrova, email: dimitrova.denise@gmail.com
 
 Project Link: https://github.com/DeniD-star/Pizza-app.git
 
+## App deployed on Firebase
+
+Links: 
+https://pizza-app-project.firebaseapp.com/
+https://pizza-app-project.web.app/
+
 
 
